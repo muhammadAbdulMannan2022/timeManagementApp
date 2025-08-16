@@ -19,11 +19,17 @@ export default function Timer() {
     const innerSize = 200; // fixed inner circle size
     const outerRadius = outerSize / 2;
     const innerRadius = innerSize / 2;
+    // orbits
+    // const orbitRadius = innerRadius;
+    const [orbitRadius, setOrbitRadius] = useState(innerRadius - 10)
+    const NUM_DOTS = 15
+    const angle = Math.PI / 2
 
     const [playing, setPlaying] = useState(false);
     const scale = useSharedValue(1);
 
     const startAnimation = () => {
+        setOrbitRadius(innerRadius + 15)
         scale.value = withRepeat(
             withTiming(1.3, { duration: 1000, easing: Easing.inOut(Easing.ease) }),
             -1,
@@ -33,6 +39,7 @@ export default function Timer() {
     };
 
     const stopAnimation = () => {
+        setOrbitRadius(innerRadius - 10)
         cancelAnimation(scale);
         scale.value = 1;
         setPlaying(false);
@@ -79,6 +86,20 @@ export default function Timer() {
                         cy={(outerSize * 1.5) / 2}
                         fill="url(#grad)"
                     />
+                    {Array.from({ length: NUM_DOTS }).map((_, i) => {
+                        const dotAngle = angle + (i * (2 * Math.PI) / NUM_DOTS);
+                        const x = (outerSize * 1.5) / 2 + orbitRadius * Math.cos(dotAngle);
+                        const y = (outerSize * 1.5) / 2 + orbitRadius * Math.sin(dotAngle);
+                        return (
+                            <Circle
+                                key={i}
+                                cx={x}
+                                cy={y}
+                                r={3}
+                                fill={`#00ff00`}
+                            />
+                        );
+                    })}
                 </Svg>
 
                 {/* Inner fixed circle */}
