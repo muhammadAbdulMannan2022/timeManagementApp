@@ -1,3 +1,4 @@
+import { RootState } from "@/redux/store";
 import { Ionicons } from "@expo/vector-icons";
 import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -13,11 +14,13 @@ import Animated, {
     withTiming,
 } from "react-native-reanimated";
 import Svg, { Circle, Defs, RadialGradient, Stop } from "react-native-svg";
+import { useSelector } from "react-redux";
 import DynamicStepIndicator from "../helpers/StepIndicator";
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 export default function Timer({ time = 1, type, client }: { time?: number, type?: string, client?: string }) {
+    const { currentStep } = useSelector((state: RootState) => state.step)
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [playing, setPlaying] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -183,7 +186,7 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
             <View className="w-screen px-5 items-center justify-center gap-y-16">
                 <View className="w-1/3">
                     <DynamicStepIndicator
-                        currentStep={3}
+                        currentStep={currentStep}
                         totalSteps={4}
                         stepColors={["#00ff00", "#55ff55", "#aaffaa", "#aaffaa"]}
                         inactiveColor="#00ff00"
