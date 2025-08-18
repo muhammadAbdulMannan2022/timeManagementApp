@@ -1,9 +1,10 @@
-import { Text, View } from 'react-native'
+import { Tabs } from 'expo-router'
 
 export default function Layout() {
-    return (
-        <View>
-            <Text>_layout</Text>
-        </View>
-    )
+    return <Tabs screenOptions={{
+        headerShown: false,
+        tabBarStyle: { display: "none" }
+    }} >
+        <Tabs.Screen name='index' options={{ headerShown: false }} />
+    </Tabs>
 }

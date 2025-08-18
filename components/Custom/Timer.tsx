@@ -3,6 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import { useRouter } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import { Dimensions, Modal, Text, TouchableOpacity, View } from "react-native";
 import Animated, {
@@ -20,6 +21,7 @@ import DynamicStepIndicator from "../helpers/StepIndicator";
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 export default function Timer({ time = 1, type, client }: { time?: number, type?: string, client?: string }) {
+    const router = useRouter()
     const { currentStep } = useSelector((state: RootState) => state.step)
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [playing, setPlaying] = useState(false);
@@ -240,7 +242,10 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
                             <Text className="font-extrabold text-xl text-[#818181] mb-6">Take photo?</Text>
                         </View>
                         <View className="flex-row items-center justify-center gap-4">
-                            <TouchableOpacity className="bg-blue-400 px-8 py-3 rounded-lg flex-row items-center justify-center gap-2">
+                            <TouchableOpacity onPress={() => {
+                                setShowModal(false)
+                                router.navigate("/(camera)")
+                            }} className="bg-blue-400 px-8 py-3 rounded-lg flex-row items-center justify-center gap-2">
                                 <Entypo name="camera" size={20} color="white" />
                                 <Text className="text-white font-semibold">Take Photo</Text>
                             </TouchableOpacity>
