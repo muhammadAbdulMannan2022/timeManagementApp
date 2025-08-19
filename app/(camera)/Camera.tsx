@@ -41,6 +41,15 @@ export default function Camera() {
         if (cameraRef.current) {
             console.log("Taking picture...");
             const photo = await cameraRef.current.takePictureAsync()
+            router.push({
+                pathname: "/View",
+                params: {
+                    uri: photo.uri,
+                    width: String(photo.width),
+                    height: String(photo.height),
+                    format: photo.format
+                },
+            });
             console.log("Clicked photo:", photo)
         }
         // Add logic to handle the captured image here
