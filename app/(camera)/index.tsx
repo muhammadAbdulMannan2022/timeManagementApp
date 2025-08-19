@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useCameraPermissions } from 'expo-camera'
+import * as ImagePicker from "expo-image-picker"
 import { useRouter } from 'expo-router'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -8,6 +9,33 @@ const Index = () => {
     const insets = useSafeAreaInsets()
     const router = useRouter()
     const [permission, requestPermission] = useCameraPermissions();
+
+    const pickImage = async () => {
+        try {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images, // Use correct enum for images
+                allowsEditing: true,
+                quality: 1,
+            });
+
+            console.log(result);
+
+            if (!result.canceled && result.assets && result.assets.length > 0) {
+                const photo = result.assets[0];
+                router.push({
+                    pathname: "/View",
+                    params: {
+                        uri: photo.uri,
+                        width: String(photo.width),
+                        height: String(photo.height),
+                        format: photo.mimeType ? photo.mimeType.split('/')[1] : '', // Extracts 'jpeg' from 'image/jpeg' or empty string if undefined
+                    },
+                });
+            }
+        } catch (error) {
+            console.error('Error picking image:', error);
+        }
+    };
     return (
         <SafeAreaView
             className="flex-1 bg-white items-center justify-start px-8"
@@ -69,7 +97,9 @@ const Index = () => {
                         <Text className="text-[#00B8D4] text-lg font-semibold ">Take Photo</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity className="bg-[#baf6ff6e] px-8 py-5 rounded-lg flex-row items-center gap-3">
+                    <TouchableOpacity onPress={() => {
+                        pickImage()
+                    }} className="bg-[#baf6ff6e] px-8 py-5 rounded-lg flex-row items-center gap-3">
                         <Ionicons name="images" size={24} color="#00B8D4" />
                         <Text className="text-[#00B8D4] text-lg font-semibold ">Library</Text>
                     </TouchableOpacity>
