@@ -3,17 +3,21 @@ import { RootState } from '@/redux/store';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from "expo-image-picker";
 import { useRouter } from "expo-router";
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useState } from "react";
+import { FlatList, Image, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 export default function SelectedImages() {
-    const insets = useSafeAreaInsets();
     const router = useRouter()
     const currentStep = useSelector((state: RootState) => state.step.currentStep);
     const stepImages = useSelector((state: RootState) =>
         state.image.find((item: { step: number; images: { uri: string }[] }) => item.step === currentStep)?.images || []
     );
-    const stepsDataFinal = useSelector((state: RootState) => state.fullStepData)
+    const stepsDataFinal = useSelector((state: RootState) => state.fullStepData.find(item => item.stepNumber === currentStep))
+    const [noteTemp, setNoteTemp] = useState<string>("")
+    const [takingFinalNote, setTakingFinalNote] = useState<boolean>(false)
+    const [finalNote, stetFinalNote] = useState<string>(stepsDataFinal?.stepNote || "hello")
     const dispatch = useDispatch();
 
     const pickImage = async () => {
@@ -91,18 +95,48 @@ export default function SelectedImages() {
                         <Text className="text-gray-500 text-sm">Photo 1 - 14:48</Text>
                     </View>
                 </View>
-                <TouchableOpacity className="flex-row items-center justify-center gap-2">
-                    <MaterialIcons name="edit-square" size={24} color="#00B8D4" />
-                    <Text className="text-[#00B8D4] font-bold">Edit</Text>
-                </TouchableOpacity>
+                <View className="flex-row items-center justify-center gap-2">
+                    {takingFinalNote ? <>
+                        <TouchableOpacity onPress={() => setTakingFinalNote(prev => false)} className="border py-1.5 px-3 rounded-md border-[#00B8D4]">
+                            <Text className="text-[#00B8D4] font-bold">Cancel</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity className="border border-[#00B8D4] py-1.5 px-3 rounded-md bg-[#00B8D4]">
+                            <Text className="text-white font-bold">save</Text>
+                        </TouchableOpacity>
+                    </> :
+                        <TouchableOpacity className="flex-row items-center justify-center gap-2" onPress={() => setTakingFinalNote(prev => true)}>
+                            <MaterialIcons name="edit-square" size={24} color="#00B8D4" />
+                            <Text className="text-[#00B8D4] font-bold">Edit</Text>
+                        </TouchableOpacity>}
+                </View>
             </View>
 
             <View className="items-center justify-center min-h-52">
-                <View className="mt-4 items-center">
-                    <Ionicons className="transform rotate-180" name="document-text" size={54} color="#ccc" />
-                    <Text className="text-[#000] font-bold text-2xl my-2 ml-2">No note yet</Text>
-                </View>
-                <Text className="text-gray-500 text-xs mt-1">Tap to edit to add description for this photo</Text>
+                {
+                    takingFinalNote ? <View className="w-full">
+                        <TextInput
+                            placeholder="Add note"
+                            className="border border-gray-300 w-full p-3 rounded-md"
+                            multiline={true}
+                            value={noteTemp}
+                            onChangeText={(text) => setNoteTemp(text)}
+                            numberOfLines={4}
+                            textAlignVertical="top"
+                            style={{ minHeight: 100 }} // 4 lines approx (adjust as needed)
+                        />
+                    </View>
+                        :
+                        finalNote ? <ScrollView className="max-h-40 overflow-y-auto">
+                            <Text className="text-2xl">{finalNote}</Text>
+                        </ScrollView> :
+                            <View>
+                                <View className="mt-4 items-center">
+                                    <Ionicons className="transform rotate-180" name="document-text" size={54} color="#ccc" />
+                                    <Text className="text-[#000] font-bold text-2xl my-2 ml-2">No note yet</Text>
+                                </View>
+                                <Text className="text-gray-500 text-xs mt-1">Tap to edit to add description for this photo</Text>
+                            </View>
+                }
             </View>
         </View>
     );
