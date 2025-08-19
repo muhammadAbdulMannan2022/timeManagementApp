@@ -50,7 +50,7 @@ export default function ViewImage() {
                     >
                         <Entypo name="camera" size={24} color="#00B8D4" />
                         <Text className="text-[#00B8D4] text-lg font-semibold ">
-                            Save to Gallery
+                            Save Photo
                         </Text>
                     </TouchableOpacity>
                 </View>
