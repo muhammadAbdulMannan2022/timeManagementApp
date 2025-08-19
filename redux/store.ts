@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
+import stepImageReducer from "./slices/ImagesSlice"
+import stepsDataFullReducer from "./slices/StepsDataFinal"
 import stepReducer from './slices/stepSlice'
 const store = configureStore({
     reducer: {
         step: stepReducer,
+        image: stepImageReducer,
+        fullStepData: stepsDataFullReducer,
     }
 })
 

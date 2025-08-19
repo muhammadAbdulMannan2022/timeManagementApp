@@ -1,12 +1,19 @@
 // ViewImage.tsx
+import { addImage } from '@/redux/slices/ImagesSlice';
+import { RootState } from '@/redux/store';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { StatusBar } from 'expo-status-bar';
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ViewImage() {
     const router = useRouter();
+    const step = useSelector((state: RootState) => state.step)
+    const stepImage = useSelector((state: RootState) => state.image)
+    const dispatch = useDispatch()
     const { uri, width, height, format } = useLocalSearchParams<{
         uri: string;
         width: string;
@@ -15,7 +22,11 @@ export default function ViewImage() {
     }>();
 
     const handleBack = () => router.back();
-    const handleSave = () => console.log("Save pressed:", uri);
+    const handleSave = () => {
+        dispatch(addImage({ step: Number(step.currentStep), uri }))
+        router.push("/SelectedImage")
+        console.log(stepImage)
+    };
 
     return (
         <View className='flex-1'>
@@ -55,7 +66,7 @@ export default function ViewImage() {
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
-
+            <StatusBar style='dark' />
         </View>
     );
 }

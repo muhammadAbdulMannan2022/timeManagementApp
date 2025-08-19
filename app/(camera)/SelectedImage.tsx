@@ -1,0 +1,178 @@
+import { removeImage } from "@/redux/slices/ImagesSlice";
+import { RootState } from '@/redux/store';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import * as ImagePicker from "expo-image-picker";
+import { useRouter } from "expo-router";
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
+export default function SelectedImages() {
+    const insets = useSafeAreaInsets();
+    const router = useRouter()
+    const currentStep = useSelector((state: RootState) => state.step.currentStep);
+    const stepImages = useSelector((state: RootState) =>
+        state.image.find((item: { step: number; images: { uri: string }[] }) => item.step === currentStep)?.images || []
+    );
+    const stepsDataFinal = useSelector((state: RootState) => state.fullStepData)
+    const dispatch = useDispatch();
+
+    const pickImage = async () => {
+        try {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images, // Use correct enum for images
+                allowsEditing: true,
+                quality: 1,
+            });
+
+            console.log(result);
+
+            if (!result.canceled && result.assets && result.assets.length > 0) {
+                const photo = result.assets[0];
+                router.push({
+                    pathname: "/View",
+                    params: {
+                        uri: photo.uri,
+                        width: String(photo.width),
+                        height: String(photo.height),
+                        format: photo.mimeType ? photo.mimeType.split('/')[1] : '', // Extracts 'jpeg' from 'image/jpeg' or empty string if undefined
+                    },
+                });
+            }
+        } catch (error) {
+            console.error('Error picking image:', error);
+        }
+    };
+
+    // Render each image item in the FlatList with a remove button
+    const renderImageItem = ({ item }: { item: { uri: string } }) => (
+        <View className="mr-4 relative">
+            <Image
+                source={{ uri: item.uri }}
+                style={{ width: 100, height: 100, borderRadius: 8 }}
+                resizeMode="cover"
+            />
+            <TouchableOpacity
+                className="absolute top-2 right-2 bg-red-500 rounded-full w-6 h-6 items-center justify-center"
+                onPress={() => dispatch(removeImage({ step: currentStep, uri: item.uri }))}
+            >
+                <Ionicons name="close" size={14} color="#fff" />
+            </TouchableOpacity>
+        </View>
+    );
+
+    // Render buttons at the end of the FlatList
+    const renderFooter = () => (
+        <View className="flex-row items-center space-x-4  gap-5">
+            <TouchableOpacity onPress={() => router.push("/Camera")} style={{ width: 100, height: 100, borderRadius: 8 }} className="border border-dashed border-[#00B8D4] rounded-full w-20 h-20 items-center justify-center">
+                <Ionicons name="camera" size={24} color="#00B8D4" />
+                <Text className="text-[#00B8D4] text-sm mt-1">Take Photo</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => pickImage()} style={{ width: 100, height: 100, borderRadius: 8 }} className="border border-dashed border-[#00B8D4] rounded-full w-20 h-20 items-center justify-center">
+                <Ionicons name="images" size={24} color="#00B8D4" />
+                <Text className="text-[#00B8D4] text-sm mt-1">Library</Text>
+            </TouchableOpacity>
+        </View>
+    );
+
+    // Render the note section
+    const renderNoteSection = () => (
+        <View style={{
+            shadowColor: '#000000',
+            shadowOffset: { width: 0, height: 1 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+            elevation: 1.5, // Android shadow
+        }} className="w-full mt-4 p-4 bg-white rounded-xl shadow-sm">
+            <View className="flex-row justify-between items-center mb-2">
+                <View className="flex-row items-center justify-center gap-3">
+                    <Ionicons name="document-text" size={24} color="#00B8D4" />
+                    <View>
+                        <Text className="text-gray-700 font-semibold">Photos Note</Text>
+                        <Text className="text-gray-500 text-sm">Photo 1 - 14:48</Text>
+                    </View>
+                </View>
+                <TouchableOpacity className="flex-row items-center justify-center gap-2">
+                    <MaterialIcons name="edit-square" size={24} color="#00B8D4" />
+                    <Text className="text-[#00B8D4] font-bold">Edit</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View className="items-center justify-center min-h-52">
+                <View className="mt-4 items-center">
+                    <Ionicons className="transform rotate-180" name="document-text" size={54} color="#ccc" />
+                    <Text className="text-[#000] font-bold text-2xl my-2 ml-2">No note yet</Text>
+                </View>
+                <Text className="text-gray-500 text-xs mt-1">Tap to edit to add description for this photo</Text>
+            </View>
+        </View>
+    );
+
+    // Render the save button
+    const renderSaveButton = () => (
+        <View className="w-full mt-8">
+            <TouchableOpacity
+                className="bg-[#C9F0F5] rounded-lg items-center justify-center py-4 "
+                onPress={() => console.log('Save pressed')}
+            >
+                <View className="flex-row items-center">
+                    <Ionicons name="save" size={24} color="#00B8D4" />
+                    <Text className="text-[#00B8D4] text-xl font-bold ml-2">Save</Text>
+                </View>
+            </TouchableOpacity>
+        </View>
+    );
+
+    return (
+        <SafeAreaView className="flex-1 bg-white">
+            <View className="flex-1 items-center px-4">
+                <View
+                    className="flex-row items-center justify-between w-full p-3 mt-2 bg-white rounded-md"
+                    style={{
+                        shadowColor: '#000000',
+                        shadowOffset: { width: 0, height: 1 },
+                        shadowOpacity: 0.1,
+                        shadowRadius: 4,
+                        elevation: 1.5, // Android shadow
+                    }}
+                >
+                    <TouchableOpacity>
+                        <Ionicons name="close" size={24} color="#000" />
+                    </TouchableOpacity>
+                    <View className="items-center">
+                        <Text className="text-gray-900 font-bold text-lg">Removal</Text>
+                        <Text className="text-gray-500">Photo Records</Text>
+                    </View>
+                    <View>
+                        <Text className="text-gray-500">Photos (1/5)</Text>
+                    </View>
+                </View>
+                <View
+                    className="w-full mt-4 p-4 bg-white rounded-xl"
+                    style={{
+                        shadowColor: '#000',
+                        shadowOffset: { width: 0, height: 2 },
+                        shadowOpacity: 0.1,
+                        shadowRadius: 3,
+                        elevation: 4, // Android shadow
+                    }}
+                >
+                    <View className="flex-row  items-center justify-between mb-5">
+                        <Text className="text-black text-xl font-bold mb-2">Photos (1/5)</Text>
+                        <Text className="text-gray-500 text-sm mb-4">Tap to select photo for editing notes</Text>
+                    </View>
+                    <FlatList
+                        data={stepImages}
+                        renderItem={renderImageItem}
+                        keyExtractor={(item, index) => `${item.uri}-${index}`}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        ListFooterComponent={renderFooter}
+                        contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 10 }}
+                    />
+                </View>
+                {renderNoteSection()}
+                {renderSaveButton()}
+            </View>
+        </SafeAreaView>
+    );
+}
