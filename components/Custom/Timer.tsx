@@ -1,3 +1,5 @@
+import { addStep } from "@/redux/slices/StepsDataFinal";
+import { setStep } from "@/redux/slices/stepSlice";
 import { RootState } from "@/redux/store";
 import { Ionicons } from "@expo/vector-icons";
 import Entypo from '@expo/vector-icons/Entypo';
@@ -15,14 +17,15 @@ import Animated, {
     withTiming,
 } from "react-native-reanimated";
 import Svg, { Circle, Defs, RadialGradient, Stop } from "react-native-svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DynamicStepIndicator from "../helpers/StepIndicator";
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-export default function Timer({ time = 1, type, client }: { time?: number, type?: string, client?: string }) {
+export default function Timer({ time = 1, type, client }: { time?: number, type?: string, client?: string, }) {
     const router = useRouter()
-    const { currentStep } = useSelector((state: RootState) => state.step)
+    const { currentStep, stepName } = useSelector((state: RootState) => state.step)
+    const dispatch = useDispatch()
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [playing, setPlaying] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -44,6 +47,23 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
     const svgCenter = svgSize / 2;
 
     const totalSeconds = time * 60;
+
+    // data functions
+    const completeStep = () => {
+        cancelAnimation(scale);
+        cancelAnimation(animatedOrbitRadius);
+        scale.value = withTiming(1, { duration: 500, easing: Easing.inOut(Easing.ease) });
+        animatedOrbitRadius.value = withTiming(innerRadius - 10, { duration: 500, easing: Easing.inOut(Easing.ease) });
+        setPlaying(false);
+        dispatch(addStep({
+            stepNumber: Number(currentStep),
+            stepName: stepName,
+            takenTime: currentTime,
+            tergetTime: time,
+            stepNote: "",
+        }));
+        setShowModal(true); // manual complete
+    }
 
     // Timer logic
     useEffect(() => {
@@ -119,6 +139,23 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
     let progressColor = "#00ff00"; // green
     if (progress >= 0.8) progressColor = "#ff0000"; // red
     else if (progress >= 0.5) progressColor = "#ffcc00"; // yellow
+
+
+    const handleSkip = () => {
+        dispatch(addStep({
+            stepNumber: Number(currentStep),
+            stepName: stepName,
+            takenTime: currentTime,
+            tergetTime: time,
+            stepNote: "",
+        }));
+        if (currentStep < 4) {
+            dispatch(setStep(currentStep + 1))
+        }
+        setShowModal(false)
+        rewind()
+
+    }
 
     return (
         <View
@@ -219,12 +256,7 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
                     <TouchableOpacity
                         className="w-12 h-12 items-center justify-center rounded-full"
                         onPress={() => {
-                            cancelAnimation(scale);
-                            cancelAnimation(animatedOrbitRadius);
-                            scale.value = withTiming(1, { duration: 500, easing: Easing.inOut(Easing.ease) });
-                            animatedOrbitRadius.value = withTiming(innerRadius - 10, { duration: 500, easing: Easing.inOut(Easing.ease) });
-                            setPlaying(false);
-                            setShowModal(true); // manual complete
+                            completeStep()
                         }}
                     >
                         <Ionicons name="checkmark" size={24} color={progressColor} />
@@ -244,12 +276,12 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
                         <View className="flex-row items-center justify-center gap-4">
                             <TouchableOpacity onPress={() => {
                                 setShowModal(false)
-                                router.navigate("/(camera)")
+                                router.push("/(camera)")
                             }} className="bg-blue-400 px-8 py-3 rounded-lg flex-row items-center justify-center gap-2">
                                 <Entypo name="camera" size={20} color="white" />
                                 <Text className="text-white font-semibold">Take Photo</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity className="bg-gray-200 px-8 py-3 rounded-lg">
+                            <TouchableOpacity onPress={() => handleSkip()} className="bg-gray-200 px-8 py-3 rounded-lg">
                                 <Text className="text-gray-700 font-semibold">Skip</Text>
                             </TouchableOpacity>
                         </View>

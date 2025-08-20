@@ -1,14 +1,17 @@
+import { RootState } from '@/redux/store'
 import { Ionicons } from '@expo/vector-icons'
 import { useCameraPermissions } from 'expo-camera'
 import * as ImagePicker from "expo-image-picker"
 import { useRouter } from 'expo-router'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useSelector } from 'react-redux'
 
 const Index = () => {
     const insets = useSafeAreaInsets()
     const router = useRouter()
     const [permission, requestPermission] = useCameraPermissions();
+    const steps = useSelector((state: RootState) => state.step)
 
     const pickImage = async () => {
         try {
@@ -56,11 +59,11 @@ const Index = () => {
                     elevation: 1.5, // <-- Android shadow
                 }}
             >
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => router.navigate("/(tabs)")}>
                     <Ionicons name="close" size={24} color="#000" />
                 </TouchableOpacity>
                 <View className="items-center justify-center">
-                    <Text className="text-gray-900 font-bold text-lg">Removal</Text>
+                    <Text className="text-gray-900 font-bold text-lg">{steps.stepName}</Text>
                     <Text className="text-gray-500">Photo Records</Text>
                 </View>
                 <View></View>
