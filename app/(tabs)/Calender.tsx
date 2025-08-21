@@ -1,5 +1,6 @@
 // App.tsx
 import { Ionicons } from "@expo/vector-icons";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useState } from "react";
 import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Calendar, DateData } from "react-native-calendars";
@@ -19,6 +20,7 @@ export default function App() {
 
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
+  const bottomBarHeight = useBottomTabBarHeight()
 
   const monthNames = [
     "January",
@@ -77,7 +79,7 @@ export default function App() {
   const calendarKey = getCalendarCurrentMonth();
 
   return (
-    <View className="flex-1 bg-white pt-16 px-4">
+    <View className={`flex-1 bg-white pt-16 px-4 `} style={{ paddingBottom: bottomBarHeight }}>
       <ScrollView>
         <View className="flex-row justify-between items-center mb-4">
           <TouchableOpacity onPress={goPrevMonth}>
@@ -130,7 +132,7 @@ export default function App() {
           }}
         />
         {
-          Array(100).fill(0).map((_, i) => <Text key={i}>hello</Text>)
+          Array(100).fill(0).map((_, i) => <Text key={i}>hello{i}</Text>)
         }
       </ScrollView>
 
