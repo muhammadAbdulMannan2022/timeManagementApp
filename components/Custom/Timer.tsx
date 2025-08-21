@@ -136,7 +136,7 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
 
     // pick color based on progress
     const progress = currentTime / totalSeconds;
-    let progressColor = "#00ff00"; // green
+    let progressColor = "#00B8D4"; // green
     if (progress >= 0.8) progressColor = "#ff0000"; // red
     else if (progress >= 0.5) progressColor = "#ffcc00"; // yellow
 
@@ -227,9 +227,9 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
                     <DynamicStepIndicator
                         currentStep={currentStep}
                         totalSteps={4}
-                        stepColors={["#00ff00", "#55ff55", "#aaffaa", "#aaffaa"]}
-                        inactiveColor="#00ff00"
-                        lineColor="#00ff00"
+                        stepColors={["#00B8D4", "#0ACBE9", "#5DEAFF", "#5DEAFF"]}
+                        inactiveColor="#00B8D4"
+                        lineColor="#00B8D4"
                     />
                 </View>
 

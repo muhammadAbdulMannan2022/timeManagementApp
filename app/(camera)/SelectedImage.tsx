@@ -19,7 +19,7 @@ export default function SelectedImages() {
     const stepsDataFinal = useSelector((state: RootState) => state.fullStepData.find(item => item.stepNumber === currentStep))
     const [noteTemp, setNoteTemp] = useState<string>("")
     const [takingFinalNote, setTakingFinalNote] = useState<boolean>(false)
-    const [finalNote, setFinalNote] = useState<string>(stepsDataFinal?.stepNote || "hello")
+    const [finalNote, setFinalNote] = useState<string>(stepsDataFinal?.stepNote || "")
     const dispatch = useDispatch();
 
     const pickImage = async () => {
