@@ -1,8 +1,12 @@
-import { Ionicons } from "@expo/vector-icons";
+import GradientTab from "@/components/Custom/GradientBar";
+import ItemsCard from "@/components/Custom/ItemsCard";
+import { RootState } from "@/redux/store";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Calendar, DateData } from "react-native-calendars";
+import { useSelector } from "react-redux";
 
 type MarkedDatesType = Record<
   string,
@@ -11,14 +15,33 @@ type MarkedDatesType = Record<
     selectedColor?: string;
     marked?: boolean;
     dotColor?: string;
+    disabled?: boolean; // Added for potential disabling
   }
 >;
 
 export default function App() {
-  const datesList: string[] = ["2025-08-21", "2025-08-22", "2025-08-25", "2025-09-03"];
-  const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split("T")[0]);
+  const records = useSelector((state: RootState) => state.clientRecords.tasks);
+
+  const formatDate = (date: string) => {
+    const d = new Date(date);
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  };
+
+  const datesList: string[] = records.map((item: any) => formatDate(item.date));
+
+  const [selectedDate, setSelectedDate] = useState<string>(
+    new Date().toISOString().split("T")[0]
+  );
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const bottomBarHeight = useBottomTabBarHeight();
+  const [clientRecordInADay, setClientRecordInADay] = useState<any[]>([]);
+
+  useEffect(() => {
+    console.log(datesList);
+  }, [datesList]);
 
   const monthNames = [
     "January",
@@ -40,45 +63,61 @@ export default function App() {
     return acc;
   }, {} as MarkedDatesType);
 
+  // Highlight selected date for ALL dates
+  if (selectedDate) {
+    markedDates[selectedDate] = {
+      ...markedDates[selectedDate],
+      selected: true,
+      selectedColor: "#00B8D4",
+      marked: datesList.includes(selectedDate), // Only show dot if date has data
+      dotColor: "#00B8D4",
+    };
+  }
+
   const onDayPress = (day: DateData) => {
+    setSelectedDate(day.dateString);
     if (datesList.includes(day.dateString)) {
-      setSelectedDate(day.dateString);
-      Alert.alert("Selected Date", day.dateString);
+      Alert.alert("Selected Date", `Records available for ${day.dateString}`);
+    } else {
+      Alert.alert("Selected Date", `No records for ${day.dateString}`);
     }
   };
 
   const goPrevMonth = () => {
-    const prev = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
-    setCurrentMonth(prev);
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1)
+    );
   };
-
   const goNextMonth = () => {
-    const next = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
-    setCurrentMonth(next);
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1)
+    );
   };
-
   const getCalendarCurrentMonth = () => {
     const y = currentMonth.getFullYear();
-    const m = (currentMonth.getMonth() + 1).toString().padStart(2, "0");
+    const m = String(currentMonth.getMonth() + 1).padStart(2, "0");
     return `${y}-${m}-01`;
   };
 
-  // Format date for header
   const formatHeaderDate = () => {
-    const selected = selectedDate ? new Date(selectedDate) : new Date();
+    const selected = new Date(selectedDate);
     const current = new Date(getCalendarCurrentMonth());
-    // Check if selected date's month and year match the current displayed month
     if (
       selected.getMonth() === current.getMonth() &&
       selected.getFullYear() === current.getFullYear()
     ) {
       return `${monthNames[selected.getMonth()]} ${selected.getDate()}, ${selected.getFullYear()}`;
     }
-    // Show only month and year if selected date is not in the current month
     return `${monthNames[current.getMonth()]} ${current.getFullYear()}`;
   };
 
-  const calendarKey = getCalendarCurrentMonth();
+  useEffect(() => {
+    if (records) {
+      setClientRecordInADay(
+        records.filter((item: any) => formatDate(item.date) === selectedDate)
+      );
+    }
+  }, [records, selectedDate]);
 
   return (
     <View className="flex-1 bg-white pt-16" style={{ paddingBottom: bottomBarHeight }}>
@@ -121,7 +160,7 @@ export default function App() {
         <View
           style={{
             backgroundColor: "#ffffff",
-            shadowColor: "#000000",
+            shadowColor: "#818181",
             shadowOffset: { width: 1, height: 1 },
             shadowOpacity: 0.1,
             shadowRadius: 4,
@@ -131,19 +170,11 @@ export default function App() {
           }}
         >
           <Calendar
-            key={calendarKey}
+            key={getCalendarCurrentMonth()}
             onDayPress={onDayPress}
             current={getCalendarCurrentMonth()}
             markingType="dot"
-            markedDates={{
-              ...markedDates,
-              [selectedDate]: {
-                selected: true,
-                selectedColor: "#FF6B6B",
-                marked: datesList.includes(selectedDate),
-                dotColor: "#00B8D4",
-              },
-            }}
+            markedDates={markedDates}
             hideArrows={true}
             renderHeader={() => <View />}
             theme={{
@@ -151,9 +182,9 @@ export default function App() {
               calendarBackground: "#ffffff",
               textSectionTitleColor: "#000000",
               dayTextColor: "#000000",
-              todayBackgroundColor: "#00B8D4",
-              todayTextColor: "#000000",
-              selectedDayBackgroundColor: "#FF6B6B",
+              todayBackgroundColor: "#00B8ff",
+              todayTextColor: "#ffffff",
+              selectedDayBackgroundColor: "#00B8D4",
               selectedDayTextColor: "#ffffff",
               textDisabledColor: "#999999",
               dotColor: "#00B8D4",
@@ -162,6 +193,41 @@ export default function App() {
               textDayHeaderFontWeight: "bold",
             }}
           />
+        </View>
+
+        <View
+          style={{
+            backgroundColor: "#ffffff",
+            shadowColor: "#818181",
+            shadowOffset: { width: 1, height: 1 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+            elevation: 1.5,
+            borderRadius: 8,
+          }}
+          className="mt-10 px-1 py-5"
+        >
+          <View className="flex-row items-center justify-between px-4">
+            <View className="flex-row items-center gap-2">
+              <MaterialCommunityIcons name="clock" size={24} color="#00B8D4" />
+              <Text className="text-2xl font-bold">{clientRecordInADay.length}/{records.length} Records</Text>
+            </View>
+            <View className="bg-[#00B8D447] px-4 py-2 rounded-full">
+              <Text className="text-[#00B8D4]">{clientRecordInADay.length} clients</Text>
+            </View>
+          </View>
+          <View className="mt-8">
+            {clientRecordInADay && clientRecordInADay.length > 0 ? (
+              clientRecordInADay.map((item: any) => (
+                <ItemsCard key={item.id} item={item} />
+              ))
+            ) : (
+              <Text style={[{ textAlign: "center", color: "gray", marginTop: 12 }]}>
+                No records for this date
+              </Text>
+            )}
+            <GradientTab />
+          </View>
         </View>
       </ScrollView>
     </View>

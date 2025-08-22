@@ -24,7 +24,7 @@ const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 export default function Timer({ time = 1, type, client }: { time?: number, type?: string, client?: string, }) {
     const router = useRouter()
-    const { currentStep, stepName } = useSelector((state: RootState) => state.step)
+    const { currentStep, stepName, maxStep } = useSelector((state: RootState) => state.step)
     const dispatch = useDispatch()
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [playing, setPlaying] = useState(false);
@@ -149,7 +149,7 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
             tergetTime: time,
             stepNote: "",
         }));
-        if (currentStep < 4) {
+        if (currentStep < maxStep + 1) {
             dispatch(setStep(currentStep + 1))
         }
         setShowModal(false)
