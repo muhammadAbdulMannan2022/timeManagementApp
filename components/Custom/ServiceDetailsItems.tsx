@@ -37,13 +37,13 @@ export default function ServiceDetailsItems({ item }: any) {
 
     return (
         <View className="flex-row items-center justify-between">
-            <View className="flex-row items-center">
+            <View className="flex-row items-center flex-1">
                 <PlaceIcon>
                     {IconComponent && iconName ? (
                         <IconComponent name={iconName} size={24} color={iconColor || "#000"} />
                     ) : null}
                 </PlaceIcon>
-                <View className="ml-2">
+                <View className="ml-2 flex-1">
                     <Text className="text-lg font-bold">{item?.name || "unknown task"}</Text>
                     <Text className="text-[#818181]">
                         {item?.takenTime}/{item?.targetTime}
