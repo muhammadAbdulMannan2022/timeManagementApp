@@ -197,6 +197,13 @@ export default function Services() {
                             </View>
                         </View>
                     ))}
+
+                    <TouchableOpacity className='flex-1 items-center justify-center py-5 '>
+                        <View className='flex-row items-center gap-3 bg-[#00B8D426] px-4 py-3 rounded-xl border border-[#00B8D4]'>
+                            <FontAwesome name='trash-o' size={24} color="#FF6F61" />
+                            <Text className='text-[#00B8D4] text-xl font-bold'>Remove This Record</Text>
+                        </View>
+                    </TouchableOpacity>
                 </SafeAreaView>
             </ScrollView>
         </View>
