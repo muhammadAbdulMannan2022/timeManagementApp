@@ -1,9 +1,14 @@
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import { Text, TouchableOpacity, View } from 'react-native'
 
 export default function ItemsCard({ item }: any) {
+    const router = useRouter()
     return (
-        <TouchableOpacity className='flex-row border border-[#e9e9e9] rounded-xl px-3 py-2 my-2 gap-4 items-center'>
+        <TouchableOpacity onPress={() => router.push({
+            pathname: "/(tabs)/Calender/Services",
+            params: { id: item.id || null, date: item.date || "" }
+        })} className='flex-row border border-[#e9e9e9] rounded-xl px-3 py-2 my-2 gap-4 items-center'>
             <View style={{ borderRadius: 20 }} className='h-10 w-10 bg-[#00B8D4] items-center justify-center'>
                 <Text className='text-white text-xl'>{item.id}</Text>
             </View>
