@@ -12,7 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 export default function SelectedImages() {
     const router = useRouter()
-    const currentStep = useSelector((state: RootState) => state.step.currentStep);
+    const { currentStep, maxStep } = useSelector((state: RootState) => state.step);
     const stepImages = useSelector((state: RootState) =>
         state.image.find((item: { step: number; images: { uri: string }[] }) => item.step === currentStep)?.images || []
     );
@@ -82,9 +82,11 @@ export default function SelectedImages() {
 
     const updatImage = () => {
         dispatch(updateStepImages({ stepNumber: currentStep, stepImages: stepImages }))
-        if (currentStep < 4) {
+        if (currentStep < maxStep) {
             dispatch(setStep(currentStep + 1))
             router.navigate("/(tabs)")
+        } else {
+            router.push("/(complete)")
         }
     }
 
@@ -176,11 +178,16 @@ export default function SelectedImages() {
     );
 
     // Render the save button
-    const renderSaveButton = () => (
-        <View className="w-full mt-8">
+    const renderSaveButton = () => {
+
+        return <View className="w-full mt-8">
             <TouchableOpacity
                 className="bg-[#C9F0F5] rounded-lg items-center justify-center py-4 "
-                onPress={() => updatImage()}
+                onPress={() => {
+                    updatImage()
+
+
+                }}
             >
                 <View className="flex-row items-center">
                     <Ionicons name="save" size={24} color="#00B8D4" />
@@ -188,7 +195,9 @@ export default function SelectedImages() {
                 </View>
             </TouchableOpacity>
         </View>
-    );
+    }
+
+
 
     return (
         <SafeAreaView className="flex-1 bg-white">

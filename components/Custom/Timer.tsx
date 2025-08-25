@@ -149,13 +149,17 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
             tergetTime: time,
             stepNote: "",
         }));
-        if (currentStep < maxStep + 1) {
+
+        if (currentStep < maxStep) {
             dispatch(setStep(currentStep + 1))
+        } else {
+            router.push("/(complete)")
         }
+
         setShowModal(false)
         rewind()
-
     }
+
 
     return (
         <View
