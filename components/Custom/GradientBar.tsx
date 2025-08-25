@@ -1,10 +1,12 @@
 import { FontAwesome, FontAwesome6 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 export default function GradientTab() {
+    const router = useRouter()
     return (
-        <TouchableOpacity className='mt-8'>
+        <TouchableOpacity onPress={() => router.push("/Calender/Export")} className='mt-8'>
             <LinearGradient
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
