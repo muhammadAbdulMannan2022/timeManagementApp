@@ -1,4 +1,5 @@
-import BarChartPage from '@/components/Custom/Charts/BarChart'
+
+import BarChart from '@/components/Custom/Charts/BarChart'
 import LineChartPage from '@/components/Custom/Charts/LineChart'
 import FilterBar from '@/components/Custom/Filter'
 import { RootState } from '@/redux/store'
@@ -124,7 +125,7 @@ export default function Analytics() {
                             <Text className='text-xl font-bold text-[#00B8D4]'>{formatTime(longestTime)}</Text>
                         </View>
                     </View>
-                    <BarChartPage />
+                    <BarChart />
                     <LineChartPage />
                 </SafeAreaView>
             </ScrollView>
