@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "settings": "Настройки",
+        "personalizeWorkflow": "Персонализируйте ваш рабочий процесс",
+        "totalTargetTime": "Общее целевое время",
+        "expectedTime": "Ожидаемое время выполнения услуги",
+        "serviceSettings": "Настройки сервиса",
+        "unknownTask": "Неизвестная задача",
+        "languageSettings": "Настройки языка",
+        "chooseLanguage": "Выберите язык приложения",
+        "simplifiedChinese": "Упрощённый китайский",
+        "traditionalChinese": "Традиционный китайский",
+        "pricing": "Цены",
+        "close": "Закрыть",
+        "edit": "Редактировать",
+        "minutes": "Минуты",
+        "time": "Время"
+    }
+}

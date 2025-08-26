@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "settings": "การตั้งค่า",
+        "personalizeWorkflow": "ปรับแต่งเวิร์กโฟลว์ของคุณ",
+        "totalTargetTime": "เวลารวมเป้าหมาย",
+        "expectedTime": "เวลาที่คาดว่าจะเสร็จสิ้นบริการ",
+        "serviceSettings": "การตั้งค่าบริการ",
+        "unknownTask": "งานที่ไม่ทราบ",
+        "languageSettings": "การตั้งค่าภาษา",
+        "chooseLanguage": "เลือกภาษาของแอป",
+        "simplifiedChinese": "ภาษาจีนแบบง่าย",
+        "traditionalChinese": "ภาษาจีนแบบดั้งเดิม",
+        "pricing": "การตั้งราคา",
+        "close": "ปิด",
+        "edit": "แก้ไข",
+        "minutes": "นาที",
+        "time": "เวลา"
+    }
+}

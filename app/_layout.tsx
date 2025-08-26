@@ -1,3 +1,4 @@
+import { LanguageProvider } from '@/components/context/languageContext';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import store from '@/redux/store';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
@@ -19,11 +20,13 @@ export default function RootLayout() {
   }
 
   return (
-    <Provider store={store}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Slot />
-        <StatusBar style="auto" />
-      </ThemeProvider>
-    </Provider>
+    <LanguageProvider>
+      <Provider store={store}>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <Slot />
+          <StatusBar style="auto" />
+        </ThemeProvider>
+      </Provider>
+    </LanguageProvider>
   );
 }

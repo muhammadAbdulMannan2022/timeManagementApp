@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "settings": "設定",
+        "personalizeWorkflow": "ワークフローをパーソナライズ",
+        "totalTargetTime": "合計目標時間",
+        "expectedTime": "サービス完了の予定時間",
+        "serviceSettings": "サービス設定",
+        "unknownTask": "不明なタスク",
+        "languageSettings": "言語設定",
+        "chooseLanguage": "アプリの言語を選択",
+        "simplifiedChinese": "簡体字中国語",
+        "traditionalChinese": "繁体字中国語",
+        "pricing": "料金",
+        "close": "閉じる",
+        "edit": "編集",
+        "minutes": "分",
+        "time": "時間"
+    }
+}

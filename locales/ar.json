@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "settings": "الإعدادات",
+        "personalizeWorkflow": "تخصيص سير العمل الخاص بك",
+        "totalTargetTime": "إجمالي الوقت المستهدف",
+        "expectedTime": "الوقت المتوقع لإكمال الخدمة",
+        "serviceSettings": "إعدادات الخدمة",
+        "unknownTask": "مهمة غير معروفة",
+        "languageSettings": "إعدادات اللغة",
+        "chooseLanguage": "اختر لغة التطبيق",
+        "simplifiedChinese": "الصينية المبسطة",
+        "traditionalChinese": "الصينية التقليدية",
+        "pricing": "الأسعار",
+        "close": "إغلاق",
+        "edit": "تعديل",
+        "minutes": "دقائق",
+        "time": "الوقت"
+    }
+}

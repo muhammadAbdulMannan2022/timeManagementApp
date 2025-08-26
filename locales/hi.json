@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "settings": "सेटिंग्स",
+        "personalizeWorkflow": "अपने वर्कफ़्लो को वैयक्तिकृत करें",
+        "totalTargetTime": "कुल लक्ष्य समय",
+        "expectedTime": "सेवा पूरी करने का अनुमानित समय",
+        "serviceSettings": "सेवा सेटिंग्स",
+        "unknownTask": "अज्ञात कार्य",
+        "languageSettings": "भाषा सेटिंग्स",
+        "chooseLanguage": "ऐप की भाषा चुनें",
+        "simplifiedChinese": "सरलीकृत चीनी",
+        "traditionalChinese": "परंपरागत चीनी",
+        "pricing": "मूल्य निर्धारण",
+        "close": "बंद करें",
+        "edit": "संपादित करें",
+        "minutes": "मिनट",
+        "time": "समय"
+    }
+}

@@ -7,6 +7,7 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 export default function TabLayout() {
 
   return (
+
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: "#00B8D4",

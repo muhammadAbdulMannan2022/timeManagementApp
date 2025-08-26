@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "settings": "Impostazioni",
+        "personalizeWorkflow": "Personalizza il tuo flusso di lavoro",
+        "totalTargetTime": "Tempo totale previsto",
+        "expectedTime": "Tempo stimato per completare il servizio",
+        "serviceSettings": "Impostazioni del servizio",
+        "unknownTask": "Attività sconosciuta",
+        "languageSettings": "Impostazioni lingua",
+        "chooseLanguage": "Scegli la lingua dell'app",
+        "simplifiedChinese": "Cinese semplificato",
+        "traditionalChinese": "Cinese tradizionale",
+        "pricing": "Prezzi",
+        "close": "Chiudi",
+        "edit": "Modifica",
+        "minutes": "Minuti",
+        "time": "Tempo"
+    }
+}

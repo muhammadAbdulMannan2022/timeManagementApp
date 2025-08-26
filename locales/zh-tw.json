@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "settings": "設定",
+        "personalizeWorkflow": "個人化你的工作流程",
+        "totalTargetTime": "總目標時間",
+        "expectedTime": "完成服務的預期時間",
+        "serviceSettings": "服務設定",
+        "unknownTask": "未知任務",
+        "languageSettings": "語言設定",
+        "chooseLanguage": "選擇應用程式語言",
+        "simplifiedChinese": "簡體中文",
+        "traditionalChinese": "繁體中文",
+        "pricing": "定價",
+        "close": "關閉",
+        "edit": "編輯",
+        "minutes": "分鐘",
+        "time": "時間"
+    }
+}

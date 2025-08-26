@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "settings": "Cài đặt",
+        "personalizeWorkflow": "Cá nhân hóa quy trình làm việc của bạn",
+        "totalTargetTime": "Tổng thời gian mục tiêu",
+        "expectedTime": "Thời gian dự kiến để hoàn thành dịch vụ",
+        "serviceSettings": "Cài đặt dịch vụ",
+        "unknownTask": "Nhiệm vụ không xác định",
+        "languageSettings": "Cài đặt ngôn ngữ",
+        "chooseLanguage": "Chọn ngôn ngữ ứng dụng",
+        "simplifiedChinese": "Tiếng Trung giản thể",
+        "traditionalChinese": "Tiếng Trung phồn thể",
+        "pricing": "Giá cả",
+        "close": "Đóng",
+        "edit": "Chỉnh sửa",
+        "minutes": "Phút",
+        "time": "Thời gian"
+    }
+}

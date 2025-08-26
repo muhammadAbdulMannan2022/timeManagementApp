@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "settings": "Settings",
+        "personalizeWorkflow": "Personalize your workflow",
+        "totalTargetTime": "Total target time",
+        "expectedTime": "Expected time to complete the service",
+        "serviceSettings": "Service settings",
+        "unknownTask": "Unknown task",
+        "languageSettings": "Language settings",
+        "chooseLanguage": "Choose the app language",
+        "simplifiedChinese": "Simplified Chinese",
+        "traditionalChinese": "Traditional Chinese",
+        "pricing": "Pricing",
+        "close": "Close",
+        "edit": "Edit",
+        "minutes": "Minutes",
+        "time": "Time"
+    }
+}
