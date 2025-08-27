@@ -1,8 +1,10 @@
 import PlaceIcon from '@/components/Custom/PlaceIcon';
+import SettingsUpdate from '@/components/Custom/SettingsUpdate';
+
 import LanguageModal from '@/components/Modals/LanguageModal';
 import PricingModal from '@/components/Modals/PriceingModal';
 import { RootState } from '@/redux/store';
-import { FontAwesome, FontAwesome5, FontAwesome6, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign, Entypo, FontAwesome, FontAwesome5, FontAwesome6, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -26,7 +28,7 @@ interface Process {
 }
 
 // Define icon components type
-type IconComponentType = typeof FontAwesome | typeof FontAwesome5 | typeof FontAwesome6 | typeof MaterialIcons | typeof Ionicons | typeof MaterialCommunityIcons;
+type IconComponentType = typeof FontAwesome | typeof FontAwesome5 | typeof FontAwesome6 | typeof MaterialIcons | typeof Ionicons | typeof MaterialCommunityIcons | typeof Entypo | typeof AntDesign;
 
 const iconComponents: Record<string, IconComponentType> = {
     FontAwesome,
@@ -35,6 +37,8 @@ const iconComponents: Record<string, IconComponentType> = {
     MaterialIcons,
     Ionicons,
     MaterialCommunityIcons,
+    Entypo,
+    AntDesign
 };
 
 const Settings: React.FC = () => {
@@ -42,6 +46,8 @@ const Settings: React.FC = () => {
     const stepData = useSelector((state: RootState) => state.clientRecords.processes[0] as Process);
     const [languageModalVisible, setLanguageModalVisible] = useState(false);
     const [pricingModalVisible, setPricingModalVisible] = useState(false);
+    const [isEditing, setIsEditing] = useState(false)
+    const [editingId, setEditingId] = useState<any>(null)
 
     const router = useRouter();
 
@@ -58,6 +64,9 @@ const Settings: React.FC = () => {
             i18n.off('languageChanged', onLanguageChange);
         };
     }, [i18n, t]);
+    const onIconpress = (icon: any) => {
+        console.log(icon)
+    }
 
     return (
         <View className="flex-1" key={i18n.language}>
@@ -97,51 +106,60 @@ const Settings: React.FC = () => {
                             <Text className="text-2xl font-bold">{t('settings.serviceSettings')}</Text>
                         </View>
 
-                        <View>
-                            {stepData.steps.map((item: Step) => {
-                                const IconComponent = item.iconType ? iconComponents[item.iconType] : null;
-                                return (
-                                    <View
-                                        key={item.id?.toString() || item.name}
-                                        className="flex-row items-center justify-between border border-gray-300 rounded-xl mb-5 w-full pe-5"
-                                    >
-                                        <View className="flex-row items-center">
-                                            <PlaceIcon>
-                                                {IconComponent && item.iconName ? (
-                                                    <IconComponent name={item.iconName} size={24} color={item.iconColor || '#000'} />
-                                                ) : null}
-                                            </PlaceIcon>
-                                            <View className="ml-2">
-                                                <Text className="text-xl font-bold">{item.name || t('settings.unknownTask')}</Text>
-                                                <Text className="font-semibold text-gray-600">
-                                                    {t("settings.time")}: {item.targetTime || '00:00:00'}
-                                                </Text>
+                        {
+                            isEditing ? <View className='flex-1 w-full gap-4'>
+                                <SettingsUpdate onIconPress={onIconpress} setIsEditing={setIsEditing} setIsEditingId={setEditingId} />
+                            </View> : <View className='flex-1 w-full gap-4'>
+                                <View>
+                                    {stepData.steps.map((item: Step) => {
+                                        const IconComponent = item.iconType ? iconComponents[item.iconType] : null;
+                                        return (
+                                            <View
+                                                key={item.id?.toString() || item.name}
+                                                className="flex-row items-center justify-between border border-gray-300 rounded-xl mb-5 w-full pe-5"
+                                            >
+                                                <View className="flex-row items-center">
+                                                    <PlaceIcon>
+                                                        {IconComponent && item.iconName ? (
+                                                            <IconComponent name={item.iconName} size={24} color={item.iconColor || '#000'} />
+                                                        ) : null}
+                                                    </PlaceIcon>
+                                                    <View className="ml-2">
+                                                        <Text className="text-xl font-bold">{item.name || t('settings.unknownTask')}</Text>
+                                                        <Text className="font-semibold text-gray-600">
+                                                            {t("settings.time")}: {item.targetTime || '00:00:00'}
+                                                        </Text>
+                                                    </View>
+                                                </View>
+                                                <TouchableWithoutFeedback onPress={() => {
+                                                    setEditingId(item)
+                                                    setIsEditing(true)
+                                                }}>
+                                                    <View className="bg-[#00B8D4] px-3 py-2 rounded-lg">
+                                                        <Text className="text-white text-lg">{t('settings.edit') || 'Edit'}</Text>
+                                                    </View>
+                                                </TouchableWithoutFeedback>
                                             </View>
-                                        </View>
-                                        <TouchableWithoutFeedback>
-                                            <View className="bg-[#00B8D4] px-3 py-2 rounded-lg">
-                                                <Text className="text-white text-lg">{t('settings.edit') || 'Edit'}</Text>
-                                            </View>
-                                        </TouchableWithoutFeedback>
-                                    </View>
-                                );
-                            })}
-                        </View>
-                        <TouchableOpacity
-                            className="flex-row items-center gap-4 border border-gray-200 rounded-xl w-full p-4"
-                            onPress={() => setLanguageModalVisible(true)}
-                        >
-                            <Ionicons name="language" size={24} color="#00B8D4" />
-                            <Text className="font-semibold text-gray-600 text-2xl">{t('settings.languageSettings')}</Text>
-                        </TouchableOpacity>
+                                        );
+                                    })}
+                                </View>
+                                <TouchableOpacity
+                                    className="flex-row items-center gap-4 border border-gray-200 rounded-xl w-full p-4"
+                                    onPress={() => setLanguageModalVisible(true)}
+                                >
+                                    <Ionicons name="language" size={24} color="#00B8D4" />
+                                    <Text className="font-semibold text-gray-600 text-2xl">{t('settings.languageSettings')}</Text>
+                                </TouchableOpacity>
 
-                        <TouchableOpacity
-                            className="flex-row items-center gap-4 border border-gray-200 rounded-xl mb-5 w-full p-4"
-                            onPress={() => setPricingModalVisible(true)}
-                        >
-                            <FontAwesome5 name="bolt" size={24} color="#00B8D4" />
-                            <Text className="font-semibold text-gray-600 text-2xl">{t('settings.pricing')}</Text>
-                        </TouchableOpacity>
+                                <TouchableOpacity
+                                    className="flex-row items-center gap-4 border border-gray-200 rounded-xl mb-5 w-full p-4"
+                                    onPress={() => setPricingModalVisible(true)}
+                                >
+                                    <FontAwesome5 name="bolt" size={24} color="#00B8D4" />
+                                    <Text className="font-semibold text-gray-600 text-2xl">{t('settings.pricing')}</Text>
+                                </TouchableOpacity>
+                            </View>
+                        }
                     </View>
                     <LanguageModal visible={languageModalVisible} onClose={() => setLanguageModalVisible(false)} />
                     <PricingModal visible={pricingModalVisible} onClose={() => setPricingModalVisible(false)} />
