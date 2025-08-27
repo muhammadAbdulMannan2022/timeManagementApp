@@ -111,6 +111,14 @@
             "selectAll": "تحديد الكل",
             "noPhotos": "لا توجد صور",
             "photos": "صور"
+        },
+        "services": {
+            "serviceDetails": "تفاصيل الخدمة",
+            "totalPhotos": "إجمالي الصور",
+            "onTimeSteps": "الخطوات في الوقت المحدد",
+            "timeRange": "النطاق الزمني",
+            "notes": "ملاحظات",
+            "removeRecord": "إزالة هذا السجل"
         }
     }
 }

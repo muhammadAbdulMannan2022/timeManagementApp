@@ -111,6 +111,15 @@
             "selectAll": "Alle auswählen",
             "noPhotos": "Keine Fotos",
             "photos": "Fotos"
+        },
+        "services": {
+            "serviceDetails": "Servicedetails",
+            "totalPhotos": "Gesamtfotos",
+            "onTimeSteps": "Pünktliche Schritte",
+            "timeRange": "Zeitraum",
+            "notes": "Notizen",
+            "removeRecord": "Diesen Eintrag entfernen",
+            "add": "Hinzufügen"
         }
     }
 }

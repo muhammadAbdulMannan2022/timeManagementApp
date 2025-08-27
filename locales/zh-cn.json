@@ -111,6 +111,15 @@
             "selectAll": "全选",
             "noPhotos": "没有照片",
             "photos": "照片"
+        },
+        "services": {
+            "serviceDetails": "服务详情",
+            "totalPhotos": "照片总数",
+            "onTimeSteps": "按时步骤",
+            "timeRange": "时间范围",
+            "notes": "备注",
+            "removeRecord": "删除此记录",
+            "add": "添加"
         }
     }
 }

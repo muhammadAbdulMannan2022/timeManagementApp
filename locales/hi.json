@@ -111,6 +111,15 @@
             "selectAll": "सभी चुनें",
             "noPhotos": "कोई फ़ोटो नहीं",
             "photos": "फ़ोटो"
+        },
+        "services": {
+            "serviceDetails": "सेवा विवरण",
+            "totalPhotos": "कुल फ़ोटो",
+            "onTimeSteps": "समय पर चरण",
+            "timeRange": "समय सीमा",
+            "notes": "नोट्स",
+            "removeRecord": "इस रिकॉर्ड को हटाएँ",
+            "add": "जोड़ें"
         }
     }
 }

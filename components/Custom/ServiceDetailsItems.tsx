@@ -1,5 +1,6 @@
 import { FontAwesome, FontAwesome5, FontAwesome6, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from "expo-image-picker";
+import { useTranslation } from 'react-i18next';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import PlaceIcon from './PlaceIcon';
 
@@ -12,6 +13,7 @@ const iconComponents = {
 };
 
 export default function ServiceDetailsItems({ item }: any) {
+    const { t } = useTranslation()
     const { iconType, iconName, iconColor } = item || {};
 
     // Get the right icon component
@@ -53,7 +55,7 @@ export default function ServiceDetailsItems({ item }: any) {
             <TouchableWithoutFeedback onPress={() => pickImage()} >
                 <View className="flex-row items-center gap-2 bg-gray-100/80 py-2 px-3 rounded-xl">
                     <Ionicons name="camera" size={18} color="#00B8D4" />
-                    <Text className="text-[#00B8D4] text-lg font-bold">Add</Text>
+                    <Text className="text-[#00B8D4] text-lg font-bold">{t("calendar.services.add")}</Text>
                 </View>
             </TouchableWithoutFeedback>
         </View>

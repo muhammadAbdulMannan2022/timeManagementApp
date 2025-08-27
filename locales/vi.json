@@ -111,6 +111,15 @@
             "selectAll": "Chọn tất cả",
             "noPhotos": "Không có ảnh",
             "photos": "Ảnh"
+        },
+        "services": {
+            "serviceDetails": "Chi tiết dịch vụ",
+            "totalPhotos": "Tổng ảnh",
+            "onTimeSteps": "Bước đúng giờ",
+            "timeRange": "Khoảng thời gian",
+            "notes": "Ghi chú",
+            "removeRecord": "Xóa bản ghi này",
+            "add": "Thêm"
         }
     }
 }

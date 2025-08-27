@@ -111,6 +111,15 @@
             "selectAll": "すべて選択",
             "noPhotos": "写真なし",
             "photos": "写真"
+        },
+        "services": {
+            "serviceDetails": "サービス詳細",
+            "totalPhotos": "合計写真",
+            "onTimeSteps": "時間通りのステップ",
+            "timeRange": "時間範囲",
+            "notes": "メモ",
+            "removeRecord": "この記録を削除",
+            "add": "追加"
         }
     }
 }

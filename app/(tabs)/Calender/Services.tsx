@@ -4,6 +4,7 @@ import ShowNote from '@/components/Custom/ShowNote'
 import { RootState } from '@/redux/store'
 import { AntDesign, FontAwesome, Fontisto, Ionicons } from '@expo/vector-icons'
 import { useLocalSearchParams, useRouter } from 'expo-router'
+import { useTranslation } from 'react-i18next'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useSelector } from 'react-redux'
@@ -14,6 +15,7 @@ function parseToSeconds(time: string): number {
 }
 
 export default function Services() {
+    const { t } = useTranslation()
     const { id, date } = useLocalSearchParams<{ id?: string; date?: string }>()
     const router = useRouter()
     const bottomBarHeight = 85
@@ -82,7 +84,7 @@ export default function Services() {
                         </TouchableOpacity>
                         <View className='items-end'>
                             <Text className='text-3xl font-bold text-[#222324]'>
-                                Service Details
+                                {t("calendar.services.serviceDetails")}
                             </Text>
                             <Text className='text-[#818181]'>
                                 {process?.date}{' '}
@@ -120,7 +122,7 @@ export default function Services() {
                             <View className='flex-row items-center gap-2 flex-1'>
                                 <Fontisto name='camera' size={16} color='#00B8D4' />
                                 <Text className='text-[#818181] font-medium text-lg flex-shrink'>
-                                    Total Photos
+                                    {t("calendar.services.totalPhotos")}
                                 </Text>
                             </View>
                             <Text className='text-[#818181] font-medium text-lg ml-2'>
@@ -136,7 +138,7 @@ export default function Services() {
                                     className='text-[#818181] font-medium text-lg flex-shrink'
                                     style={{ lineHeight: 18 }}
                                 >
-                                    On-time Steps
+                                    {t("calendar.services.onTimeSteps")}
                                 </Text>
                             </View>
                             <Text className='text-[#818181] font-medium text-lg ml-2'>
@@ -148,7 +150,7 @@ export default function Services() {
                         <View className='flex-row items-center gap-2 flex-1'>
                             <Ionicons name='calendar' size={24} color='#00B8D4' />
                             <Text className='text-[#818181] font-medium text-lg flex-shrink'>
-                                Time Range
+                                {t("calendar.services.timeRange")}
                             </Text>
                         </View>
                         <Text className='text-[#818181] font-medium text-lg ml-2'>
@@ -164,7 +166,7 @@ export default function Services() {
                         >
                             <View className='flex-row gap-2 items-center mb-2'>
                                 <AntDesign name='bars' size={24} color='#00B8D4' />
-                                <Text className='text-xl font-bold'>Service Details</Text>
+                                <Text className='text-xl font-bold'>{t("calendar.services.serviceDetails")}</Text>
                                 <Text className='text-[#818181] ml-auto'>
                                     {new Date(proc.date).toLocaleDateString('en-US', {
                                         weekday: 'long',
@@ -186,7 +188,7 @@ export default function Services() {
                             <View className='flex-row gap-2 items-center justify-between mb-2'>
                                 <View className='flex-row items-center gap-2'>
                                     <Ionicons name='document-text' size={24} color='#00B8D4' />
-                                    <Text className='text-xl font-bold'>Notes</Text>
+                                    <Text className='text-xl font-bold'>{t("calendar.services.notes")}</Text>
                                 </View>
                                 {/* <MaterialIcons name='edit-square' size={24} color="#00B8D4" /> */}
                             </View>
@@ -201,7 +203,7 @@ export default function Services() {
                     <TouchableOpacity className='flex-1 items-center justify-center py-5 '>
                         <View className='flex-row items-center gap-3 bg-[#00B8D426] px-4 py-3 rounded-xl border border-[#00B8D4]'>
                             <FontAwesome name='trash-o' size={24} color="#FF6F61" />
-                            <Text className='text-[#00B8D4] text-xl font-bold'>Remove This Record</Text>
+                            <Text className='text-[#00B8D4] text-xl font-bold'>{t("calendar.services.removeRecord")}</Text>
                         </View>
                     </TouchableOpacity>
                 </SafeAreaView>

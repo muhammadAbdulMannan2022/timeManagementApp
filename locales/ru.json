@@ -111,6 +111,15 @@
             "selectAll": "Выбрать все",
             "noPhotos": "Нет фотографий",
             "photos": "Фотографии"
+        },
+        "services": {
+            "serviceDetails": "Детали услуги",
+            "totalPhotos": "Всего фото",
+            "onTimeSteps": "Шаги вовремя",
+            "timeRange": "Диапазон времени",
+            "notes": "Заметки",
+            "removeRecord": "Удалить эту запись",
+            "add": "Добавить"
         }
     }
 }

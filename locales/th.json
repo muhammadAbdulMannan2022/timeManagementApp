@@ -111,6 +111,15 @@
             "selectAll": "เลือกทั้งหมด",
             "noPhotos": "ไม่มีรูปภาพ",
             "photos": "รูปภาพ"
+        },
+        "services": {
+            "serviceDetails": "รายละเอียดบริการ",
+            "totalPhotos": "รูปภาพทั้งหมด",
+            "onTimeSteps": "ขั้นตอนตรงเวลา",
+            "timeRange": "ช่วงเวลา",
+            "notes": "หมายเหตุ",
+            "removeRecord": "ลบระเบียนนี้",
+            "add": "เพิ่ม"
         }
     }
 }

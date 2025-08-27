@@ -111,6 +111,15 @@
             "selectAll": "모두 선택",
             "noPhotos": "사진 없음",
             "photos": "사진"
+        },
+        "services": {
+            "serviceDetails": "서비스 세부정보",
+            "totalPhotos": "총 사진",
+            "onTimeSteps": "정시 단계",
+            "timeRange": "시간 범위",
+            "notes": "메모",
+            "removeRecord": "이 기록 삭제",
+            "add": "추가"
         }
     }
 }
