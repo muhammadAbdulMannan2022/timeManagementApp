@@ -51,5 +51,18 @@
             "cta": "प्रीमियम प्राप्त करें"
         },
         "close": "बंद करें"
+    },
+    "analytics": {
+        "averageTime": "औसत समय",
+        "overview": "समीक्षा",
+        "totalClients": "कुल ग्राहक",
+        "onTimeRate": "समय पर दर",
+        "overtimeRate": "अतिरिक्त समय दर",
+        "fastest": "सबसे तेज़",
+        "slowest": "सबसे धीमा",
+        "stepAnalysis": "चरण विश्लेषण",
+        "completionTimeTrend": "समाप्ति समय रुझान",
+        "serviceDay": "सेवा दिवस",
+        "services": "सेवाएं"
     }
 }

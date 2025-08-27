@@ -1,12 +1,13 @@
 import { RootState } from '@/redux/store'
 import { AntDesign } from '@expo/vector-icons'
+import { useTranslation } from 'react-i18next'
 import { Dimensions, ScrollView, Text, View } from 'react-native'
 import { BarChart } from 'react-native-chart-kit'
 import { useSelector } from 'react-redux'
 
 export default function StepBarChart() {
     const processes = useSelector((state: RootState) => state.clientRecords.processes)
-
+    const { t } = useTranslation()
     // ✅ Merge steps by name
     const stepMap: Record<string, number> = {}
     processes.forEach(p => {
@@ -38,7 +39,7 @@ export default function StepBarChart() {
             <View className="gap-2 px-5 pb-5">
                 <View className="flex-row items-center gap-4">
                     <AntDesign name="bars" size={24} color="#00B8D4" />
-                    <Text className="text-xl font-bold">Step Analysis</Text>
+                    <Text className="text-xl font-bold">{t("analytics.stepAnalysis")}</Text>
                 </View>
                 <View className="flex-row gap-1">
                     <Text className="text-[#818181]">Jul 28, 2025 to</Text>

@@ -51,5 +51,18 @@
             "cta": "Premium erhalten"
         },
         "close": "Schließen"
+    },
+    "analytics": {
+        "averageTime": "Durchschnittszeit",
+        "overview": "Übersicht",
+        "totalClients": "Gesamtkunden",
+        "onTimeRate": "Pünktlichkeitsrate",
+        "overtimeRate": "Überzeit-Rate",
+        "fastest": "Schnellste",
+        "slowest": "Langsamste",
+        "stepAnalysis": "Schrittanalyse",
+        "completionTimeTrend": "Trend der Abschlusszeit",
+        "serviceDay": "Servicetag",
+        "services": "Dienste"
     }
 }

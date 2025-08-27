@@ -51,5 +51,18 @@
             "cta": "Ottieni Premium"
         },
         "close": "Chiudi"
+    },
+    "analytics": {
+        "averageTime": "Tempo Medio",
+        "overview": "Panoramica",
+        "totalClients": "Clienti Totali",
+        "onTimeRate": "Tasso Puntualità",
+        "overtimeRate": "Tasso Ritardo",
+        "fastest": "Più Veloce",
+        "slowest": "Più Lento",
+        "stepAnalysis": "Analisi dei Passi",
+        "completionTimeTrend": "Andamento Tempo di Completamento",
+        "serviceDay": "Giorno di Servizio",
+        "services": "Servizi"
     }
 }

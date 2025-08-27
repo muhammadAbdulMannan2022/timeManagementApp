@@ -51,5 +51,18 @@
             "cta": "升級到高級版"
         },
         "close": "關閉"
+    },
+    "analytics": {
+        "averageTime": "平均时间",
+        "overview": "概览",
+        "totalClients": "客户总数",
+        "onTimeRate": "准时率",
+        "overtimeRate": "超时率",
+        "fastest": "最快",
+        "slowest": "最慢",
+        "stepAnalysis": "步骤分析",
+        "completionTimeTrend": "完成时间趋势",
+        "serviceDay": "服务日",
+        "services": "服务"
     }
 }

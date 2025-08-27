@@ -5,12 +5,14 @@ import FilterBar from '@/components/Custom/Filter'
 import { RootState } from '@/redux/store'
 import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useSelector } from 'react-redux'
 
 export default function Analytics() {
     const processes = useSelector((state: RootState) => state.clientRecords.processes)
+    const { t } = useTranslation()
     // filter options 
     const [active, setActive] = useState(0);
 
@@ -79,33 +81,33 @@ export default function Analytics() {
             <ScrollView contentContainerStyle={{ paddingBottom: 100, paddingHorizontal: 20 }}>
                 <SafeAreaView className='gap-4'>
                     <View className='w-full items-center justify-center py-10'>
-                        <Text className='text-[#00B8D4] text-2xl font-bold'>Average Time</Text>
+                        <Text className='text-[#00B8D4] text-2xl font-bold'>{t("analytics.averageTime")}</Text>
                         <Text className='text-5xl font-bold text-[#00B8D4] mt-4'>{formatTime(averageTime)}</Text>
                     </View>
                     <FilterBar active={active} setActive={setActive} />
                     <View className='py-5 mt-5'>
                         <View className='flex-row items-center gap-4'>
                             <AntDesign name="barschart" size={24} color="#00B8D4" />
-                            <Text className='text-xl font-bold'>Overview</Text>
+                            <Text className='text-xl font-bold'>{t("analytics.overview")}</Text>
                         </View>
                         <Text className='text-[#818181] text-lg'>{formatDate(startDate)} – {formatDate(today)} </Text>
                     </View>
                     <View className="flex-row gap-2 items-center justify-between">
                         <View className="flex-1 items-center bg-[#E8F9FB] py-5 rounded-xl gap-1">
                             <Entypo name="users" size={18} color="#00B8D4" />
-                            <Text className="text-[#818181]">Total Clients</Text>
+                            <Text className="text-[#818181]">{t("analytics.totalClients")}</Text>
                             <Text className="text-[#818181] text-2xl font-bold">{processes.length}</Text>
                         </View>
 
                         <View className="flex-1 items-center bg-[#E8F9FB] py-5 rounded-xl gap-1">
                             <AntDesign name="checkcircle" size={18} color="#00B8D4" />
-                            <Text className="text-[#818181]">On-time Rate</Text>
+                            <Text className="text-[#818181]">{t("analytics.onTimeRate")}</Text>
                             <Text className="text-[#818181] text-2xl font-bold">{onTimeRate.toFixed(1)}%</Text>
                         </View>
 
                         <View className="flex-1 items-center bg-[#E8F9FB] py-5 rounded-xl gap-1">
                             <FontAwesome name="warning" size={18} color="#F9A61D" />
-                            <Text className="text-[#818181]">Overtime Rate</Text>
+                            <Text className="text-[#818181]">{t("analytics.overtimeRate")}</Text>
                             <Text className="text-[#818181] text-2xl font-bold">{overTimeRate.toFixed(1)}%</Text>
                         </View>
                     </View>
@@ -113,14 +115,14 @@ export default function Analytics() {
                         <View className='flex-row items-center justify-between'>
                             <View className='flex-row items-center gap-4'>
                                 <MaterialIcons name="offline-bolt" size={24} color="#00B8D4" />
-                                <Text className='text-lg font-semibold'>Fastest</Text>
+                                <Text className='text-lg font-semibold'>{t("analytics.fastest")}</Text>
                             </View>
                             <Text className='text-xl font-bold text-[#00B8D4]'>{formatTime(shortestTime)}</Text>
                         </View>
                         <View className='flex-row items-center justify-between'>
                             <View className='flex-row items-center gap-4'>
                                 <AntDesign name="clockcircle" size={24} color="#F9A61D" />
-                                <Text className='text-lg font-semibold'>Slowest</Text>
+                                <Text className='text-lg font-semibold'>{t("analytics.slowest")}</Text>
                             </View>
                             <Text className='text-xl font-bold text-[#00B8D4]'>{formatTime(longestTime)}</Text>
                         </View>

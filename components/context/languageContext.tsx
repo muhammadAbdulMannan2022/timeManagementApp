@@ -77,6 +77,19 @@ interface TranslationResources {
             cta: string;
         },
         close: string;
+    },
+    analytics: {
+        averageTime: string;
+        overview: string;
+        totalClients: string;
+        onTimeRate: string;
+        overtimeRate: string;
+        fastest: string;
+        slowest: string;
+        stepAnalysis: string;
+        completionTimeTrend: string;
+        serviceDay: string;
+        services: string;
     }
 }
 

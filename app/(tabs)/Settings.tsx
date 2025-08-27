@@ -69,7 +69,7 @@ const Settings: React.FC = () => {
     }
 
     return (
-        <View className="flex-1" key={i18n.language}>
+        <View className="flex-1 bg-white" key={i18n.language}>
             <SafeAreaView className="flex-1" style={{ paddingBottom: 70 }}>
                 <ScrollView className="flex-1 px-5">
                     <View className="gap-5 items-start">

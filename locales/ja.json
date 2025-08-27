@@ -51,5 +51,18 @@
             "cta": "プレミアムを入手"
         },
         "close": "閉じる"
+    },
+    "analytics": {
+        "averageTime": "平均時間",
+        "overview": "概要",
+        "totalClients": "総クライアント",
+        "onTimeRate": "時間通り率",
+        "overtimeRate": "遅延率",
+        "fastest": "最速",
+        "slowest": "最遅",
+        "stepAnalysis": "ステップ分析",
+        "completionTimeTrend": "完了時間の傾向",
+        "serviceDay": "サービス日",
+        "services": "サービス"
     }
 }

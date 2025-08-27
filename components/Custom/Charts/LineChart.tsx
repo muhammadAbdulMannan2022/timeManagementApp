@@ -1,9 +1,11 @@
 import { FontAwesome } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 import { Text, View, useWindowDimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 export default function LineChartPage() {
     const { width } = useWindowDimensions();
+    const { t } = useTranslation()
 
     const data = {
         labels: ["1D", "1M", "6M", "1Y", "ALL"],
@@ -31,11 +33,11 @@ export default function LineChartPage() {
             <View className="gap-2 px-5 pb-5">
                 <View className="flex-row items-center gap-4">
                     <FontAwesome name="line-chart" size={24} color="#00B8D4" />
-                    <Text className="text-xl font-bold">Completion Time Trend</Text>
+                    <Text className="text-xl font-bold">{t("analytics.completionTimeTrend")}</Text>
                 </View>
                 <View className="flex-row gap-3">
-                    <Text className="text-[#818181]">2 service days.</Text>
-                    <Text className="text-[#818181]">3 services</Text>
+                    <Text className="text-[#818181]">2 {t("analytics.serviceDay")}</Text>
+                    <Text className="text-[#818181]">3 {t("analytics.services")}</Text>
                 </View>
             </View>
             <View className="flex-1  px-0 py-4" style={{ borderRadius: 20, }}>

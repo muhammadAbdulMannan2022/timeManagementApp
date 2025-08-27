@@ -51,5 +51,18 @@
             "cta": "รับพรีเมียม"
         },
         "close": "ปิด"
+    },
+    "analytics": {
+        "averageTime": "เวลาเฉลี่ย",
+        "overview": "ภาพรวม",
+        "totalClients": "ลูกค้าทั้งหมด",
+        "onTimeRate": "อัตราตรงเวลา",
+        "overtimeRate": "อัตราล่าช้า",
+        "fastest": "เร็วที่สุด",
+        "slowest": "ช้าที่สุด",
+        "stepAnalysis": "การวิเคราะห์ขั้นตอน",
+        "completionTimeTrend": "แนวโน้มเวลาการเสร็จสิ้น",
+        "serviceDay": "วันให้บริการ",
+        "services": "บริการ"
     }
 }

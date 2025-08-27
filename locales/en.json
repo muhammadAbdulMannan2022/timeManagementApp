@@ -51,5 +51,18 @@
             "cta": "Get Premium"
         },
         "close": "Close"
+    },
+    "analytics": {
+        "averageTime": "Average Time",
+        "overview": "Overview",
+        "totalClients": "Total Clients",
+        "onTimeRate": "On-time Rate",
+        "overtimeRate": "Overtime Rate",
+        "fastest": "Fastest",
+        "slowest": "Slowest",
+        "stepAnalysis": "Step Analysis",
+        "completionTimeTrend": "completion time Trend",
+        "serviceDay": "service day",
+        "services": "services"
     }
 }

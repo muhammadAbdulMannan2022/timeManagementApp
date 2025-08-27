@@ -51,5 +51,18 @@
             "cta": "Получить Премиум"
         },
         "close": "Закрыть"
+    },
+    "analytics": {
+        "averageTime": "Среднее время",
+        "overview": "Обзор",
+        "totalClients": "Всего клиентов",
+        "onTimeRate": "Процент вовремя",
+        "overtimeRate": "Процент с опозданием",
+        "fastest": "Самый быстрый",
+        "slowest": "Самый медленный",
+        "stepAnalysis": "Анализ шагов",
+        "completionTimeTrend": "Тренд времени выполнения",
+        "serviceDay": "День обслуживания",
+        "services": "Услуги"
     }
 }

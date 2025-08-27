@@ -51,5 +51,18 @@
             "cta": "احصل على بريميوم"
         },
         "close": "إغلاق"
+    },
+    "analytics": {
+        "averageTime": "متوسط الوقت",
+        "overview": "نظرة عامة",
+        "totalClients": "إجمالي العملاء",
+        "onTimeRate": "معدل في الوقت المحدد",
+        "overtimeRate": "معدل التأخير",
+        "fastest": "الأسرع",
+        "slowest": "الأبطأ",
+        "stepAnalysis": "تحليل الخطوة",
+        "completionTimeTrend": "اتجاه وقت الإنجاز",
+        "serviceDay": "يوم الخدمة",
+        "services": "الخدمات"
     }
 }

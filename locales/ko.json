@@ -51,5 +51,18 @@
             "cta": "프리미엄 받기"
         },
         "close": "닫기"
+    },
+    "analytics": {
+        "averageTime": "평균 시간",
+        "overview": "개요",
+        "totalClients": "총 고객 수",
+        "onTimeRate": "정시율",
+        "overtimeRate": "지연율",
+        "fastest": "가장 빠른",
+        "slowest": "가장 느린",
+        "stepAnalysis": "단계 분석",
+        "completionTimeTrend": "완료 시간 추세",
+        "serviceDay": "서비스 일",
+        "services": "서비스"
     }
 }
