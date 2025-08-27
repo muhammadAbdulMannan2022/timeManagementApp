@@ -120,6 +120,18 @@
             "notes": "메모",
             "removeRecord": "이 기록 삭제",
             "add": "추가"
+        },
+        "tabs": {
+            "home": "홈",
+            "calendar": "달력",
+            "analytics": "분석",
+            "settings": "설정",
+            "target": "목표"
         }
+    },
+    "actions": {
+        "designComplete": "디자인 완료",
+        "takePhoto": "사진 촬영",
+        "skip": "건너뛰기"
     }
 }

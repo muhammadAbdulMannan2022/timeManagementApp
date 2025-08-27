@@ -120,6 +120,18 @@
             "notes": "メモ",
             "removeRecord": "この記録を削除",
             "add": "追加"
+        },
+        "tabs": {
+            "home": "ホーム",
+            "calendar": "カレンダー",
+            "analytics": "分析",
+            "settings": "設定",
+            "target": "目標"
         }
+    },
+    "actions": {
+        "designComplete": "デザイン完了",
+        "takePhoto": "写真を撮る",
+        "skip": "スキップ"
     }
 }

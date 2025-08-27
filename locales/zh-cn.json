@@ -120,6 +120,18 @@
             "notes": "备注",
             "removeRecord": "删除此记录",
             "add": "添加"
+        },
+        "tabs": {
+            "home": "首页",
+            "calendar": "日历",
+            "analytics": "分析",
+            "settings": "设置",
+            "target": "目标"
         }
+    },
+    "actions": {
+        "designComplete": "设计完成",
+        "takePhoto": "拍照",
+        "skip": "跳过"
     }
 }

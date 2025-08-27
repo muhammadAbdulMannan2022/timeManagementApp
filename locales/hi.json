@@ -120,6 +120,18 @@
             "notes": "नोट्स",
             "removeRecord": "इस रिकॉर्ड को हटाएँ",
             "add": "जोड़ें"
+        },
+        "tabs": {
+            "home": "होम",
+            "calendar": "कैलेंडर",
+            "analytics": "विश्लेषण",
+            "settings": "सेटिंग्स",
+            "target": "लक्ष्य"
         }
+    },
+    "actions": {
+        "designComplete": "डिज़ाइन पूर्ण",
+        "takePhoto": "फ़ोटो लें",
+        "skip": "छोड़ें"
     }
 }

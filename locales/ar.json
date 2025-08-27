@@ -119,6 +119,18 @@
             "timeRange": "النطاق الزمني",
             "notes": "ملاحظات",
             "removeRecord": "إزالة هذا السجل"
+        },
+        "tabs": {
+            "home": "الرئيسية",
+            "calendar": "التقويم",
+            "analytics": "تحليلات",
+            "settings": "الإعدادات",
+            "target": "الهدف"
         }
+    },
+    "actions": {
+        "designComplete": "اكتمل التصميم",
+        "takePhoto": "التقط صورة",
+        "skip": "تخطي"
     }
 }

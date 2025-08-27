@@ -120,6 +120,18 @@
             "notes": "Notes",
             "removeRecord": "Supprimer cet enregistrement",
             "add": "Ajouter"
+        },
+        "tabs": {
+            "home": "Accueil",
+            "calendar": "Calendrier",
+            "analytics": "Analytique",
+            "settings": "Paramètres",
+            "target": "Objectif"
         }
+    },
+    "actions": {
+        "designComplete": "Design terminé",
+        "takePhoto": "Prendre une photo",
+        "skip": "Passer"
     }
 }

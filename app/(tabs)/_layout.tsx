@@ -3,9 +3,10 @@ import { Tabs } from 'expo-router';
 
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
+import { useTranslation } from 'react-i18next';
 
 export default function TabLayout() {
-
+  const { t } = useTranslation()
   return (
 
     <Tabs
@@ -43,7 +44,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: t("calendar.tabs.home"),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="timer-outline" size={size} color={color} />
           ),
@@ -52,7 +53,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="Calender"
         options={{
-          title: 'Calender',
+          title: t("calendar.tabs.calendar"),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="calendar-outline" size={size} color={color} />
           ),
@@ -61,7 +62,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="Analytics"
         options={{
-          title: 'Analytics',
+          title: t("calendar.tabs.analytics"),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="analytics-outline" size={size} color={color} />
           ),
@@ -70,7 +71,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="Settings"
         options={{
-          title: 'Settings',
+          title: t("calendar.tabs.settings"),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="settings-outline" size={size} color={color} />
           ),

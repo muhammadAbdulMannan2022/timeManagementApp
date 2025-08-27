@@ -120,6 +120,18 @@
             "notes": "Заметки",
             "removeRecord": "Удалить эту запись",
             "add": "Добавить"
+        },
+        "tabs": {
+            "home": "Главная",
+            "calendar": "Календарь",
+            "analytics": "Аналитика",
+            "settings": "Настройки",
+            "target": "Цель"
         }
+    },
+    "actions": {
+        "designComplete": "Дизайн завершен",
+        "takePhoto": "Сделать фото",
+        "skip": "Пропустить"
     }
 }

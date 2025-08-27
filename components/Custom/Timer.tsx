@@ -7,6 +7,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useRouter } from "expo-router";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Dimensions, Modal, Text, TouchableOpacity, View } from "react-native";
 import Animated, {
     Easing,
@@ -24,6 +25,7 @@ const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 export default function Timer({ time = 1, type, client }: { time?: number, type?: string, client?: string, }) {
     const router = useRouter()
+    const { t } = useTranslation()
     const { currentStep, stepName, maxStep } = useSelector((state: RootState) => state.step)
     const dispatch = useDispatch()
     const [currentTime, setCurrentTime] = useState<number>(0);
@@ -215,7 +217,7 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
                     className="items-center justify-center bg-white border-[8px]"
                 >
                     <Text className="text-secondary-default text-4xl">{formatTime(currentTime)}</Text>
-                    <Text className="text-secondary-default mt-2">Target {time ? `${time}:00` : "00:00"}</Text>
+                    <Text className="text-secondary-default mt-2">{t("calendar.tabs.target")} {time ? `${time}:00` : "00:00"}</Text>
 
                 </View>
                 {currentTime > totalSeconds && (
@@ -274,8 +276,8 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
                     <View className="bg-white rounded-2xl p-8 md:p-12 items-center">
                         <View className="flex-col items-center justify-center">
                             <Entypo name="camera" size={34} color="#00B8D4" className="mb-5" />
-                            <Text className="text-[#00B8D4] text-3xl font-extrabold mb-2">Design Complete</Text>
-                            <Text className="font-extrabold text-xl text-[#818181] mb-6">Take photo?</Text>
+                            <Text className="text-[#00B8D4] text-3xl font-extrabold mb-2">{t("actions.designComplete")}</Text>
+                            <Text className="font-extrabold text-xl text-[#818181] mb-6">{t("actions.takePhoto")}?</Text>
                         </View>
                         <View className="flex-row items-center justify-center gap-4">
                             <TouchableOpacity onPress={() => {
@@ -283,10 +285,10 @@ export default function Timer({ time = 1, type, client }: { time?: number, type?
                                 router.push("/(camera)")
                             }} className="bg-blue-400 px-8 py-3 rounded-lg flex-row items-center justify-center gap-2">
                                 <Entypo name="camera" size={20} color="white" />
-                                <Text className="text-white font-semibold">Take Photo</Text>
+                                <Text className="text-white font-semibold">{t("actions.takePhoto")}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => handleSkip()} className="bg-gray-200 px-8 py-3 rounded-lg">
-                                <Text className="text-gray-700 font-semibold">Skip</Text>
+                                <Text className="text-gray-700 font-semibold">{t("actions.skip")}</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

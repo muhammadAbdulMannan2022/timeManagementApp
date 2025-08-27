@@ -120,6 +120,18 @@
             "notes": "Notizen",
             "removeRecord": "Diesen Eintrag entfernen",
             "add": "Hinzufügen"
+        },
+        "tabs": {
+            "home": "Startseite",
+            "calendar": "Kalender",
+            "analytics": "Analytik",
+            "settings": "Einstellungen",
+            "target": "Ziel"
         }
+    },
+    "actions": {
+        "designComplete": "Design abgeschlossen",
+        "takePhoto": "Foto aufnehmen",
+        "skip": "Überspringen"
     }
 }

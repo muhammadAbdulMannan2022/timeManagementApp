@@ -120,6 +120,18 @@
             "notes": "Ghi chú",
             "removeRecord": "Xóa bản ghi này",
             "add": "Thêm"
+        },
+        "tabs": {
+            "home": "Trang chủ",
+            "calendar": "Lịch",
+            "analytics": "Phân tích",
+            "settings": "Cài đặt",
+            "target": "Mục tiêu"
         }
+    },
+    "actions": {
+        "designComplete": "Hoàn thành thiết kế",
+        "takePhoto": "Chụp ảnh",
+        "skip": "Bỏ qua"
     }
 }

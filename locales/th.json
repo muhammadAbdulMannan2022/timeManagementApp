@@ -120,6 +120,18 @@
             "notes": "หมายเหตุ",
             "removeRecord": "ลบระเบียนนี้",
             "add": "เพิ่ม"
+        },
+        "tabs": {
+            "home": "หน้าแรก",
+            "calendar": "ปฏิทิน",
+            "analytics": "วิเคราะห์",
+            "settings": "การตั้งค่า",
+            "target": "เป้าหมาย"
         }
+    },
+    "actions": {
+        "designComplete": "ออกแบบเสร็จสิ้น",
+        "takePhoto": "ถ่ายรูป",
+        "skip": "ข้าม"
     }
 }
