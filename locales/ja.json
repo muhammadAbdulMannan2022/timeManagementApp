@@ -15,5 +15,41 @@
         "edit": "編集",
         "minutes": "分",
         "time": "時間"
+    },
+    "settingsUpd": {
+        "enterText": "テキストを入力：",
+        "typeSomething": "何か入力してください...",
+        "setTimer": "タイマーを設定 (HH:MM:SS)：",
+        "cancel": "キャンセル",
+        "save": "保存"
+    },
+    "pricing": {
+        "tabs": {
+            "free": "無料",
+            "premium": "プレミアム"
+        },
+        "title": "成長を助けるプランを選択",
+        "subtitle": "無制限のステップ、高度な分析を利用",
+        "freePlan": {
+            "name": "無料",
+            "features": {
+                "timer": "タイマーと写真記録",
+                "calendar": "カレンダー",
+                "calendarLimited": "本日の記録のみ",
+                "analytics": "分析",
+                "pdfExport": "PDF エクスポート"
+            }
+        },
+        "premiumPlan": {
+            "name": "プレミアム",
+            "features": {
+                "timer": "タイマーと写真記録",
+                "calendar": "カレンダー",
+                "analytics": "分析",
+                "pdfExport": "PDF エクスポート"
+            },
+            "cta": "プレミアムを入手"
+        },
+        "close": "閉じる"
     }
 }

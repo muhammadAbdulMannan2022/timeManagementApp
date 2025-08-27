@@ -15,5 +15,41 @@
         "edit": "Editar",
         "minutes": "Minutos",
         "time": "Tiempo"
+    },
+    "settingsUpd": {
+        "enterText": "Ingrese texto:",
+        "typeSomething": "Escribe algo...",
+        "setTimer": "Establecer temporizador (HH:MM:SS):",
+        "cancel": "Cancelar",
+        "save": "Guardar"
+    },
+    "pricing": {
+        "tabs": {
+            "free": "Gratis",
+            "premium": "Premium"
+        },
+        "title": "Elige el plan que te ayuda a crecer",
+        "subtitle": "Obtén pasos ilimitados y análisis avanzados",
+        "freePlan": {
+            "name": "Gratis",
+            "features": {
+                "timer": "Temporizador y registro de fotos",
+                "calendar": "Calendario",
+                "calendarLimited": "Registros solo del día",
+                "analytics": "Análisis",
+                "pdfExport": "Exportar PDF"
+            }
+        },
+        "premiumPlan": {
+            "name": "Premium",
+            "features": {
+                "timer": "Temporizador y registro de fotos",
+                "calendar": "Calendario",
+                "analytics": "Análisis",
+                "pdfExport": "Exportar PDF"
+            },
+            "cta": "Obtener Premium"
+        },
+        "close": "Cerrar"
     }
 }

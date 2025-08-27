@@ -15,5 +15,41 @@
         "edit": "편집",
         "minutes": "분",
         "time": "시간"
+    },
+    "settingsUpd": {
+        "enterText": "텍스트 입력:",
+        "typeSomething": "무언가 입력하세요...",
+        "setTimer": "타이머 설정 (HH:MM:SS):",
+        "cancel": "취소",
+        "save": "저장"
+    },
+    "pricing": {
+        "tabs": {
+            "free": "무료",
+            "premium": "프리미엄"
+        },
+        "title": "성장을 돕는 요금제를 선택하세요",
+        "subtitle": "무제한 단계, 고급 분석 제공",
+        "freePlan": {
+            "name": "무료",
+            "features": {
+                "timer": "타이머 및 사진 기록",
+                "calendar": "캘린더",
+                "calendarLimited": "오늘만 기록 가능",
+                "analytics": "분석",
+                "pdfExport": "PDF 내보내기"
+            }
+        },
+        "premiumPlan": {
+            "name": "프리미엄",
+            "features": {
+                "timer": "타이머 및 사진 기록",
+                "calendar": "캘린더",
+                "analytics": "분석",
+                "pdfExport": "PDF 내보내기"
+            },
+            "cta": "프리미엄 받기"
+        },
+        "close": "닫기"
     }
 }

@@ -15,5 +15,41 @@
         "edit": "EDIT",
         "minutes": "Minutes",
         "time": "Time"
+    },
+    "settingsUpd": {
+        "enterText": "Enter text:",
+        "typeSomething": "Type something...",
+        "setTimer": "Set timer (HH:MM:SS):",
+        "cancel": "Cancel",
+        "save": "Save"
+    },
+    "pricing": {
+        "tabs": {
+            "free": "Free",
+            "premium": "Premium"
+        },
+        "title": "Select plan that helps grow",
+        "subtitle": "Get unlimited steps, advanced analytics",
+        "freePlan": {
+            "name": "Free",
+            "features": {
+                "timer": "Timer & Photo Recording",
+                "calendar": "Calendar",
+                "calendarLimited": "Today’s records only",
+                "analytics": "Analytics",
+                "pdfExport": "PDF Export"
+            }
+        },
+        "premiumPlan": {
+            "name": "Premium",
+            "features": {
+                "timer": "Timer & Photo Recording",
+                "calendar": "Calendar",
+                "analytics": "Analytics",
+                "pdfExport": "PDF Export"
+            },
+            "cta": "Get Premium"
+        },
+        "close": "Close"
     }
 }

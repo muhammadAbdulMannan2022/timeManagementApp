@@ -1,18 +1,19 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 const PremiumPlanPage: React.FC = () => {
+    const { t } = useTranslation();
+
     return (
         <ScrollView
             contentContainerStyle={{ padding: 20, alignItems: "center" }}
             showsVerticalScrollIndicator={false}
         >
             {/* Title */}
-            <Text className="text-xl font-bold text-center">Select plan that help’s grow</Text>
-            <Text className="text-gray-500 text-center mb-5">
-                Get unlimited steps, advanced analytics
-            </Text>
+            <Text className="text-xl font-bold text-center">{t("pricing.title")}</Text>
+            <Text className="text-gray-500 text-center mb-5">{t("pricing.subtitle")}</Text>
 
             {/* Illustration */}
             <Image
@@ -23,16 +24,16 @@ const PremiumPlanPage: React.FC = () => {
             {/* Plan Title */}
             <View className="flex-row items-center gap-2 mb-5">
                 <MaterialCommunityIcons name="diamond" size={24} color="red" />
-                <Text className="text-lg font-bold text-red-500">Premium</Text>
+                <Text className="text-lg font-bold text-red-500">{t("pricing.premiumPlan.name")}</Text>
             </View>
 
             {/* Feature List */}
             <View className="bg-white rounded-2xl shadow p-5 mb-5" style={{ width: "100%" }}>
                 {[
-                    { name: "Timer & Photo Recording", value: <MaterialCommunityIcons name="check" size={20} color="green" /> },
-                    { name: "Calender", value: <MaterialCommunityIcons name="check" size={20} color="green" /> },
-                    { name: "Analytics", value: <MaterialCommunityIcons name="check" size={20} color="green" /> },
-                    { name: "PDF Export", value: <MaterialCommunityIcons name="check" size={20} color="green" /> },
+                    { name: t("pricing.premiumPlan.features.timer"), value: <MaterialCommunityIcons name="check" size={20} color="green" /> },
+                    { name: t("pricing.premiumPlan.features.calendar"), value: <MaterialCommunityIcons name="check" size={20} color="green" /> },
+                    { name: t("pricing.premiumPlan.features.analytics"), value: <MaterialCommunityIcons name="check" size={20} color="green" /> },
+                    { name: t("pricing.premiumPlan.features.pdfExport"), value: <MaterialCommunityIcons name="check" size={20} color="green" /> },
                 ].map((item, idx) => (
                     <View
                         key={idx}
@@ -50,7 +51,7 @@ const PremiumPlanPage: React.FC = () => {
 
             {/* CTA Button */}
             <TouchableOpacity className="bg-[#00B8D4] w-full py-3 rounded-xl flex-row justify-center items-center">
-                <Text className="text-white text-lg font-bold">Get Premium</Text>
+                <Text className="text-white text-lg font-bold">{t("pricing.premiumPlan.cta")}</Text>
             </TouchableOpacity>
         </ScrollView>
     );

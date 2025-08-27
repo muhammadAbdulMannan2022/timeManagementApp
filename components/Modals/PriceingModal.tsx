@@ -1,5 +1,6 @@
 import { Entypo } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Modal, Text, TouchableOpacity, View } from "react-native";
 import PagerView from "react-native-pager-view";
 import FreePlanPage from "./plans/Free";
@@ -11,6 +12,7 @@ interface PricingModalProps {
 }
 
 const PricingModal: React.FC<PricingModalProps> = ({ visible, onClose }) => {
+    const { t } = useTranslation()
     const pagerRef = useRef<PagerView>(null);
     const [page, setPage] = useState(0);
 
@@ -27,12 +29,12 @@ const PricingModal: React.FC<PricingModalProps> = ({ visible, onClose }) => {
                     <View className="flex-row justify-around mb-4">
                         <TouchableOpacity onPress={() => handleTabChange(0)}>
                             <Text className={`text-lg font-bold ${page === 0 ? "text-[#00B8D4]" : "text-gray-500"}`}>
-                                Free
+                                {t("pricing.tabs.free")}
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => handleTabChange(1)}>
                             <Text className={`text-lg font-bold ${page === 1 ? "text-[#00B8D4]" : "text-gray-500"}`}>
-                                Premium
+                                {t("pricing.tabs.premium")}
                             </Text>
                         </TouchableOpacity>
                     </View>

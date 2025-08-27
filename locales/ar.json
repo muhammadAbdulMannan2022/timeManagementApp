@@ -15,5 +15,41 @@
         "edit": "تعديل",
         "minutes": "دقائق",
         "time": "الوقت"
+    },
+    "settingsUpd": {
+        "enterText": "أدخل النص:",
+        "typeSomething": "اكتب شيئًا...",
+        "setTimer": "ضبط المؤقت (HH:MM:SS):",
+        "cancel": "إلغاء",
+        "save": "حفظ"
+    },
+    "pricing": {
+        "tabs": {
+            "free": "مجاني",
+            "premium": "بريميوم"
+        },
+        "title": "اختر الخطة التي تساعدك على النمو",
+        "subtitle": "احصل على خطوات غير محدودة وتحليلات متقدمة",
+        "freePlan": {
+            "name": "مجاني",
+            "features": {
+                "timer": "مؤقت وتسجيل الصور",
+                "calendar": "التقويم",
+                "calendarLimited": "التسجيلات لليوم فقط",
+                "analytics": "التحليلات",
+                "pdfExport": "تصدير PDF"
+            }
+        },
+        "premiumPlan": {
+            "name": "بريميوم",
+            "features": {
+                "timer": "مؤقت وتسجيل الصور",
+                "calendar": "التقويم",
+                "analytics": "التحليلات",
+                "pdfExport": "تصدير PDF"
+            },
+            "cta": "احصل على بريميوم"
+        },
+        "close": "إغلاق"
     }
 }

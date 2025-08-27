@@ -15,5 +15,41 @@
         "edit": "Bearbeiten",
         "minutes": "Minuten",
         "time": "Zeit"
+    },
+    "settingsUpd": {
+        "enterText": "Text eingeben:",
+        "typeSomething": "Etwas eingeben...",
+        "setTimer": "Timer einstellen (HH:MM:SS):",
+        "cancel": "Abbrechen",
+        "save": "Speichern"
+    },
+    "pricing": {
+        "tabs": {
+            "free": "Kostenlos",
+            "premium": "Premium"
+        },
+        "title": "Wählen Sie den Plan, der beim Wachsen hilft",
+        "subtitle": "Erhalten Sie unbegrenzte Schritte, erweiterte Analysen",
+        "freePlan": {
+            "name": "Kostenlos",
+            "features": {
+                "timer": "Timer und Fotoaufzeichnung",
+                "calendar": "Kalender",
+                "calendarLimited": "Nur Tagesaufzeichnungen",
+                "analytics": "Analysen",
+                "pdfExport": "PDF-Export"
+            }
+        },
+        "premiumPlan": {
+            "name": "Premium",
+            "features": {
+                "timer": "Timer und Fotoaufzeichnung",
+                "calendar": "Kalender",
+                "analytics": "Analysen",
+                "pdfExport": "PDF-Export"
+            },
+            "cta": "Premium erhalten"
+        },
+        "close": "Schließen"
     }
 }

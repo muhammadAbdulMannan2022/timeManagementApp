@@ -41,7 +41,43 @@ interface TranslationResources {
         simplifiedChinese: string;
         traditionalChinese: string;
         time: string;
-    };
+    },
+    settingsUpd: {
+        enterText: string;
+        typeSomething: string;
+        setTimer: string;
+        cancel: string;
+        save: string;
+    },
+    pricing: {
+        tabs: {
+            free: string;
+            premium: string;
+        },
+        title: string;
+        subtitle: string;
+        freePlan: {
+            name: string;
+            features: {
+                timer: string;
+                calendar: string;
+                calendarLimited: string;
+                analytics: string;
+                pdfExport: string;
+            }
+        },
+        premiumPlan: {
+            name: string;
+            features: {
+                timer: string;
+                calendar: string;
+                analytics: string;
+                pdfExport: string;
+            },
+            cta: string;
+        },
+        close: string;
+    }
 }
 
 const resources: Record<string, { translation: TranslationResources }> = {

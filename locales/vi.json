@@ -15,5 +15,41 @@
         "edit": "Chỉnh sửa",
         "minutes": "Phút",
         "time": "Thời gian"
+    },
+    "settingsUpd": {
+        "enterText": "Nhập văn bản:",
+        "typeSomething": "Gõ gì đó...",
+        "setTimer": "Đặt bộ hẹn giờ (HH:MM:SS):",
+        "cancel": "Hủy",
+        "save": "Lưu"
+    },
+    "pricing": {
+        "tabs": {
+            "free": "Miễn phí",
+            "premium": "Cao cấp"
+        },
+        "title": "Chọn gói giúp bạn phát triển",
+        "subtitle": "Nhận các bước không giới hạn, phân tích nâng cao",
+        "freePlan": {
+            "name": "Miễn phí",
+            "features": {
+                "timer": "Bộ hẹn giờ và ghi lại ảnh",
+                "calendar": "Lịch",
+                "calendarLimited": "Chỉ ghi lại trong ngày",
+                "analytics": "Phân tích",
+                "pdfExport": "Xuất PDF"
+            }
+        },
+        "premiumPlan": {
+            "name": "Cao cấp",
+            "features": {
+                "timer": "Bộ hẹn giờ và ghi lại ảnh",
+                "calendar": "Lịch",
+                "analytics": "Phân tích",
+                "pdfExport": "Xuất PDF"
+            },
+            "cta": "Nhận Cao cấp"
+        },
+        "close": "Đóng"
     }
 }

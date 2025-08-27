@@ -15,5 +15,41 @@
         "edit": "編輯",
         "minutes": "分鐘",
         "time": "時間"
+    },
+    "settingsUpd": {
+        "enterText": "輸入文字：",
+        "typeSomething": "輸入一些文字...",
+        "setTimer": "設定計時器 (HH:MM:SS)：",
+        "cancel": "取消",
+        "save": "保存"
+    },
+    "pricing": {
+        "tabs": {
+            "free": "免費",
+            "premium": "高級版"
+        },
+        "title": "選擇幫助成長的方案",
+        "subtitle": "獲取無限步驟，高級分析",
+        "freePlan": {
+            "name": "免費",
+            "features": {
+                "timer": "計時器與照片記錄",
+                "calendar": "日曆",
+                "calendarLimited": "僅限今天的記錄",
+                "analytics": "分析",
+                "pdfExport": "PDF 匯出"
+            }
+        },
+        "premiumPlan": {
+            "name": "高級版",
+            "features": {
+                "timer": "計時器與照片記錄",
+                "calendar": "日曆",
+                "analytics": "分析",
+                "pdfExport": "PDF 匯出"
+            },
+            "cta": "升級到高級版"
+        },
+        "close": "關閉"
     }
 }

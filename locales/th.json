@@ -15,5 +15,41 @@
         "edit": "แก้ไข",
         "minutes": "นาที",
         "time": "เวลา"
+    },
+    "settingsUpd": {
+        "enterText": "กรอกข้อความ:",
+        "typeSomething": "พิมพ์บางอย่าง...",
+        "setTimer": "ตั้งเวลา (HH:MM:SS):",
+        "cancel": "ยกเลิก",
+        "save": "บันทึก"
+    },
+    "pricing": {
+        "tabs": {
+            "free": "ฟรี",
+            "premium": "พรีเมียม"
+        },
+        "title": "เลือกแผนที่ช่วยให้คุณเติบโต",
+        "subtitle": "รับขั้นตอนแบบไม่จำกัด การวิเคราะห์ขั้นสูง",
+        "freePlan": {
+            "name": "ฟรี",
+            "features": {
+                "timer": "ตัวจับเวลาและบันทึกรูปภาพ",
+                "calendar": "ปฏิทิน",
+                "calendarLimited": "บันทึกได้เฉพาะวันนี้",
+                "analytics": "การวิเคราะห์",
+                "pdfExport": "ส่งออก PDF"
+            }
+        },
+        "premiumPlan": {
+            "name": "พรีเมียม",
+            "features": {
+                "timer": "ตัวจับเวลาและบันทึกรูปภาพ",
+                "calendar": "ปฏิทิน",
+                "analytics": "การวิเคราะห์",
+                "pdfExport": "ส่งออก PDF"
+            },
+            "cta": "รับพรีเมียม"
+        },
+        "close": "ปิด"
     }
 }
