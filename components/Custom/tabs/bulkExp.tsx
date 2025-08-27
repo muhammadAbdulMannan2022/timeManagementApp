@@ -1,5 +1,6 @@
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FlatList, Image, Switch, Text, TouchableOpacity, View } from "react-native";
 
 // Define TypeScript interfaces for type safety
@@ -39,6 +40,7 @@ const mockData: Client[] = [
 ];
 
 const ClientList: React.FC = () => {
+    const { t } = useTranslation()
     const [data, setData] = useState<Client[]>(mockData);
     const [sortAsc, setSortAsc] = useState<boolean>(true);
     const [selectAll, setSelectAll] = useState<boolean>(false);
@@ -96,7 +98,7 @@ const ClientList: React.FC = () => {
                 <Text className="text-gray-500">{item.date}</Text>
                 <Text className="text-gray-400 text-sm">
                     {item.startTime} - {item.endTime} . {item.duration} .{" "}
-                    {item.photos ? `${item.photos} Photos` : "No Photos"}
+                    {item.photos ? `${item.photos} ${t("calendar.clientList.photos")}` : t("calendar.clientList.noPhotos")}
                 </Text>
             </View>
             {item.photos > 0 && (
@@ -114,7 +116,7 @@ const ClientList: React.FC = () => {
             {/* Sort & Select */}
             <View className="flex-row items-center justify-between mb-4 bg-white p-3 rounded-xl shadow-sm">
                 <View className="flex-row items-center gap-3">
-                    <Text className="text-gray-600 font-medium">Sort</Text>
+                    <Text className="text-gray-600 font-medium">{t("calendar.clientList.sort")}</Text>
                     <TouchableOpacity onPress={toggleSort}>
                         <Text className="text-blue-500 font-medium flex-row items-center">
                             {sortAsc ? (
@@ -122,13 +124,13 @@ const ClientList: React.FC = () => {
                             ) : (
                                 <Ionicons name="arrow-up" size={16} color="#00B8D4" />
                             )}{" "}
-                            {sortAsc ? "Latest" : "Oldest"}
+                            {sortAsc ? t("calendar.clientList.latest") : t("calendar.clientList.oldest")}
                         </Text>
                     </TouchableOpacity>
                 </View>
 
                 <View className="flex-row items-center gap-2">
-                    <Text className="text-gray-600 font-medium">Select All</Text>
+                    <Text className="text-gray-600 font-medium">{t("calendar.clientList.selectAll")}</Text>
                     <Switch
                         value={selectAll}
                         onValueChange={toggleSelectAll}

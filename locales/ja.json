@@ -103,6 +103,14 @@
                     "subtitle": "クライアント 3名 (過去7日間)"
                 }
             }
+        },
+        "clientList": {
+            "sort": "並べ替え",
+            "latest": "最新",
+            "oldest": "最古",
+            "selectAll": "すべて選択",
+            "noPhotos": "写真なし",
+            "photos": "写真"
         }
     }
 }

@@ -103,6 +103,14 @@
                     "subtitle": "3 clienti (ultimi 7 giorni)"
                 }
             }
+        },
+        "clientList": {
+            "sort": "Ordina",
+            "latest": "Più recenti",
+            "oldest": "Più vecchi",
+            "selectAll": "Seleziona tutto",
+            "noPhotos": "Nessuna foto",
+            "photos": "Foto"
         }
     }
 }

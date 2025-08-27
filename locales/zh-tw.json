@@ -103,6 +103,14 @@
                     "subtitle": "3 客戶 (過去 7 天)"
                 }
             }
+        },
+        "clientList": {
+            "sort": "排序",
+            "latest": "最新",
+            "oldest": "最舊",
+            "selectAll": "全選",
+            "noPhotos": "沒有照片",
+            "photos": "照片"
         }
     }
 }

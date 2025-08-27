@@ -103,6 +103,14 @@
                     "subtitle": "3 عملاء (آخر 7 أيام)"
                 }
             }
+        },
+        "clientList": {
+            "sort": "فرز",
+            "latest": "الأحدث",
+            "oldest": "الأقدم",
+            "selectAll": "تحديد الكل",
+            "noPhotos": "لا توجد صور",
+            "photos": "صور"
         }
     }
 }

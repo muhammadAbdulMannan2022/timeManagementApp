@@ -103,6 +103,14 @@
                     "subtitle": "고객 3명 (지난 7일)"
                 }
             }
+        },
+        "clientList": {
+            "sort": "정렬",
+            "latest": "최신",
+            "oldest": "오래된",
+            "selectAll": "모두 선택",
+            "noPhotos": "사진 없음",
+            "photos": "사진"
         }
     }
 }

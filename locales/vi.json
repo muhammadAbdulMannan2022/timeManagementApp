@@ -103,6 +103,14 @@
                     "subtitle": "3 khách hàng (7 ngày qua)"
                 }
             }
+        },
+        "clientList": {
+            "sort": "Sắp xếp",
+            "latest": "Mới nhất",
+            "oldest": "Cũ nhất",
+            "selectAll": "Chọn tất cả",
+            "noPhotos": "Không có ảnh",
+            "photos": "Ảnh"
         }
     }
 }
