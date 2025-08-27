@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "포트폴리오 내보내기",
             "subtitle": "강사와 공유"
+        },
+        "exportTabs": {
+            "headerTitle": "포트폴리오 내보내기",
+            "headerSubtitle": "강사와 공유",
+            "exportButton": "내보내기",
+            "tab1": "빠른 내보내기",
+            "tab2": "설정",
+            "exportPreview": "내보내기 미리보기",
+            "clientsLabel": "고객",
+            "photoLabel": "사진",
+            "pdfLabel": "PDF 페이지",
+            "photoPreview": "사진 미리보기"
+        },
+        "singleExport": {
+            "selectRange": "내보낼 범위 선택",
+            "options": {
+                "today": {
+                    "title": "오늘 작업",
+                    "subtitle": "고객 2명"
+                },
+                "recent": {
+                    "title": "최근 작업",
+                    "subtitle": "고객 3명 (어제 + 오늘)"
+                },
+                "week": {
+                    "title": "이번 주 작업",
+                    "subtitle": "고객 3명 (지난 7일)"
+                }
+            }
         }
     }
 }

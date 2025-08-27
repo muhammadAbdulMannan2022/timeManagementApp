@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "Экспорт портфолио",
             "subtitle": "Поделиться с инструктором"
+        },
+        "exportTabs": {
+            "headerTitle": "Экспорт портфолио",
+            "headerSubtitle": "Поделиться с инструктором",
+            "exportButton": "Экспорт",
+            "tab1": "Быстрый экспорт",
+            "tab2": "Настройки",
+            "exportPreview": "Предпросмотр экспорта",
+            "clientsLabel": "Клиенты",
+            "photoLabel": "Фото",
+            "pdfLabel": "PDF страница",
+            "photoPreview": "Предпросмотр фото"
+        },
+        "singleExport": {
+            "selectRange": "Выберите диапазон экспорта",
+            "options": {
+                "today": {
+                    "title": "Сегодняшняя работа",
+                    "subtitle": "2 клиента"
+                },
+                "recent": {
+                    "title": "Недавняя работа",
+                    "subtitle": "3 клиента (вчера + сегодня)"
+                },
+                "week": {
+                    "title": "Работа за неделю",
+                    "subtitle": "3 клиента (последние 7 дней)"
+                }
+            }
         }
     }
 }

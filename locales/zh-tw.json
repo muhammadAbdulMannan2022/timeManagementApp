@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "匯出作品集",
             "subtitle": "與導師分享"
+        },
+        "exportTabs": {
+            "headerTitle": "匯出作品集",
+            "headerSubtitle": "與導師分享",
+            "exportButton": "匯出",
+            "tab1": "快速匯出",
+            "tab2": "設定",
+            "exportPreview": "匯出預覽",
+            "clientsLabel": "客戶",
+            "photoLabel": "照片",
+            "pdfLabel": "PDF 頁面",
+            "photoPreview": "照片預覽"
+        },
+        "singleExport": {
+            "selectRange": "選擇匯出範圍",
+            "options": {
+                "today": {
+                    "title": "今天的工作",
+                    "subtitle": "2 客戶"
+                },
+                "recent": {
+                    "title": "最近的工作",
+                    "subtitle": "3 客戶 (昨天 + 今天)"
+                },
+                "week": {
+                    "title": "本週的工作",
+                    "subtitle": "3 客戶 (過去 7 天)"
+                }
+            }
         }
     }
 }

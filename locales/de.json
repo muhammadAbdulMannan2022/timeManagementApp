@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "Portfolio exportieren",
             "subtitle": "Mit Ausbilder teilen"
+        },
+        "exportTabs": {
+            "headerTitle": "Portfolio exportieren",
+            "headerSubtitle": "Mit Ausbilder teilen",
+            "exportButton": "Exportieren",
+            "tab1": "Schneller Export",
+            "tab2": "Einstellungen",
+            "exportPreview": "Exportvorschau",
+            "clientsLabel": "Kunden",
+            "photoLabel": "Foto",
+            "pdfLabel": "Seite PDF",
+            "photoPreview": "Fotovorschau"
+        },
+        "singleExport": {
+            "selectRange": "Exportbereich auswählen",
+            "options": {
+                "today": {
+                    "title": "Heutige Arbeit",
+                    "subtitle": "2 Kunden"
+                },
+                "recent": {
+                    "title": "Kürzliche Arbeit",
+                    "subtitle": "3 Kunden (gestern + heute)"
+                },
+                "week": {
+                    "title": "Arbeit dieser Woche",
+                    "subtitle": "3 Kunden (letzte 7 Tage)"
+                }
+            }
         }
     }
 }

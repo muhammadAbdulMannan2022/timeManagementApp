@@ -1,42 +1,42 @@
-
-
 import ClientList from "@/components/Custom/tabs/bulkExp";
 import SingleExport from "@/components/Custom/tabs/SingleExp";
 import { AntDesign, FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router"; // ⬅ if you’re using Expo Router
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import PagerView from "react-native-pager-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
 const ExportPreview = ({ images }: { images: string[] }) => {
+    const { t } = useTranslation()
     return (
-        <View className="flex-1">
+        <ScrollView className="flex-1">
             <SingleExport />
-            <View className="px-5 mt-5">
+            <View className="px-5 mt-5 gap-10">
                 <View className="flex-row items-center gap-5">
                     <AntDesign name="eye" size={24} color="#00B8D4" />
-                    <Text className="text-xl font-bold">Export Preview</Text>
+                    <Text className="text-xl font-bold">{t("calendar.exportTabs.exportPreview")}</Text>
                 </View>
-                <View className="flex-1 mt-10 flex-row justify-between items-center">
+                <View className="flex-row justify-between items-center">
                     <View className="items-center justify-center gap-2">
                         <Text className="text-[#00B8D4] text-4xl font-bold">2</Text>
-                        <Text className="text-xl text-[#22232470]">2 clients</Text>
+                        <Text className="text-xl text-[#22232470]">2 {t("calendar.exportTabs.clientsLabel")}</Text>
                     </View>
                     <View className="items-center justify-center gap-2">
                         <Text className="text-[#00B8D4] text-4xl font-bold">1</Text>
-                        <Text className="text-xl text-[#22232470]">2 Photo</Text>
+                        <Text className="text-xl text-[#22232470]">2 {t("calendar.exportTabs.photoLabel")}</Text>
                     </View>
                     <View className="items-center justify-center gap-2">
                         <Text className="text-[#00B8D4] text-4xl font-bold">1</Text>
-                        <Text className="text-xl text-[#22232470]">2 Page PDF</Text>
+                        <Text className="text-xl text-[#22232470]">2 {t("calendar.exportTabs.pdfLabel")}</Text>
                     </View>
                 </View>
             </View>
             <View className="px-5 pt-10">
                 <View className="flex-row items-center gap-5 mb-5">
-                    <Text className="text-xl font-bold">Photo Preview</Text>
+                    <Text className="text-xl font-bold">{t("calendar.exportTabs.photoPreview")}</Text>
                 </View>
                 {/* Use scrollView for preview images */}
                 <ScrollView
@@ -57,7 +57,7 @@ const ExportPreview = ({ images }: { images: string[] }) => {
                     ))}
                 </ScrollView>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
@@ -67,6 +67,7 @@ const tab1Images = ["https://i.ibb.co.com/Y6P39yR/pink-and-purple-long-nail-desi
     "https://i.ibb.co.com/Kz381mng/10-62a144bf0b71456b84041b09d2c643b1.jpg"]
 
 export default function CustomTabs() {
+    const { t } = useTranslation()
     const pagerRef = useRef<PagerView>(null);
     const [activeTab, setActiveTab] = useState(0);
 
@@ -90,12 +91,12 @@ export default function CustomTabs() {
                 </TouchableOpacity>
                 <View className="flex-row items-center justify-between flex-1">
                     <View>
-                        <Text className="text-2xl font-bold">Export Portfolio</Text>
-                        <Text className="text-lg">Share with instructor</Text>
+                        <Text className="text-2xl font-bold">{t("calendar.exportTabs.headerTitle")}</Text>
+                        <Text className="text-lg">{t("calendar.exportTabs.headerSubtitle")}</Text>
                     </View>
                     <TouchableOpacity className="flex-row items-center gap-2 bg-[#00B8D4AB] px-3 py-3 rounded-lg">
                         <FontAwesome6 name="file-export" size={18} color="#ffffff" />
-                        <Text className="text-white">Export</Text>
+                        <Text className="text-white">{t("calendar.exportTabs.exportButton")}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -117,7 +118,7 @@ export default function CustomTabs() {
                         className={`text-center font-semibold ${activeTab === 0 ? "text-black" : "text-gray-600"
                             }`}
                     >
-                        Quick Export
+                        {t("calendar.exportTabs.tab1")}
                     </Text>
                 </TouchableOpacity>
 
@@ -136,7 +137,7 @@ export default function CustomTabs() {
                         className={`text-center font-semibold ${activeTab === 1 ? "text-black" : "text-gray-600"
                             }`}
                     >
-                        Settings
+                        {t("calendar.exportTabs.tab2")}
                     </Text>
                 </TouchableOpacity>
             </View>

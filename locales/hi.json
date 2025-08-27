@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "पोर्टफोलियो निर्यात करें",
             "subtitle": "Instruktor के साथ साझा करें"
+        },
+        "exportTabs": {
+            "headerTitle": "पोर्टफोलियो निर्यात करें",
+            "headerSubtitle": "Instruktor के साथ साझा करें",
+            "exportButton": "निर्यात करें",
+            "tab1": "त्वरित निर्यात",
+            "tab2": "सेटिंग्स",
+            "exportPreview": "निर्यात पूर्वावलोकन",
+            "clientsLabel": "ग्राहक",
+            "photoLabel": "फ़ोटो",
+            "pdfLabel": "पीडीएफ पृष्ठ",
+            "photoPreview": "फ़ोटो पूर्वावलोकन"
+        },
+        "singleExport": {
+            "selectRange": "निर्यात सीमा चुनें",
+            "options": {
+                "today": {
+                    "title": "आज का काम",
+                    "subtitle": "2 ग्राहक"
+                },
+                "recent": {
+                    "title": "हाल का काम",
+                    "subtitle": "3 ग्राहक (कल + आज)"
+                },
+                "week": {
+                    "title": "इस सप्ताह का काम",
+                    "subtitle": "3 ग्राहक (पिछले 7 दिन)"
+                }
+            }
         }
     }
 }

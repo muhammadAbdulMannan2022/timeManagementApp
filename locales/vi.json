@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "Xuất Portfolio",
             "subtitle": "Chia sẻ với giảng viên"
+        },
+        "exportTabs": {
+            "headerTitle": "Xuất Portfolio",
+            "headerSubtitle": "Chia sẻ với giảng viên",
+            "exportButton": "Xuất",
+            "tab1": "Xuất nhanh",
+            "tab2": "Cài đặt",
+            "exportPreview": "Xem trước xuất",
+            "clientsLabel": "Khách hàng",
+            "photoLabel": "Ảnh",
+            "pdfLabel": "Trang PDF",
+            "photoPreview": "Xem trước ảnh"
+        },
+        "singleExport": {
+            "selectRange": "Chọn phạm vi xuất",
+            "options": {
+                "today": {
+                    "title": "Công việc hôm nay",
+                    "subtitle": "2 khách hàng"
+                },
+                "recent": {
+                    "title": "Công việc gần đây",
+                    "subtitle": "3 khách hàng (hôm qua + hôm nay)"
+                },
+                "week": {
+                    "title": "Công việc tuần này",
+                    "subtitle": "3 khách hàng (7 ngày qua)"
+                }
+            }
         }
     }
 }

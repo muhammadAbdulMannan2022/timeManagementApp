@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "导出作品集",
             "subtitle": "与导师分享"
+        },
+        "exportTabs": {
+            "headerTitle": "导出作品集",
+            "headerSubtitle": "与导师分享",
+            "exportButton": "导出",
+            "tab1": "快速导出",
+            "tab2": "设置",
+            "exportPreview": "导出预览",
+            "clientsLabel": "客户",
+            "photoLabel": "照片",
+            "pdfLabel": "PDF 页面",
+            "photoPreview": "照片预览"
+        },
+        "singleExport": {
+            "selectRange": "选择导出范围",
+            "options": {
+                "today": {
+                    "title": "今天的工作",
+                    "subtitle": "2 客户"
+                },
+                "recent": {
+                    "title": "最近的工作",
+                    "subtitle": "3 客户 (昨天 + 今天)"
+                },
+                "week": {
+                    "title": "本周的工作",
+                    "subtitle": "3 客户 (过去 7 天)"
+                }
+            }
         }
     }
 }

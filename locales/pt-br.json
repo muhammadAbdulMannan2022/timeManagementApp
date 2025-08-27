@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "Exportar Portfólio",
             "subtitle": "Compartilhar com o instrutor"
+        },
+        "exportTabs": {
+            "headerTitle": "Exportar Portfólio",
+            "headerSubtitle": "Compartilhar com o instrutor",
+            "exportButton": "Exportar",
+            "tab1": "Exportação Rápida",
+            "tab2": "Configurações",
+            "exportPreview": "Pré-visualização de Exportação",
+            "clientsLabel": "Clientes",
+            "photoLabel": "Foto",
+            "pdfLabel": "Página PDF",
+            "photoPreview": "Pré-visualização de Foto"
+        },
+        "singleExport": {
+            "selectRange": "Selecione o intervalo de exportação",
+            "options": {
+                "today": {
+                    "title": "Trabalho de hoje",
+                    "subtitle": "2 clientes"
+                },
+                "recent": {
+                    "title": "Trabalho recente",
+                    "subtitle": "3 clientes (ontem + hoje)"
+                },
+                "week": {
+                    "title": "Trabalho desta semana",
+                    "subtitle": "3 clientes (últimos 7 dias)"
+                }
+            }
         }
     }
 }

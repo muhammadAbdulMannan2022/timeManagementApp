@@ -1,34 +1,36 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Text, TouchableOpacity, View } from "react-native";
 
 export default function SingleExport() {
     const [selected, setSelected] = useState("today");
+    const { t } = useTranslation()
 
     const options = [
         {
             key: "today",
-            title: "Today's Work",
-            subtitle: "2 client",
+            title: t("calendar.singleExport.options.today.title"),
+            subtitle: `2 ${t("calendar.singleExport.options.today.subtitle")}`,
             icon: { name: "calendar-today", color: "#00B8D4" },
         },
         {
             key: "recent",
-            title: "Recent Work",
-            subtitle: "3 client (yesterday + today)",
+            title: t("calendar.singleExport.options.recent.title"),
+            subtitle: `2 ${t("calendar.singleExport.options.recent.subtitle")}`,
             icon: { name: "history", color: "#00B8D4" },
         },
         {
             key: "week",
-            title: "This week’s work",
-            subtitle: "3 client (past 7 days)",
+            title: t("calendar.singleExport.options.week.title"),
+            subtitle: `2 ${t("calendar.singleExport.options.week.subtitle")}`,
             icon: { name: "calendar-month", color: "#00B8D4" },
         },
     ];
 
     return (
         <View className="flex-1 bg-white p-4">
-            <Text className="text-lg font-bold mb-4">Select Export Range</Text>
+            <Text className="text-lg font-bold mb-4">{t("calendar.singleExport.selectRange")}</Text>
 
             {options.map((item) => {
                 const isActive = selected === item.key;

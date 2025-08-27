@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "ポートフォリオをエクスポート",
             "subtitle": "インストラクターと共有"
+        },
+        "exportTabs": {
+            "headerTitle": "ポートフォリオをエクスポート",
+            "headerSubtitle": "インストラクターと共有",
+            "exportButton": "エクスポート",
+            "tab1": "クイックエクスポート",
+            "tab2": "設定",
+            "exportPreview": "エクスポートプレビュー",
+            "clientsLabel": "クライアント",
+            "photoLabel": "写真",
+            "pdfLabel": "PDFページ",
+            "photoPreview": "写真プレビュー"
+        },
+        "singleExport": {
+            "selectRange": "エクスポート範囲を選択",
+            "options": {
+                "today": {
+                    "title": "今日の作業",
+                    "subtitle": "クライアント 2名"
+                },
+                "recent": {
+                    "title": "最近の作業",
+                    "subtitle": "クライアント 3名 (昨日 + 今日)"
+                },
+                "week": {
+                    "title": "今週の作業",
+                    "subtitle": "クライアント 3名 (過去7日間)"
+                }
+            }
         }
     }
 }

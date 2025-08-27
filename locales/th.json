@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "ส่งออกผลงาน",
             "subtitle": "แชร์กับผู้สอน"
+        },
+        "exportTabs": {
+            "headerTitle": "ส่งออกผลงาน",
+            "headerSubtitle": "แชร์กับผู้สอน",
+            "exportButton": "ส่งออก",
+            "tab1": "ส่งออกด่วน",
+            "tab2": "การตั้งค่า",
+            "exportPreview": "ตัวอย่างการส่งออก",
+            "clientsLabel": "ลูกค้า",
+            "photoLabel": "รูปภาพ",
+            "pdfLabel": "หน้า PDF",
+            "photoPreview": "ตัวอย่างรูปภาพ"
+        },
+        "singleExport": {
+            "selectRange": "เลือกช่วงการส่งออก",
+            "options": {
+                "today": {
+                    "title": "งานวันนี้",
+                    "subtitle": "ลูกค้า 2 ราย"
+                },
+                "recent": {
+                    "title": "งานล่าสุด",
+                    "subtitle": "ลูกค้า 3 ราย (เมื่อวาน + วันนี้)"
+                },
+                "week": {
+                    "title": "งานสัปดาห์นี้",
+                    "subtitle": "ลูกค้า 3 ราย (7 วันที่ผ่านมา)"
+                }
+            }
         }
     }
 }

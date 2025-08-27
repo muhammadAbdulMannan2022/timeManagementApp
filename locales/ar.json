@@ -74,6 +74,35 @@
         "gradientTab": {
             "title": "تصدير المحفظة",
             "subtitle": "مشاركتها مع المدرس"
+        },
+        "exportTabs": {
+            "headerTitle": "تصدير المحفظة",
+            "headerSubtitle": "مشاركتها مع المدرس",
+            "exportButton": "تصدير",
+            "tab1": "تصدير سريع",
+            "tab2": "الإعدادات",
+            "exportPreview": "معاينة التصدير",
+            "clientsLabel": "العملاء",
+            "photoLabel": "صورة",
+            "pdfLabel": "صفحة PDF",
+            "photoPreview": "معاينة الصورة"
+        },
+        "singleExport": {
+            "selectRange": "اختر نطاق التصدير",
+            "options": {
+                "today": {
+                    "title": "عمل اليوم",
+                    "subtitle": "2 عميل"
+                },
+                "recent": {
+                    "title": "العمل الأخير",
+                    "subtitle": "3 عملاء (أمس + اليوم)"
+                },
+                "week": {
+                    "title": "عمل هذا الأسبوع",
+                    "subtitle": "3 عملاء (آخر 7 أيام)"
+                }
+            }
         }
     }
 }
