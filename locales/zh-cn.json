@@ -64,5 +64,16 @@
         "completionTimeTrend": "完成时间趋势",
         "serviceDay": "服务日",
         "services": "服务"
+    },
+    "calendar": {
+        "title": "服务日历",
+        "subtitle": "专业美甲服务追踪",
+        "processes": "流程",
+        "clients": "客户",
+        "noSteps": "该日期没有步骤",
+        "gradientTab": {
+            "title": "导出作品集",
+            "subtitle": "与导师分享"
+        }
     }
 }

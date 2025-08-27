@@ -64,5 +64,16 @@
         "completionTimeTrend": "Completion Time Trend",
         "serviceDay": "Service Day",
         "services": "Services"
+    },
+    "calendar": {
+        "title": "Service Calendar",
+        "subtitle": "Professional nail service tracking",
+        "processes": "Processes",
+        "clients": "Clients",
+        "noSteps": "No steps for this date",
+        "gradientTab": {
+            "title": "Export Portfolio",
+            "subtitle": "Share with instructor"
+        }
     }
 }

@@ -64,5 +64,16 @@
         "completionTimeTrend": "समाप्ति समय रुझान",
         "serviceDay": "सेवा दिवस",
         "services": "सेवाएं"
+    },
+    "calendar": {
+        "title": "सेवा कैलेंडर",
+        "subtitle": "पेशेवर नेल सेवा ट्रैकिंग",
+        "processes": "प्रक्रियाएँ",
+        "clients": "क्लाइंट्स",
+        "noSteps": "इस तारीख के लिए कोई स्टेप्स नहीं",
+        "gradientTab": {
+            "title": "पोर्टफोलियो निर्यात करें",
+            "subtitle": "Instruktor के साथ साझा करें"
+        }
     }
 }

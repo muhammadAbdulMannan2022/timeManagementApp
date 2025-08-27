@@ -64,5 +64,16 @@
         "completionTimeTrend": "Trend der Abschlusszeit",
         "serviceDay": "Servicetag",
         "services": "Dienste"
+    },
+    "calendar": {
+        "title": "Servicekalender",
+        "subtitle": "Professionelles Nagelservice-Tracking",
+        "processes": "Prozesse",
+        "clients": "Kunden",
+        "noSteps": "Keine Schritte für dieses Datum",
+        "gradientTab": {
+            "title": "Portfolio exportieren",
+            "subtitle": "Mit Ausbilder teilen"
+        }
     }
 }

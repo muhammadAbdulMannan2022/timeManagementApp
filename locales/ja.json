@@ -64,5 +64,16 @@
         "completionTimeTrend": "完了時間の傾向",
         "serviceDay": "サービス日",
         "services": "サービス"
+    },
+    "calendar": {
+        "title": "サービスカレンダー",
+        "subtitle": "プロのネイルサービス追跡",
+        "processes": "プロセス",
+        "clients": "クライアント",
+        "noSteps": "この日のステップはありません",
+        "gradientTab": {
+            "title": "ポートフォリオをエクスポート",
+            "subtitle": "インストラクターと共有"
+        }
     }
 }

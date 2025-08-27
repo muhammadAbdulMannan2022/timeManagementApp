@@ -64,5 +64,16 @@
         "completionTimeTrend": "Tendance du Temps de Réalisation",
         "serviceDay": "Jour de Service",
         "services": "Services"
+    },
+    "calendar": {
+        "title": "Calendrier des services",
+        "subtitle": "Suivi professionnel des services de manucure",
+        "processes": "Processus",
+        "clients": "clients",
+        "noSteps": "Aucune étape pour cette date",
+        "gradientTab": {
+            "title": "Exporter le Portfolio",
+            "subtitle": "Partager avec l'instructeur"
+        }
     }
 }

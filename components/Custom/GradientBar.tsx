@@ -1,9 +1,11 @@
 import { FontAwesome, FontAwesome6 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 export default function GradientTab() {
+    const { t } = useTranslation()
     const router = useRouter()
     return (
         <TouchableOpacity onPress={() => router.push("/Calender/Export")} className='mt-8'>
@@ -19,8 +21,8 @@ export default function GradientTab() {
                     </View>
                     <View className='flex-1 flex-row justify-between items-center'>
                         <View>
-                            <Text className='text-2xl text-white font-bold'>Export Protfolio</Text>
-                            <Text className='text-xl text-white font-light'>Share with instructor</Text>
+                            <Text className='text-2xl text-white font-bold'>{t("calendar.gradientTab.title")}</Text>
+                            <Text className='text-xl text-white font-light'>{t("calendar.gradientTab.subtitle")}</Text>
                         </View>
                         <View>
                             <FontAwesome name='angle-right' size={32} color="#ffffff" />

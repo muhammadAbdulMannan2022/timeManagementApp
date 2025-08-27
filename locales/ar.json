@@ -64,5 +64,16 @@
         "completionTimeTrend": "اتجاه وقت الإنجاز",
         "serviceDay": "يوم الخدمة",
         "services": "الخدمات"
+    },
+    "calendar": {
+        "title": "تقويم الخدمة",
+        "subtitle": "تتبع خدمة الأظافر الاحترافية",
+        "processes": "العمليات",
+        "clients": "العملاء",
+        "noSteps": "لا توجد خطوات لهذا التاريخ",
+        "gradientTab": {
+            "title": "تصدير المحفظة",
+            "subtitle": "مشاركتها مع المدرس"
+        }
     }
 }

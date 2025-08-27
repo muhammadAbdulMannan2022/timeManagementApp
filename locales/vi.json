@@ -64,5 +64,16 @@
         "completionTimeTrend": "Xu hướng thời gian hoàn thành",
         "serviceDay": "Ngày dịch vụ",
         "services": "Dịch vụ"
+    },
+    "calendar": {
+        "title": "Lịch Dịch Vụ",
+        "subtitle": "Theo dõi dịch vụ làm móng chuyên nghiệp",
+        "processes": "Quy trình",
+        "clients": "Khách hàng",
+        "noSteps": "Không có bước nào cho ngày này",
+        "gradientTab": {
+            "title": "Xuất Portfolio",
+            "subtitle": "Chia sẻ với giảng viên"
+        }
     }
 }

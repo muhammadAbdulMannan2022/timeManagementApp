@@ -3,6 +3,7 @@ import ItemsCard from "@/components/Custom/ItemsCard";
 import { RootState } from "@/redux/store";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Calendar, DateData } from "react-native-calendars";
 import { useSelector } from "react-redux";
@@ -20,7 +21,7 @@ type MarkedDatesType = Record<
 
 export default function App() {
     const processes = useSelector((state: RootState) => state.clientRecords?.processes ?? []);
-
+    const { t } = useTranslation()
     const formatDate = (date: string | undefined | null) => {
         if (!date) return "";
         const d = new Date(date);
@@ -119,9 +120,9 @@ export default function App() {
                 <View className="flex-row items-center gap-4 my-8">
                     <Ionicons name="calendar-sharp" size={40} color="#00B8D4" />
                     <View>
-                        <Text className="text-[#00B8D4] text-3xl font-bold">Service Calendar</Text>
+                        <Text className="text-[#00B8D4] text-3xl font-bold">{t("calendar.title")}</Text>
                         <Text className="text-[#818181] text-xl">
-                            Professional nail service tracking
+                            {t("calendar.subtitle")}
                         </Text>
                     </View>
                 </View>
@@ -217,11 +218,11 @@ export default function App() {
                         <View className="flex-row items-center gap-2">
                             <MaterialCommunityIcons name="clock" size={24} color="#00B8D4" />
                             <Text className="text-2xl font-bold">
-                                {totalProcessesToday}/{totalProcesses} Processes
+                                {totalProcessesToday}/{totalProcesses} {t("calendar.processes")}
                             </Text>
                         </View>
                         <View className="bg-[#00B8D447] px-4 py-2 rounded-full">
-                            <Text className="text-[#00B8D4]">{totalProcessesToday} clients</Text>
+                            <Text className="text-[#00B8D4]">{totalProcessesToday} {t("calendar.clients")}</Text>
                         </View>
                     </View>
 
@@ -239,7 +240,7 @@ export default function App() {
                             ))
                         ) : (
                             <Text style={{ textAlign: "center", color: "gray", marginTop: 12 }}>
-                                No steps for this date
+                                {t("calendar.noSteps")}
                             </Text>
                         )}
                         <GradientTab />

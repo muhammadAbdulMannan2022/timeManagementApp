@@ -64,5 +64,16 @@
         "completionTimeTrend": "완료 시간 추세",
         "serviceDay": "서비스 일",
         "services": "서비스"
+    },
+    "calendar": {
+        "title": "서비스 달력",
+        "subtitle": "전문 네일 서비스 추적",
+        "processes": "프로세스",
+        "clients": "고객",
+        "noSteps": "이 날짜에 대한 단계가 없습니다",
+        "gradientTab": {
+            "title": "포트폴리오 내보내기",
+            "subtitle": "강사와 공유"
+        }
     }
 }

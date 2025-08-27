@@ -90,6 +90,17 @@ interface TranslationResources {
         completionTimeTrend: string;
         serviceDay: string;
         services: string;
+    },
+    calendar: {
+        title: string;
+        subtitle: string;
+        processes: string;
+        clients: string;
+        noSteps: string;
+        gradientTab: {
+            title: string;
+            subtitle: string;
+        }
     }
 }
 

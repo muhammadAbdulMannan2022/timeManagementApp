@@ -64,5 +64,16 @@
         "completionTimeTrend": "Andamento Tempo di Completamento",
         "serviceDay": "Giorno di Servizio",
         "services": "Servizi"
+    },
+    "calendar": {
+        "title": "Calendario dei Servizi",
+        "subtitle": "Tracciamento professionale dei servizi per unghie",
+        "processes": "Processi",
+        "clients": "Clienti",
+        "noSteps": "Nessun passaggio per questa data",
+        "gradientTab": {
+            "title": "Esporta Portfolio",
+            "subtitle": "Condividi con l'istruttore"
+        }
     }
 }

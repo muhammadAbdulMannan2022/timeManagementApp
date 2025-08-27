@@ -64,5 +64,16 @@
         "completionTimeTrend": "Tendencia del Tiempo de Finalización",
         "serviceDay": "Día de Servicio",
         "services": "Servicios"
+    },
+    "calendar": {
+        "title": "Calendario de servicios",
+        "subtitle": "Seguimiento profesional de servicios de uñas",
+        "processes": "Procesos",
+        "clients": "clientes",
+        "noSteps": "No hay pasos para esta fecha",
+        "gradientTab": {
+            "title": "Exportar Portafolio",
+            "subtitle": "Compartir con el instructor"
+        }
     }
 }
