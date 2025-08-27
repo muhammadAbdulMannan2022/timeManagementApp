@@ -1,5 +1,6 @@
 import PlaceIcon from '@/components/Custom/PlaceIcon';
 import LanguageModal from '@/components/Modals/LanguageModal';
+import PricingModal from '@/components/Modals/PriceingModal';
 import { RootState } from '@/redux/store';
 import { FontAwesome, FontAwesome5, FontAwesome6, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -143,6 +144,7 @@ const Settings: React.FC = () => {
                         </TouchableOpacity>
                     </View>
                     <LanguageModal visible={languageModalVisible} onClose={() => setLanguageModalVisible(false)} />
+                    <PricingModal visible={pricingModalVisible} onClose={() => setPricingModalVisible(false)} />
                 </ScrollView>
             </SafeAreaView>
         </View>
