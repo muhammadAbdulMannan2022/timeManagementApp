@@ -1,3 +1,4 @@
+import { Entypo } from '@expo/vector-icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -12,35 +13,42 @@ interface SettingsUpdateProps {
 export default function SettingsUpdate({ setIsEditing, setIsEditingId, onIconPress }: SettingsUpdateProps) {
     const { t } = useTranslation();
     const [text, setText] = useState('');
-    const [time, setTime] = useState('');
+    const [time, setTime] = useState(0);
 
-    const handleTimeChange = (input: string) => {
-        // allow only digits
-        const sanitized = input.replace(/[^0-9]/g, '');
-        // insert ":" after every 2 digits, except at the end
-        const formatted = sanitized.replace(/(\d{2})(?=\d)/g, '$1:');
-        setTime(formatted);
-    };
+
 
     return (
-        <View className="p-5">
-            <Text className="text-base font-medium mb-2">{t('settingsUpd.enterText')}</Text>
-            <TextInput
-                className="border border-gray-300 p-3 mb-5 rounded-lg"
-                placeholder={t('settingsUpd.typeSomething')}
-                value={text}
-                onChangeText={setText}
-            />
+        <View className="p-5 pt-2">
+            <View className='border px-5 py-3 mb-5 border-gray-200 flex-row items-center' style={{ borderRadius: 10, borderColor: "#e5e7eb" }}>
+                {/* <Text className="text-xl font-medium  ">{t('settingsUpd.enterText')}</Text> */}
+                <TextInput
+                    className=" flex-1 h-full p-3  rounded-lg"
+                    placeholder={t('settingsUpd.typeSomething')}
+                    value={text}
+                    onChangeText={setText}
+                />
+            </View>
 
-            <Text className="text-base font-medium mb-2">{t('settingsUpd.setTimer')}</Text>
-            <TextInput
-                className="border border-gray-300 p-3 rounded-lg"
-                placeholder="00:20:00"
-                value={time}
-                onChangeText={handleTimeChange}
-                keyboardType="numeric"
-                maxLength={8}
-            />
+            <View className='flex-row items-center border border-gray-200 px-5 py-3 gap-2 justify-between' style={{ borderRadius: 10, borderColor: "#e5e7eb" }} >
+                {/* <Text className="text-xl font-medium mb-2">{t('settingsUpd.setTimer')}</Text> */}
+                <View className='flex-row gap-3 flex-1 justify-between' style={{ borderRadius: 10, borderColor: "#e5e7eb" }}>
+                    <TouchableOpacity onPress={() => {
+                        setTime(time => time += 10)
+                    }} className='p-2 border border-gray-200' style={{ borderRadius: "100%" }}><Entypo name="plus" size={24} color="#00B8D4" /></TouchableOpacity>
+                    <Text
+                        className="text-lg p-3 rounded-lg"
+
+                    >{time}</Text>
+                    <TouchableOpacity onPress={() => {
+
+                        if (time > 10) {
+                            return setTime(time => time -= 10)
+                        }
+
+                    }} className='p-2 border border-gray-200' style={{ borderRadius: "100%" }}><Entypo name="minus" size={24} color="#00B8D4" /></TouchableOpacity>
+
+                </View>
+            </View>
 
             <IconGrid onIconPress={onIconPress} />
 

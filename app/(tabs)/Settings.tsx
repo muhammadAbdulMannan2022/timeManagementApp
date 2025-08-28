@@ -101,7 +101,7 @@ const Settings: React.FC = () => {
                                 <Text className="text-white text-lg font-semibold">{t('settings.expectedTime')}</Text>
                             </View>
                         </View>
-                        <View className="flex-row items-center gap-5 my-5">
+                        <View className="flex-row items-center gap-5 mt-5">
                             <MaterialCommunityIcons name="heart-flash" size={28} color="#00B8D4" />
                             <Text className="text-2xl font-bold">{t('settings.serviceSettings')}</Text>
                         </View>

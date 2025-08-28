@@ -102,13 +102,13 @@ export default function Analytics() {
                         <View className="flex-1 items-center bg-[#E8F9FB] py-5 rounded-xl gap-1">
                             <AntDesign name="checkcircle" size={18} color="#00B8D4" />
                             <Text className="text-[#818181]">{t("analytics.onTimeRate")}</Text>
-                            <Text className="text-[#818181] text-2xl font-bold">{onTimeRate.toFixed(1)}%</Text>
+                            <Text className="text-[#818181] text-2xl font-bold">{onTimeRate.toFixed(0)}%</Text>
                         </View>
 
                         <View className="flex-1 items-center bg-[#E8F9FB] py-5 rounded-xl gap-1">
                             <FontAwesome name="warning" size={18} color="#F9A61D" />
                             <Text className="text-[#818181]">{t("analytics.overtimeRate")}</Text>
-                            <Text className="text-[#818181] text-2xl font-bold">{overTimeRate.toFixed(1)}%</Text>
+                            <Text className="text-[#818181] text-2xl font-bold">{overTimeRate.toFixed(0)}%</Text>
                         </View>
                     </View>
                     <View className='bg-white rounded-xl shadow p-4 mb-4 gap-4'>

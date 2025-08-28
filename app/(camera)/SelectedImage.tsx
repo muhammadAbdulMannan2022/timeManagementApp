@@ -200,56 +200,58 @@ export default function SelectedImages() {
 
 
     return (
-        <SafeAreaView className="flex-1 bg-white">
-            <View className="flex-1 items-center px-4">
-                <View
-                    className="flex-row items-center justify-between w-full p-3 mt-2 bg-white rounded-md"
-                    style={{
-                        shadowColor: '#000000',
-                        shadowOffset: { width: 0, height: 1 },
-                        shadowOpacity: 0.1,
-                        shadowRadius: 4,
-                        elevation: 1.5, // Android shadow
-                    }}
-                >
-                    <TouchableOpacity onPress={() => router.navigate("/(tabs)")}>
-                        <Ionicons name="close" size={24} color="#000" />
-                    </TouchableOpacity>
-                    <View className="items-center">
-                        <Text className="text-gray-900 font-bold text-lg">Removal</Text>
-                        <Text className="text-gray-500">Photo Records</Text>
+        <ScrollView>
+            <SafeAreaView className="flex-1 bg-white">
+                <View className="flex-1 items-center px-4">
+                    <View
+                        className="flex-row items-center justify-between w-full p-3 mt-2 bg-white rounded-md"
+                        style={{
+                            shadowColor: '#000000',
+                            shadowOffset: { width: 0, height: 1 },
+                            shadowOpacity: 0.1,
+                            shadowRadius: 4,
+                            elevation: 1.5, // Android shadow
+                        }}
+                    >
+                        <TouchableOpacity onPress={() => router.navigate("/(tabs)")}>
+                            <Ionicons name="close" size={24} color="#000" />
+                        </TouchableOpacity>
+                        <View className="items-center">
+                            <Text className="text-gray-900 font-bold text-lg">Removal</Text>
+                            <Text className="text-gray-500">Photo Records</Text>
+                        </View>
+                        <View>
+                            <Text className="text-gray-500">Photos (1/5)</Text>
+                        </View>
                     </View>
-                    <View>
-                        <Text className="text-gray-500">Photos (1/5)</Text>
+                    <View
+                        className="w-full mt-4 p-4 bg-white rounded-xl"
+                        style={{
+                            shadowColor: '#000',
+                            shadowOffset: { width: 0, height: 2 },
+                            shadowOpacity: 0.1,
+                            shadowRadius: 3,
+                            elevation: 4, // Android shadow
+                        }}
+                    >
+                        <View className="flex-row  items-center justify-between mb-5">
+                            <Text className="text-black text-xl font-bold mb-2">Photos (1/5)</Text>
+                            <Text className="text-gray-500 text-sm mb-4">Tap to select photo for editing notes</Text>
+                        </View>
+                        <FlatList
+                            data={stepImages}
+                            renderItem={renderImageItem}
+                            keyExtractor={(item, index) => `${item.uri}-${index}`}
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                            ListFooterComponent={renderFooter}
+                            contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 10 }}
+                        />
                     </View>
+                    {renderNoteSection()}
+                    {renderSaveButton()}
                 </View>
-                <View
-                    className="w-full mt-4 p-4 bg-white rounded-xl"
-                    style={{
-                        shadowColor: '#000',
-                        shadowOffset: { width: 0, height: 2 },
-                        shadowOpacity: 0.1,
-                        shadowRadius: 3,
-                        elevation: 4, // Android shadow
-                    }}
-                >
-                    <View className="flex-row  items-center justify-between mb-5">
-                        <Text className="text-black text-xl font-bold mb-2">Photos (1/5)</Text>
-                        <Text className="text-gray-500 text-sm mb-4">Tap to select photo for editing notes</Text>
-                    </View>
-                    <FlatList
-                        data={stepImages}
-                        renderItem={renderImageItem}
-                        keyExtractor={(item, index) => `${item.uri}-${index}`}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                        ListFooterComponent={renderFooter}
-                        contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 10 }}
-                    />
-                </View>
-                {renderNoteSection()}
-                {renderSaveButton()}
-            </View>
-        </SafeAreaView>
+            </SafeAreaView>
+        </ScrollView>
     );
 }

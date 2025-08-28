@@ -19,7 +19,7 @@
     "settingsUpd": {
         "enterText": "Enter text:",
         "typeSomething": "Type something...",
-        "setTimer": "Set timer (HH:MM:SS):",
+        "setTimer": "Set timer (MM):",
         "cancel": "Cancel",
         "save": "Save"
     },
