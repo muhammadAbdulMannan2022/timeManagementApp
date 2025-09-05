@@ -5,7 +5,7 @@ import { ImageBackground, StatusBar, Text, TextInput, TouchableOpacity, View } f
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Gradient background image (replace with your own or use a local asset)
-const backgroundImage = 'https://images.unsplash.com/photo-1505373877841-930c8e1f6922?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80';
+const backgroundImage = 'https://i.ibb.co.com/KjDXZW8L/teenager-pointing-to-laptop-28273841.jpg';
 
 const SignUpScreen: React.FC = () => {
     const [name, setName] = useState('');
@@ -23,7 +23,7 @@ const SignUpScreen: React.FC = () => {
         }
         console.log('Sign-up attempted with:', { name, email, password });
         // Add your sign-up logic here (e.g., API call)
-        router.push('/(auth)'); // Navigate to login after success
+        router.push('/(auth)/Otp'); // Navigate to login after success
     };
 
     return (
@@ -51,6 +51,7 @@ const SignUpScreen: React.FC = () => {
                                 onChangeText={setName}
                                 autoCapitalize="words"
                                 autoCorrect={false}
+                                placeholderTextColor="#000000"
                             />
                         </View>
 
@@ -64,6 +65,7 @@ const SignUpScreen: React.FC = () => {
                                 keyboardType="email-address"
                                 autoCapitalize="none"
                                 autoCorrect={false}
+                                placeholderTextColor="#000000"
                             />
                         </View>
 
@@ -76,6 +78,7 @@ const SignUpScreen: React.FC = () => {
                                 onChangeText={setPassword}
                                 secureTextEntry={!showPassword}
                                 autoCapitalize="none"
+                                placeholderTextColor="#000000"
                             />
                             <TouchableOpacity
                                 className="absolute right-3"
@@ -98,6 +101,7 @@ const SignUpScreen: React.FC = () => {
                                 onChangeText={setConfirmPassword}
                                 secureTextEntry={!showConfirmPassword}
                                 autoCapitalize="none"
+                                placeholderTextColor="#000000"
                             />
                             <TouchableOpacity
                                 className="absolute right-3"

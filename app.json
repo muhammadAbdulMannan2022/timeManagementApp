@@ -1,16 +1,21 @@
 {
   "expo": {
-    "name": "myNewApp",
-    "slug": "myNewApp",
+    "name": "Alvinlu Time App",
+    "slug": "alvinluTimeApp",
+    "owner": "muhammadabdulmannan21",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "mynewapp",
+    "scheme": "alvinluTimeApp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "1"
+      "buildNumber": "1",
+      "bundleIdentifier": "com.muhammadabdulmannan21.alvinluTimeApp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "versionCode": 1,
@@ -19,7 +24,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.programalltest.myNewApp",
+      "package": "com.muhammadabdulmannan21.alvinluTimeApp",
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
@@ -64,7 +69,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "b28e06a3-0353-4b93-a382-e7839257a203"
+        "projectId": "b8cb1147-7365-4ff6-a344-b83e7585f8a9"
       }
     }
   }

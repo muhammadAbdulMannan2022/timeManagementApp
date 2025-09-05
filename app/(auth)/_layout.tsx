@@ -3,7 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function Layout() {
     return (
-        <SafeAreaProvider>
+        <SafeAreaProvider className='flex-1 bg-white'>
             <Stack screenOptions={{ headerShown: false }} >
             </Stack>
         </SafeAreaProvider>

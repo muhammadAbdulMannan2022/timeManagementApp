@@ -6,7 +6,7 @@ import { ImageBackground, StatusBar, Text, TextInput, TouchableOpacity, View } f
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Gradient background image (replace with your own or use a local asset)
-const backgroundImage = 'https://images.unsplash.com/photo-1505373877841-930c8e1f6922?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80';
+const backgroundImage = 'https://i.ibb.co.com/KjDXZW8L/teenager-pointing-to-laptop-28273841.jpg';
 
 const LoginScreen: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -22,13 +22,14 @@ const LoginScreen: React.FC = () => {
 
     return (
         // <ScrollView className='flex-1'>
-        <SafeAreaView className="flex-1 ">
-            <StatusBar barStyle="light-content" />
-            <ImageBackground
-                source={{ uri: backgroundImage }}
-                className="flex-1 justify-center items-center"
-                imageStyle={{ opacity: 0.7 }}
-            >
+        <ImageBackground
+            source={{ uri: backgroundImage }}
+            className="flex-1 bg-white"
+            imageStyle={{ opacity: 0.7 }}
+        >
+            <SafeAreaView className="flex-1  justify-center items-center">
+                <StatusBar barStyle="light-content" />
+
                 <View className="bg-white/90 p-8 rounded-2xl w-11/12 max-w-md shadow-lg">
                     <View className="mb-6">
                         <Ionicons name="lock-closed" size={40} color="#00B8D4" className="mx-auto" />
@@ -47,18 +48,20 @@ const LoginScreen: React.FC = () => {
                                 keyboardType="email-address"
                                 autoCapitalize="none"
                                 autoCorrect={false}
+                                placeholderTextColor="#000000"
                             />
                         </View>
 
                         <View className="flex-row items-center bg-gray-100 rounded-lg p-3">
                             <Ionicons name="lock-closed" size={20} color="#00B8D4" className="mr-2" />
                             <TextInput
-                                className="flex-1 text-gray-700 pr-10" // Added padding-right for the icon
+                                className="flex-1 text-black pr-10" // Added padding-right for the icon
                                 placeholder="Password"
                                 value={password}
                                 onChangeText={setPassword}
                                 secureTextEntry={!showPassword}
                                 autoCapitalize="none"
+                                placeholderTextColor="#000000"
                             />
                             <TouchableOpacity
                                 className="absolute right-3"
@@ -91,8 +94,9 @@ const LoginScreen: React.FC = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </ImageBackground>
-        </SafeAreaView>
+                <StatusBar barStyle="dark-content" />
+            </SafeAreaView>
+        </ImageBackground>
         // </ScrollView>
     );
 };

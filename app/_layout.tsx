@@ -24,7 +24,7 @@ export default function RootLayout() {
       <Provider store={store}>
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
           <Slot />
-          <StatusBar style="auto" />
+          <StatusBar style='dark' />
         </ThemeProvider>
       </Provider>
     </LanguageProvider>

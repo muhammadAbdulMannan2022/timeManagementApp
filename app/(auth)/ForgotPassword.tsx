@@ -5,7 +5,7 @@ import { ImageBackground, StatusBar, Text, TextInput, TouchableOpacity, View } f
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Gradient background image (replace with your own or use a local asset)
-const backgroundImage = 'https://images.unsplash.com/photo-1505373877841-930c8e1f6922?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80';
+const backgroundImage = 'https://i.ibb.co.com/KjDXZW8L/teenager-pointing-to-laptop-28273841.jpg';
 
 const ForgotPasswordScreen: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ const ForgotPasswordScreen: React.FC = () => {
     };
 
     return (
-        <SafeAreaView className="flex-1">
+        <SafeAreaView className="flex-1 bg-white">
             <StatusBar barStyle="light-content" />
             <ImageBackground
                 source={{ uri: backgroundImage }}

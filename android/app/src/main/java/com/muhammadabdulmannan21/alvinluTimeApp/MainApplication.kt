@@ -1,4 +1,4 @@
-package com.programalltest.myNewApp
+package com.muhammadabdulmannan21.alvinluTimeApp
 
 import android.app.Application
 import android.content.res.Configuration
