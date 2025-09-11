@@ -1,30 +1,45 @@
-import { LanguageProvider } from '@/components/context/languageContext';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import store from '@/redux/store';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Slot } from 'expo-router'; // Import Slot
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-import { Provider } from 'react-redux';
-import '../global.css';
-
+import { LanguageProvider } from "@/components/context/languageContext";
+import store from "@/redux/store";
+import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import { Slot } from "expo-router"; // Import Slot
+import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
+import { Platform } from "react-native";
+import Purchases, { LOG_LEVEL } from "react-native-purchases";
+import "react-native-reanimated";
+import { Provider } from "react-redux";
+import "../global.css";
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
+  useEffect(() => {
+    Purchases.setLogLevel(LOG_LEVEL.VERBOSE);
+
+    if (Platform.OS === "ios") {
+      //  Purchases.configure({apiKey: <revenuecat_project_apple_api_key>});
+    } else if (Platform.OS === "android") {
+      Purchases.configure({ apiKey: "" });
+    }
+    getCustomerInfo();
+  }, []);
 
   if (!loaded) {
     return null;
   }
 
+  async function getCustomerInfo() {
+    const customerInfo = await Purchases.getCustomerInfo();
+    console.log(customerInfo);
+  }
+
   return (
     <LanguageProvider>
       <Provider store={store}>
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <ThemeProvider value={DefaultTheme}>
           <Slot />
-          <StatusBar style='dark' />
+          <StatusBar style="dark" />
         </ThemeProvider>
       </Provider>
     </LanguageProvider>
