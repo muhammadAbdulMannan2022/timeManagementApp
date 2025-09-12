@@ -124,14 +124,37 @@ const PremiumPlanPage: React.FC = () => {
       {/* CTA Button */}
       <TouchableOpacity
         className="bg-[#00B8D4] w-full py-3 rounded-xl flex-row justify-center items-center"
-        onPress={() => {
-          const annual = offerings?.current?.availablePackages.find(
-            (pkg: any) => pkg.identifier === "$rc_annual"
-          );
-          if (annual) {
-            console.log("Identifier:", annual);
-          } else {
-            console.log("❌ $rc_annual not found");
+        onPress={async () => {
+          try {
+            if (!offerings?.current)
+              return console.log("Offerings not loaded yet");
+
+            // Find the $rc_annual package
+            console.log(offerings, "kkkkkkkkkkkkkkkkkkkkkkk");
+            const annual = offerings.current.availablePackages.find(
+              (pkg: any) => pkg.identifier === "$rc_annual"
+            );
+
+            if (!annual) return console.log("❌ $rc_annual not found");
+
+            console.log("Purchasing:", annual.identifier);
+
+            // Trigger the purchase
+            const purchaseMade = await Purchases.purchasePackage(annual);
+
+            console.log("✅ Purchase successful:", purchaseMade);
+
+            // Optional: check if entitlement is active
+            const purchaserInfo = await Purchases.getCustomerInfo();
+            const isPremiumActive =
+              purchaserInfo.entitlements.active["premium"];
+            console.log("Premium active:", isPremiumActive);
+          } catch (err: any) {
+            if (!err.userCancelled) {
+              console.error("Purchase failed:", err);
+            } else {
+              console.log("Purchase cancelled by user");
+            }
           }
         }}
       >

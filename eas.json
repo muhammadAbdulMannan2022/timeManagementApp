@@ -1,22 +1,37 @@
 {
-    "build": {
-        "preview": {
-            "distribution": "internal",
-            "android": {
-                "buildType": "app-bundle"
-            },
-            "ios": {
-                "simulator": true
-            }
-        },
-        "production": {
-            "distribution": "store",
-            "android": {
-                "buildType": "app-bundle"
-            },
-            "ios": {
-                "simulator": false
-            }
-        }
+  "build": {
+    "development": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "simulator": true
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "ios": {
+        "simulator": true
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "ios": {
+        "simulator": false
+      }
+    },
+    "release": {
+      "android": {
+        "buildType": "app-bundle",
+        "ndk": "27.1.12297006"
+      }
     }
+  }
 }

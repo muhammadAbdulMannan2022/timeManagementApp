@@ -20,7 +20,7 @@ export default function RootLayout() {
     if (Platform.OS === "ios") {
       //  Purchases.configure({apiKey: <revenuecat_project_apple_api_key>});
     } else if (Platform.OS === "android") {
-      Purchases.configure({ apiKey: "" });
+      Purchases.configure({ apiKey: "goog_NrpbuWNNnlvFpYtwFRXxsiUlQLc" });
     }
     getCustomerInfo();
   }, []);
