@@ -26,7 +26,10 @@ export const authApi = createApi({
         body: loginData,
       }),
     }),
-    verifyOtp: builder.mutation<any, { email: string; otp: string }>({
+    verifyOtp: builder.mutation<
+      any,
+      { email: string; otp: string; purpose: string }
+    >({
       query: (otpData) => ({
         url: "/auth/verify-otp/",
         method: "POST",
@@ -35,16 +38,23 @@ export const authApi = createApi({
     }),
     forgotPass: builder.mutation<any, { email: string }>({
       query: (email) => ({
-        url: "/auth/forgot-password/",
+        url: "/auth/password-reset/request/",
         method: "POST",
         body: email,
       }),
     }),
     resendOtp: builder.mutation<any, { email: string }>({
       query: (eamil) => ({
-        url: "",
+        url: "/auth/resend-otp/",
         method: "POST",
         body: eamil,
+      }),
+    }),
+    setNewPass: builder.mutation<any, {}>({
+      query: (data) => ({
+        url: "/auth/password-reset/confirm/",
+        method: "POST",
+        body: data,
       }),
     }),
   }),
@@ -57,4 +67,5 @@ export const {
   useVerifyOtpMutation,
   useForgotPassMutation,
   useResendOtpMutation,
+  useSetNewPassMutation,
 } = authApi;

@@ -27,6 +27,7 @@ const LoginScreen: React.FC = () => {
   const handleLogin = async () => {
     // mark fields as touched on submit
     setTouched({ email: true, password: true });
+    console.log(email, password);
 
     if (!email || !password) return; // stop if any empty
 
@@ -37,7 +38,7 @@ const LoginScreen: React.FC = () => {
       // Save tokens securely
       await SecureStore.setItemAsync("accessToken", res.tokens.access);
       await SecureStore.setItemAsync("refreshToken", res.tokens.refresh);
-      await SecureStore.setItemAsync("userEmail", res.email);
+      await SecureStore.setItemAsync("userEmail", res.user_info.email); // <- fixed
 
       router.push("/(tabs)");
     } catch (err: any) {
@@ -45,7 +46,6 @@ const LoginScreen: React.FC = () => {
       setLogError(
         err?.data?.error || err?.error || "Sign in failed. Please try again."
       );
-      // optionally you can shake input or something
     }
   };
 

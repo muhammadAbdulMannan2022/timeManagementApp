@@ -1,6 +1,6 @@
-import { useForgotPassMutation } from "@/redux/apis/authSlice";
+import { useSetNewPassMutation } from "@/redux/apis/authSlice";
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
@@ -16,46 +16,51 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const backgroundImage =
   "https://i.ibb.co.com/KjDXZW8L/teenager-pointing-to-laptop-28273841.jpg";
 
-const ForgotPasswordScreen: React.FC = () => {
-  const [email, setEmail] = useState("");
+const SetNewPasswordScreen: React.FC = () => {
+  const { email, otp } = useLocalSearchParams<{ email: string; otp: string }>(); // passed from OTP screen
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
-  const [canResend, setCanResend] = useState(false); // control resend button
   const router = useRouter();
 
-  const [forgot, { isLoading }] = useForgotPassMutation();
+  const [setNewPass, { isLoading }] = useSetNewPassMutation();
 
-  const validateEmail = (value: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(value);
+  const validatePassword = (value: string) => {
+    return value.length >= 6;
   };
 
-  const handleResetPassword = async () => {
+  const handleSubmit = async () => {
     setError("");
+    console.log(email, password, confirm, otp);
 
-    if (!email.trim()) {
-      setError("Email is required");
+    if (!password || !confirm) {
+      setError("Both fields are required");
       return;
     }
-    if (!validateEmail(email)) {
-      setError("Enter a valid email");
+    if (!validatePassword(password)) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+    if (password !== confirm) {
+      setError("Passwords do not match");
       return;
     }
 
     try {
-      const res = await forgot({ email }).unwrap();
-      console.log("Password reset response:", res);
+      const res = await setNewPass({
+        email,
+        password,
+        password2: confirm,
+        otp,
+      }).unwrap();
+      console.log("Set new password response:", res);
 
-      setCanResend(true); // allow resend after success
-
-      // navigate if API success
-      router.push({
-        pathname: "/(auth)/Otp",
-        params: { email, purpose: "password_reset" },
-      });
+      // Navigate back to login
+      router.replace("/(auth)");
     } catch (err: any) {
-      console.log("Forgot password error:", err);
+      console.log("Set password error:", err);
       setError(
-        err?.data?.error || err?.error || "Something went wrong, try again."
+        err?.data?.error || err?.error || "Failed to set password. Try again."
       );
     }
   };
@@ -71,40 +76,58 @@ const ForgotPasswordScreen: React.FC = () => {
         <View className="bg-white/90 p-8 rounded-2xl w-11/12 max-w-md shadow-lg">
           <View className="mb-6">
             <Ionicons
-              name="key"
+              name="lock-closed"
               size={40}
               color="#00B8D4"
               className="mx-auto"
             />
             <Text className="text-3xl font-bold text-center text-gray-800 mt-2">
-              Forgot Password
+              Set New Password
             </Text>
             <Text className="text-center text-gray-500 mt-1">
-              Enter your email to reset your password
+              Enter and confirm your new password
             </Text>
           </View>
 
-          <View className="space-y-4">
+          <View className="space-y-4 gap-3">
             <View className="flex-row items-center bg-gray-100 rounded-lg p-3">
               <Ionicons
-                name="mail"
+                name="lock-closed-outline"
                 size={20}
                 color="#00B8D4"
                 className="mr-2"
               />
               <TextInput
                 className="flex-1 text-gray-700"
-                placeholder="Email"
-                value={email}
+                placeholder="New Password"
+                secureTextEntry
+                value={password}
                 onChangeText={(text) => {
-                  setEmail(text);
+                  setPassword(text);
                   if (error) setError("");
                 }}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
               />
             </View>
+
+            <View className="flex-row items-center bg-gray-100 rounded-lg p-3">
+              <Ionicons
+                name="lock-closed-outline"
+                size={20}
+                color="#00B8D4"
+                className="mr-2"
+              />
+              <TextInput
+                className="flex-1 text-gray-700"
+                placeholder="Confirm Password"
+                secureTextEntry
+                value={confirm}
+                onChangeText={(text) => {
+                  setConfirm(text);
+                  if (error) setError("");
+                }}
+              />
+            </View>
+
             {error ? (
               <Text className="text-red-500 text-sm mt-1">{error}</Text>
             ) : null}
@@ -114,35 +137,17 @@ const ForgotPasswordScreen: React.FC = () => {
             className={`mt-6 py-3 rounded-lg ${
               isLoading ? "bg-gray-300" : "bg-cyan-400"
             }`}
-            onPress={handleResetPassword}
+            onPress={handleSubmit}
             disabled={isLoading}
           >
             {isLoading ? (
               <ActivityIndicator color="#000" />
             ) : (
               <Text className="text-white text-center text-lg font-semibold">
-                Send Reset Code
+                Save Password
               </Text>
             )}
           </TouchableOpacity>
-
-          {/* {canResend && (
-            <TouchableOpacity
-              className={`mt-4 py-3 rounded-lg ${
-                isResendLoading ? "bg-gray-300" : "bg-orange-400"
-              }`}
-              onPress={handleResend}
-              disabled={isResendLoading}
-            >
-              {isResendLoading ? (
-                <ActivityIndicator color="#fff" />
-              ) : (
-                <Text className="text-white text-center text-lg font-semibold">
-                  Resend Code
-                </Text>
-              )}
-            </TouchableOpacity>
-          )} */}
 
           <TouchableOpacity
             className="mt-4"
@@ -158,4 +163,4 @@ const ForgotPasswordScreen: React.FC = () => {
   );
 };
 
-export default ForgotPasswordScreen;
+export default SetNewPasswordScreen;

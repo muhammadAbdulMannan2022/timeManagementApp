@@ -1,8 +1,12 @@
-import { useVerifyOtpMutation } from "@/redux/apis/authSlice";
+import {
+  useResendOtpMutation,
+  useVerifyOtpMutation,
+} from "@/redux/apis/authSlice";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
 import {
+  Alert,
   ImageBackground,
   StatusBar,
   Text,
@@ -21,7 +25,11 @@ const OTPScreen: React.FC = () => {
   const [error, setError] = useState<string | null>(null); // ❌ error state
   const router = useRouter();
   const inputRefs = useRef<TextInput[]>([]);
-  const { email } = useLocalSearchParams<{ email: string }>();
+  const { email, purpose } = useLocalSearchParams<{
+    email: string;
+    purpose: string;
+  }>();
+  const [resendOtp, { isLoading: isResendLoading }] = useResendOtpMutation();
   const [verifyOtp, { isLoading }] = useVerifyOtpMutation();
 
   const handleChange = (text: string, index: number) => {
@@ -57,12 +65,24 @@ const OTPScreen: React.FC = () => {
   };
 
   const handleVerify = async () => {
+    console.log(email, otp, purpose);
     const otpCode = otp.join("");
     if (otpCode.length === 4) {
       try {
-        const res = await verifyOtp({ email, otp: otpCode }).unwrap();
+        const res = await verifyOtp({
+          email,
+          otp: otpCode,
+          purpose: purpose,
+        }).unwrap();
         console.log("OTP verified ✅:", res);
-        router.push("/(auth)");
+        if (purpose === "password_reset") {
+          router.push({
+            pathname: "/(auth)/setNewPass",
+            params: { email, otp: otp.join("") },
+          });
+        } else {
+          router.push("/(auth)");
+        }
       } catch (err: any) {
         console.error("OTP failed ❌:", err);
         setError("Invalid OTP. Please try again.");
@@ -75,6 +95,20 @@ const OTPScreen: React.FC = () => {
   useEffect(() => {
     inputRefs.current[0]?.focus();
   }, []);
+  const handleResend = async () => {
+    setError("");
+    try {
+      const res = await resendOtp({ email }).unwrap();
+      console.log("Resend OTP response:", res);
+      // you can also show toast/snackbar here7281
+      Alert.alert("OTP sent to your email");
+    } catch (err: any) {
+      console.log("Resend error:", err);
+      setError(
+        err?.data?.error || err?.error || "Failed to resend code, try again."
+      );
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1">
@@ -146,10 +180,7 @@ const OTPScreen: React.FC = () => {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            className="mt-4"
-            onPress={() => router.push("/(auth)/ForgotPassword")}
-          >
+          <TouchableOpacity className="mt-4" onPress={() => handleResend()}>
             <Text className="text-center text-cyan underline">Resend Code</Text>
           </TouchableOpacity>
 

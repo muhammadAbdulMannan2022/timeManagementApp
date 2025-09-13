@@ -94,7 +94,7 @@ const SignUpScreen: React.FC = () => {
 
       router.push({
         pathname: "/(auth)/Otp",
-        params: { email },
+        params: { email, purpose: "registration" },
       });
     } catch (err: any) {
       console.error("❌ Registration failed:", err);
