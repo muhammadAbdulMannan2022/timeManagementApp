@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Alvinlu Time App",
+    "name": "Tickin",
     "slug": "alvinluTimeApp",
     "owner": "muhammadabdulmannan21",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/splash-icon.png",
     "scheme": "alvinluTimeApp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,12 +13,13 @@
       "supportsTablet": true,
       "buildNumber": "1",
       "bundleIdentifier": "com.muhammadabdulmannan21.alvinluTimeApp",
+      "icon": "./assets/images/splash-icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
-      "versionCode": 1,
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -40,9 +41,9 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/icon.png",
+          "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
-          "resizeMode": "contain",
+          "resizeMode": "cover",
           "backgroundColor": "#ffffff"
         }
       ],

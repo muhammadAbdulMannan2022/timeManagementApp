@@ -30,7 +30,7 @@ const SignUpScreen: React.FC = () => {
     password: false,
     confirmPassword: false,
   });
-
+  const [regError, setRegError] = useState("");
   const [register, { isLoading, isError, error }] = useAddUserMutation();
 
   const validate = () => {
@@ -96,8 +96,13 @@ const SignUpScreen: React.FC = () => {
         pathname: "/(auth)/Otp",
         params: { email },
       });
-    } catch (err) {
+    } catch (err: any) {
       console.error("❌ Registration failed:", err);
+      setRegError(
+        err?.data?.error ||
+          err?.error ||
+          "Registration failed. Please try again."
+      );
     }
   };
 
@@ -237,9 +242,7 @@ const SignUpScreen: React.FC = () => {
           </View>
 
           {isError && (
-            <Text className="text-red-500 text-center mt-2">
-              Registration failed. Please try again.
-            </Text>
+            <Text className="text-red-500 text-center mt-2">{regError}</Text>
           )}
 
           <TouchableOpacity

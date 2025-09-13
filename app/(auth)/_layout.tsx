@@ -12,6 +12,7 @@ export default function Layout() {
       const token = await SecureStore.getItemAsync("accessToken");
 
       if (token) {
+        // await SecureStore.deleteItemAsync("accessToken");
         // token exists → redirect to main app
         router.replace("/(tabs)");
       } else {

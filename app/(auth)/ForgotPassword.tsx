@@ -1,66 +1,179 @@
-import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
-import { ImageBackground, StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  useForgotPassMutation,
+  useResendOtpMutation,
+} from "@/redux/apis/authSlice";
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import {
+  ActivityIndicator,
+  ImageBackground,
+  StatusBar,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-// Gradient background image (replace with your own or use a local asset)
-const backgroundImage = 'https://i.ibb.co.com/KjDXZW8L/teenager-pointing-to-laptop-28273841.jpg';
+const backgroundImage =
+  "https://i.ibb.co.com/KjDXZW8L/teenager-pointing-to-laptop-28273841.jpg";
 
 const ForgotPasswordScreen: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [canResend, setCanResend] = useState(false); // control resend button
+  const router = useRouter();
 
-    const handleResetPassword = () => {
-        console.log('Password reset requested for:', { email });
-        // Add your password reset logic here (e.g., API call to send reset link)
-        router.push('/(auth)/Otp'); // Navigate back to login after request
-    };
+  const [forgot, { isLoading }] = useForgotPassMutation();
+  const [resendOtp, { isLoading: isResendLoading }] = useResendOtpMutation();
 
-    return (
-        <SafeAreaView className="flex-1 bg-white">
-            <StatusBar barStyle="light-content" />
-            <ImageBackground
-                source={{ uri: backgroundImage }}
-                className="flex-1 justify-center items-center"
-                imageStyle={{ opacity: 0.7 }}
+  const validateEmail = (value: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+  };
+
+  const handleResetPassword = async () => {
+    setError("");
+
+    if (!email.trim()) {
+      setError("Email is required");
+      return;
+    }
+    if (!validateEmail(email)) {
+      setError("Enter a valid email");
+      return;
+    }
+
+    try {
+      const res = await forgot({ email }).unwrap();
+      console.log("Password reset response:", res);
+
+      setCanResend(true); // allow resend after success
+
+      // navigate if API success
+      router.push({
+        pathname: "/(auth)/Otp",
+        params: { email },
+      });
+    } catch (err: any) {
+      console.log("Forgot password error:", err);
+      setError(
+        err?.data?.error || err?.error || "Something went wrong, try again."
+      );
+    }
+  };
+
+  const handleResend = async () => {
+    setError("");
+    try {
+      const res = await resendOtp({ email }).unwrap();
+      console.log("Resend OTP response:", res);
+      // you can also show toast/snackbar here
+    } catch (err: any) {
+      console.log("Resend error:", err);
+      setError(
+        err?.data?.error || err?.error || "Failed to resend code, try again."
+      );
+    }
+  };
+
+  return (
+    <SafeAreaView className="flex-1 bg-white">
+      <StatusBar barStyle="light-content" />
+      <ImageBackground
+        source={{ uri: backgroundImage }}
+        className="flex-1 justify-center items-center"
+        imageStyle={{ opacity: 0.7 }}
+      >
+        <View className="bg-white/90 p-8 rounded-2xl w-11/12 max-w-md shadow-lg">
+          <View className="mb-6">
+            <Ionicons
+              name="key"
+              size={40}
+              color="#00B8D4"
+              className="mx-auto"
+            />
+            <Text className="text-3xl font-bold text-center text-gray-800 mt-2">
+              Forgot Password
+            </Text>
+            <Text className="text-center text-gray-500 mt-1">
+              Enter your email to reset your password
+            </Text>
+          </View>
+
+          <View className="space-y-4">
+            <View className="flex-row items-center bg-gray-100 rounded-lg p-3">
+              <Ionicons
+                name="mail"
+                size={20}
+                color="#00B8D4"
+                className="mr-2"
+              />
+              <TextInput
+                className="flex-1 text-gray-700"
+                placeholder="Email"
+                value={email}
+                onChangeText={(text) => {
+                  setEmail(text);
+                  if (error) setError("");
+                }}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
+            {error ? (
+              <Text className="text-red-500 text-sm mt-1">{error}</Text>
+            ) : null}
+          </View>
+
+          <TouchableOpacity
+            className={`mt-6 py-3 rounded-lg ${
+              isLoading ? "bg-gray-300" : "bg-cyan-400"
+            }`}
+            onPress={handleResetPassword}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <ActivityIndicator color="#000" />
+            ) : (
+              <Text className="text-white text-center text-lg font-semibold">
+                Send Reset Code
+              </Text>
+            )}
+          </TouchableOpacity>
+
+          {canResend && (
+            <TouchableOpacity
+              className={`mt-4 py-3 rounded-lg ${
+                isResendLoading ? "bg-gray-300" : "bg-orange-400"
+              }`}
+              onPress={handleResend}
+              disabled={isResendLoading}
             >
-                <View className="bg-white/90 p-8 rounded-2xl w-11/12 max-w-md shadow-lg">
-                    <View className="mb-6">
-                        <Ionicons name="key" size={40} color="#00B8D4" className="mx-auto" />
-                        <Text className="text-3xl font-bold text-center text-gray-800 mt-2">Forgot Password</Text>
-                        <Text className="text-center text-gray-500 mt-1">Enter your email to reset your password</Text>
-                    </View>
+              {isResendLoading ? (
+                <ActivityIndicator color="#fff" />
+              ) : (
+                <Text className="text-white text-center text-lg font-semibold">
+                  Resend Code
+                </Text>
+              )}
+            </TouchableOpacity>
+          )}
 
-                    <View className="space-y-4">
-                        <View className="flex-row items-center bg-gray-100 rounded-lg p-3">
-                            <Ionicons name="mail" size={20} color="#00B8D4" className="mr-2" />
-                            <TextInput
-                                className="flex-1 text-gray-700"
-                                placeholder="Email"
-                                value={email}
-                                onChangeText={setEmail}
-                                keyboardType="email-address"
-                                autoCapitalize="none"
-                                autoCorrect={false}
-                            />
-                        </View>
-                    </View>
-
-                    <TouchableOpacity
-                        className=" mt-6 py-3 rounded-lg border border-gray-100 bg-cyan-400"
-                        onPress={handleResetPassword}
-                    >
-                        <Text className="text-white text-center text-lg font-semibold">Send Reset Code</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity className="mt-4" onPress={() => router.push('/(auth)')}>
-                        <Text className="text-center text-cyan underline">Back to Sign In</Text>
-                    </TouchableOpacity>
-                </View>
-            </ImageBackground>
-        </SafeAreaView>
-    );
+          <TouchableOpacity
+            className="mt-4"
+            onPress={() => router.push("/(auth)")}
+          >
+            <Text className="text-center text-cyan underline">
+              Back to Sign In
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
+  );
 };
 
 export default ForgotPasswordScreen;

@@ -21,9 +21,9 @@ const LoginScreen: React.FC = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [touched, setTouched] = useState({ email: false, password: false }); // track field touch
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading, isError }] = useLoginMutation();
   const router = useRouter();
-
+  const [logError, setLogError] = useState();
   const handleLogin = async () => {
     // mark fields as touched on submit
     setTouched({ email: true, password: true });
@@ -42,6 +42,9 @@ const LoginScreen: React.FC = () => {
       router.push("/(tabs)");
     } catch (err: any) {
       console.error("Login failed:", err);
+      setLogError(
+        err?.data?.error || err?.error || "Sign in failed. Please try again."
+      );
       // optionally you can shake input or something
     }
   };
@@ -128,6 +131,9 @@ const LoginScreen: React.FC = () => {
               </TouchableOpacity>
             </View>
           </View>
+          {isError && (
+            <Text className="text-red-500 text-center mt-2">{logError}</Text>
+          )}
 
           <TouchableOpacity
             className={`mt-6 py-3 rounded-lg border border-gray-100 bg-cyan-400 ${isLoading ? "opacity-50" : ""}`}
