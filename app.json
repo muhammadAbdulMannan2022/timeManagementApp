@@ -63,7 +63,16 @@
         }
       ],
       "expo-localization",
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow Tickin to access your photos.",
+          "savePhotosPermission": "Allow Tickin to save photos.",
+          "isAccessMediaLocationEnabled": true,
+          "granularPermissions": ["audio", "photo"]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

@@ -48,6 +48,21 @@ export const appApi = createApi({
     getBoilerPlate: builder.query({
       query: () => "/api/boiler-plate/",
     }),
+    submitStep: builder.mutation({
+      query: (data) => ({
+        url: "/api/tasks/",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    // pdf
+    downloadPdf: builder.mutation({
+      query: (data) => ({
+        url: "/api/pdf/",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -60,4 +75,6 @@ export const {
   useGetDataBySingleDateMutation,
   useGetSingleByIdQuery,
   useGetBoilerPlateQuery,
+  useSubmitStepMutation,
+  useDownloadPdfMutation,
 } = appApi;
