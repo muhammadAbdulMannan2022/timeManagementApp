@@ -1,5 +1,6 @@
 import { authApi } from "@/redux/apis/authSlice";
 import { configureStore } from "@reduxjs/toolkit";
+import { appApi } from "./apis/appSlice";
 import tasksReducer from "./slices/ClientsRecords";
 import stepImageReducer from "./slices/ImagesSlice";
 import stepsDataFullReducer from "./slices/StepsDataFinal";
@@ -12,9 +13,10 @@ const store = configureStore({
     fullStepData: stepsDataFullReducer,
     clientRecords: tasksReducer,
     [authApi.reducerPath]: authApi.reducer,
+    [appApi.reducerPath]: appApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware),
+    getDefaultMiddleware().concat(authApi.middleware).concat(appApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -2,10 +2,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // define your API slice
 export const authApi = createApi({
-  reducerPath: "authApi", // unique key in store
+  reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     // baseUrl: "http://10.10.13.52:7040", // replace with your backend
-    baseUrl: "https://d134ef4fda6c.ngrok-free.app", // replace with your backend
+    baseUrl: "https://d134ef4fda6c.ngrok-free.app",
   }),
   endpoints: (builder) => ({
     // POST request
