@@ -18,8 +18,12 @@ export const appApi = createApi({
   reducerPath: "appApi",
   baseQuery,
   endpoints: (builder) => ({
-    boilerPlate: builder.query({
-      query: () => "/api/tasks/19/update/",
+    updateBoilerPlate: builder.mutation({
+      query: (data) => ({
+        url: `/api/boiler-plate/${data.id}/`,
+        method: "PATCH",
+        body: data,
+      }),
     }),
     tasks: builder.mutation({
       query: (data) => ({
@@ -78,7 +82,6 @@ export const appApi = createApi({
 export const {
   useTasksMutation,
   useGetUserQuery,
-  useBoilerPlateQuery,
   useGetDatesQuery,
   useGetDataBySingleDateMutation,
   useGetSingleByIdQuery,
@@ -86,4 +89,5 @@ export const {
   useSubmitStepMutation,
   useDownloadPdfMutation,
   useUpdateTaskMutation,
+  useUpdateBoilerPlateMutation,
 } = appApi;
