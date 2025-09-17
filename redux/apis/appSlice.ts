@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import * as SecureStore from "expo-secure-store";
+
 export const baseUrl = "https://da65697a6bbb.ngrok-free.app";
 
-// wrap fetchBaseQuery so we can inject token
+// Wrap fetchBaseQuery to inject token
 const baseQuery = fetchBaseQuery({
   baseUrl: "https://da65697a6bbb.ngrok-free.app",
   prepareHeaders: async (headers) => {
@@ -17,6 +18,8 @@ const baseQuery = fetchBaseQuery({
 export const appApi = createApi({
   reducerPath: "appApi",
   baseQuery,
+  // Define tag types for cache invalidation
+  tagTypes: ["BoilerPlate"],
   endpoints: (builder) => ({
     updateBoilerPlate: builder.mutation({
       query: (data) => ({
@@ -24,6 +27,8 @@ export const appApi = createApi({
         method: "PATCH",
         body: data,
       }),
+      // Invalidate the "BoilerPlate" tag to refetch getBoilerPlate
+      invalidatesTags: ["BoilerPlate"],
     }),
     tasks: builder.mutation({
       query: (data) => ({
@@ -35,7 +40,7 @@ export const appApi = createApi({
     getUser: builder.query({
       query: () => "/auth/user-details/",
     }),
-    // calender
+    // Calendar
     getDates: builder.query({
       query: () => "/api/get-all-date/",
     }),
@@ -49,9 +54,11 @@ export const appApi = createApi({
     getSingleById: builder.query({
       query: (id) => `/api/tasks/?client_uid=${id}`,
     }),
-    // get boiler plate
+    // Get boiler plate
     getBoilerPlate: builder.query({
       query: () => "/api/boiler-plate/",
+      // Provide the "BoilerPlate" tag for this query
+      providesTags: ["BoilerPlate"],
     }),
     submitStep: builder.mutation({
       query: (data) => ({
@@ -67,7 +74,7 @@ export const appApi = createApi({
         body: data,
       }),
     }),
-    // pdf
+    // PDF
     downloadPdf: builder.mutation({
       query: (data) => ({
         url: "/api/pdf/",
@@ -78,7 +85,7 @@ export const appApi = createApi({
   }),
 });
 
-// auto-generated hooks
+// Auto-generated hooks
 export const {
   useTasksMutation,
   useGetUserQuery,

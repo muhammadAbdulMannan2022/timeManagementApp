@@ -1,7 +1,10 @@
 import PlaceIcon from "@/components/Custom/PlaceIcon";
 import ServiceDetailsItems from "@/components/Custom/ServiceDetailsItems";
 import ShowNote from "@/components/Custom/ShowNote";
-import { useGetSingleByIdQuery } from "@/redux/apis/appSlice";
+import {
+  useGetBoilerPlateQuery,
+  useGetSingleByIdQuery,
+} from "@/redux/apis/appSlice";
 import { AntDesign, FontAwesome, Fontisto, Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -40,6 +43,9 @@ export default function Services() {
   } = useGetSingleByIdQuery(id, {
     skip: !id,
   });
+
+  const { data: boilerPlaate, isLoading: boilerPlaateLoading } =
+    useGetBoilerPlateQuery(undefined);
   const router = useRouter();
   const bottomBarHeight = 85;
 
@@ -47,7 +53,7 @@ export default function Services() {
     if (id) refetch();
   }, [id]);
 
-  if (isLoading || !processData) {
+  if (isLoading || !processData || boilerPlaateLoading) {
     return (
       <View className="flex-1 items-center justify-center bg-white">
         <ActivityIndicator size="large" color="#00B8D4" />
@@ -181,7 +187,11 @@ export default function Services() {
               </Text>
             </View>
             {tasks.map((task: any, i: number) => (
-              <ServiceDetailsItems key={i} item={task} />
+              <ServiceDetailsItems
+                key={i}
+                item={task}
+                icon={i <= 5 ? boilerPlaate[i] : 1}
+              />
             ))}
           </View>
 
@@ -193,7 +203,11 @@ export default function Services() {
               </Text>
             </View>
             {tasks.map((task: any, i: number) => (
-              <ShowNote key={i} item={task} />
+              <ShowNote
+                key={i}
+                item={task}
+                icon={i <= 5 ? boilerPlaate[i] : 1}
+              />
             ))}
           </View>
           {/* Delete Button */}

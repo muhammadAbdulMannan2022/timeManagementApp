@@ -1,8 +1,10 @@
 import {
+  AntDesign,
   FontAwesome,
   FontAwesome5,
   FontAwesome6,
   Ionicons,
+  MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
 import { Text, View } from "react-native";
@@ -14,10 +16,16 @@ const iconComponents = {
   FontAwesome6,
   MaterialIcons,
   Ionicons,
+  MaterialCommunityIcons,
+  AntDesign,
 };
 
-export default function ShowNote({ item }: any) {
-  const { iconType, iconName, iconColor } = item || {};
+export default function ShowNote({ item, icon }: any) {
+  const {
+    iconType: iconType,
+    iconName: iconName,
+    iconColor: iconColor,
+  } = icon || {};
 
   // Get the right icon component
   const IconComponent = iconType ? (iconComponents as any)[iconType] : null;

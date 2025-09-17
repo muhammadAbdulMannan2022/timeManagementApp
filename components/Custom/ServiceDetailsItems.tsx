@@ -1,8 +1,10 @@
 import {
+  AntDesign,
   FontAwesome,
   FontAwesome5,
   FontAwesome6,
   Ionicons,
+  MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
@@ -16,11 +18,17 @@ const iconComponents = {
   FontAwesome6,
   MaterialIcons,
   Ionicons,
+  MaterialCommunityIcons,
+  AntDesign,
 };
 
-export default function ServiceDetailsItems({ item }: any) {
+export default function ServiceDetailsItems({ item, icon }: any) {
   const { t } = useTranslation();
-  const { iconType, iconName, iconColor } = item || {};
+  const {
+    iconType: iconType,
+    iconName: iconName,
+    iconColor: iconColor,
+  } = icon || {};
 
   // Get the right icon component
   const IconComponent = iconType ? (iconComponents as any)[iconType] : null;
