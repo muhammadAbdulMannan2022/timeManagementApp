@@ -91,7 +91,8 @@ export default function CompleteIndex() {
     ).start();
   }, []);
 
-  const { download: downloadFile, isLoading: isPdfLoading } = useDownloadFile();
+  const { download: downloadFile, isPdfLoading: isPdfLoading } =
+    useDownloadFile();
 
   if (isLoading) return <ActivityIndicator />;
   return (

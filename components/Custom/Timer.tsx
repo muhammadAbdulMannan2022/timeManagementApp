@@ -1,5 +1,4 @@
 import { useSubmitStepMutation } from "@/redux/apis/appSlice";
-import { addStep } from "@/redux/slices/StepsDataFinal";
 import { setStep } from "@/redux/slices/stepSlice";
 import { RootState } from "@/redux/store";
 import { Ionicons } from "@expo/vector-icons";
@@ -7,6 +6,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useRouter } from "expo-router";
+import * as SecureStore from "expo-secure-store";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -54,7 +54,8 @@ export default function Timer({
   const intervalRef = useRef<NodeJS.Timeout | any>(null);
   //   rtk
   const [submitTask, { isLoading, isError }] = useSubmitStepMutation();
-  const [itemId, setItemId] = useState("");
+  // const [itemId, setItemId] = useState("");
+  // const [serviceId, setServiceId] = useState("");
 
   const { width } = Dimensions.get("window");
   const outerSize = width * 0.6;
@@ -74,8 +75,20 @@ export default function Timer({
 
   // data functions
   const completeStep = async () => {
-    console.log(currentTime, time, "dskglajljalsdaj");
+    console.log(currentTime, time * 60, "dskglajljalsdaj");
+
     if (currentTime < 1) return;
+
+    // Handle storage depending on currentStep
+    let itemId = "";
+    if (currentStep === 1) {
+      await SecureStore.deleteItemAsync("item_id");
+      await SecureStore.deleteItemAsync("service_id");
+      console.log("Storage cleared for step 1");
+    } else {
+      itemId = (await SecureStore.getItemAsync("item_id")) || "";
+    }
+
     const task = {
       task_name: type,
       current_time: currentTime,
@@ -85,9 +98,9 @@ export default function Timer({
 
     const dataToSubmit = new FormData();
     dataToSubmit.append("task", JSON.stringify(task));
-    itemId && dataToSubmit.append("client_uid", itemId);
-    // skip "others" since it's optional
+    if (itemId) dataToSubmit.append("client_uid", itemId);
 
+    // Cancel animations
     cancelAnimation(scale);
     cancelAnimation(animatedOrbitRadius);
     scale.value = withTiming(1, {
@@ -99,23 +112,28 @@ export default function Timer({
       easing: Easing.inOut(Easing.ease),
     });
     setPlaying(false);
+
     try {
+      console.log("Submitting task...");
       const res = await submitTask(dataToSubmit);
-      setItemId(res?.data?.uid || res?.uid || "");
-      console.log(res);
-      dispatch(
-        addStep({
-          stepNumber: Number(currentStep),
-          stepName: stepName,
-          takenTime: currentTime,
-          tergetTime: time,
-          stepNote: "",
-        })
-      );
+
+      console.log(res.data?.uid_count, currentStep, res.data);
+
+      // Save IDs for next steps if currentStep > 1
+      if (res?.data?.uid) {
+        await SecureStore.setItemAsync("item_id", String(res.data.uid));
+      }
+      if (res?.data?.uid_count?.[currentStep - 1] !== undefined) {
+        await SecureStore.setItemAsync(
+          "service_id",
+          String(res.data.uid_count[currentStep - 1])
+        );
+      }
 
       setShowModal(true);
-    } catch (error) {
-      console.log(error.error.data);
+      console.log(res, "Task submitted successfully");
+    } catch (error: any) {
+      console.log(error?.error?.data || error);
     }
   };
 
@@ -234,21 +252,23 @@ export default function Timer({
     //   const res = await submitTask(dataToSubmit);
     //   setItemId(res?.data?.uid || res?.uid || "");
     //   console.log(res);
-    dispatch(
-      addStep({
-        stepNumber: Number(currentStep),
-        stepName: stepName,
-        takenTime: currentTime,
-        tergetTime: time,
-        stepNote: "",
-      })
-    );
+    // dispatch(
+    //   addStep({
+    //     stepNumber: Number(currentStep),
+    //     stepName: stepName,
+    //     takenTime: currentTime,
+    //     tergetTime: time,
+    //     stepNote: "",
+    //   })
+    // );
+    console.log(currentStep);
     if (currentStep < maxStep) {
       dispatch(setStep(currentStep + 1));
     } else {
-      const id = itemId;
+      const id = await SecureStore.getItemAsync("item_id");
       dispatch(setStep(1));
-      setItemId("");
+      // setItemId("");
+      await SecureStore.deleteItemAsync("item_id");
       router.push({
         pathname: "/(complete)",
         params: { id },
@@ -258,14 +278,24 @@ export default function Timer({
     setShowModal(false);
     rewind();
   };
-  const handleTakePhoto = () => {
-    const id = itemId;
-    setItemId("");
+  const handleTakePhoto = async () => {
+    const id = await SecureStore.getItemAsync("item_id");
+    const serviceId = await SecureStore.getItemAsync("service_id");
+    console.log(id, serviceId, "timer");
+
     setShowModal(false);
+    rewind();
     router.push({
-      pathname: "/(camera)",
-      params: { id },
+      pathname: "/(camera)/Camera",
+      params: { id, stepId: serviceId },
     });
+    if (currentStep < maxStep) {
+      dispatch(setStep(currentStep + 1));
+    } else {
+      dispatch(setStep(1));
+    }
+    // setItemId("");
+    // await SecureStore.deleteItemAsync("item_id");
   };
 
   return (

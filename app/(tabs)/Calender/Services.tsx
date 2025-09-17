@@ -180,8 +180,8 @@ export default function Services() {
                 {t("analytics.services")}
               </Text>
             </View>
-            {tasks.map((task: any) => (
-              <ServiceDetailsItems item={task} />
+            {tasks.map((task: any, i: number) => (
+              <ServiceDetailsItems key={i} item={task} />
             ))}
           </View>
 

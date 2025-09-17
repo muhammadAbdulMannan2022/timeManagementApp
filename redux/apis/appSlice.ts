@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import * as SecureStore from "expo-secure-store";
+export const baseUrl = "https://da65697a6bbb.ngrok-free.app";
 
 // wrap fetchBaseQuery so we can inject token
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://d134ef4fda6c.ngrok-free.app",
+  baseUrl: "https://da65697a6bbb.ngrok-free.app",
   prepareHeaders: async (headers) => {
     const token = await SecureStore.getItemAsync("accessToken");
     if (token) {
@@ -55,6 +56,13 @@ export const appApi = createApi({
         body: data,
       }),
     }),
+    updateTask: builder.mutation({
+      query: (data) => ({
+        url: "/api/tasks/",
+        method: "PATCH",
+        body: data,
+      }),
+    }),
     // pdf
     downloadPdf: builder.mutation({
       query: (data) => ({
@@ -77,4 +85,5 @@ export const {
   useGetBoilerPlateQuery,
   useSubmitStepMutation,
   useDownloadPdfMutation,
+  useUpdateTaskMutation,
 } = appApi;
