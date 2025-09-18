@@ -77,7 +77,7 @@ export default function Timer({
   const completeStep = async () => {
     console.log(currentTime, time * 60, "dskglajljalsdaj");
 
-    if (currentTime < 1) return;
+    // if (currentTime < 1) return;
 
     // Handle storage depending on currentStep
     let itemId = "";
@@ -447,7 +447,7 @@ export default function Timer({
               <View className="flex-row items-center justify-center gap-4">
                 <TouchableOpacity
                   onPress={() => handleTakePhoto()}
-                  className="bg-blue-400 px-8 py-3 rounded-lg flex-row items-center justify-center gap-2"
+                  className="bg-[#00B8D4] px-8 py-3 rounded-lg flex-row items-center justify-center gap-2"
                 >
                   <Entypo name="camera" size={20} color="white" />
                   <Text className="text-white font-semibold">
