@@ -2,6 +2,7 @@ import PlaceIcon from "@/components/Custom/PlaceIcon";
 import ServiceDetailsItems from "@/components/Custom/ServiceDetailsItems";
 import ShowNote from "@/components/Custom/ShowNote";
 import {
+  useDeleteItemMutation,
   useGetBoilerPlateQuery,
   useGetSingleByIdQuery,
 } from "@/redux/apis/appSlice";
@@ -48,6 +49,7 @@ export default function Services() {
     useGetBoilerPlateQuery(undefined);
   const router = useRouter();
   const bottomBarHeight = 85;
+  const [deleteItem, { isLoading: isDeleteLoading }] = useDeleteItemMutation();
 
   useEffect(() => {
     if (id) refetch();
@@ -90,7 +92,15 @@ export default function Services() {
     allTakenTimes.length > 0
       ? formatTime(Math.max(...allTakenTimes))
       : "--:--:--";
-
+  const deleteThis = async () => {
+    try {
+      const res = await deleteItem({ client_uid: id });
+      console.log(id);
+      router.push("/(tabs)/Calender");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <View
       className="bg-white flex-1"
@@ -211,12 +221,21 @@ export default function Services() {
             ))}
           </View>
           {/* Delete Button */}
-          <TouchableOpacity className="flex-1 items-center justify-center py-5 ">
+          <TouchableOpacity
+            onPress={deleteThis}
+            className="flex-1 items-center justify-center py-5 "
+          >
             <View className="flex-row items-center gap-3 bg-[#00B8D426] px-4 py-3 rounded-xl border border-[#00B8D4]">
-              <FontAwesome name="trash-o" size={24} color="#FF6F61" />
-              <Text className="text-[#00B8D4] text-xl font-bold">
-                {t("calendar.services.removeRecord")}
-              </Text>
+              {isDeleteLoading ? (
+                <ActivityIndicator />
+              ) : (
+                <>
+                  <FontAwesome name="trash-o" size={24} color="#FF6F61" />
+                  <Text className="text-[#00B8D4] text-xl font-bold">
+                    {t("calendar.services.removeRecord")}
+                  </Text>
+                </>
+              )}
             </View>
           </TouchableOpacity>
         </SafeAreaView>
