@@ -35,7 +35,7 @@ export const useDownloadFile = () => {
           downloadCallback
         );
 
-        const { uri } = await downloadResumable.downloadAsync();
+        const { uri }: any = await downloadResumable.downloadAsync();
 
         if (Platform.OS === "android") {
           const permissions =

@@ -82,6 +82,34 @@ export const appApi = createApi({
         body: data,
       }),
     }),
+    multipleItemPdf: builder.mutation({
+      query: (data: any) => ({
+        url: "/api/report-pdf/",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    analytics: builder.mutation({
+      query: (data: any) => ({
+        url: "/api/dashboard/analytics/",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    deleteItem: builder.mutation({
+      query: (data) => ({
+        url: "/api/tasks/",
+        method: "DELETE",
+        body: data,
+      }),
+    }),
+    updateSubscription: builder.mutation({
+      query: (data) => ({
+        url: "/auth/user-details/",
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -97,4 +125,8 @@ export const {
   useDownloadPdfMutation,
   useUpdateTaskMutation,
   useUpdateBoilerPlateMutation,
+  useMultipleItemPdfMutation,
+  useAnalyticsMutation,
+  useDeleteItemMutation,
+  useUpdateSubscriptionMutation,
 } = appApi;

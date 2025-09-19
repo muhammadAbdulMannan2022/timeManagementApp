@@ -216,7 +216,7 @@ export default function App() {
       className="flex-1 bg-white pt-16"
       style={{ paddingBottom: bottomBarHeight }}
     >
-      <StatusBar style="inverted" />
+      <StatusBar style="dark" />
       <ScrollView
         contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 20 }}
       >
@@ -350,7 +350,7 @@ export default function App() {
                 {t("calendar.noSteps")}
               </Text>
             )}
-            <GradientTab />
+            <GradientTab date={selectedDate} />
           </View>
         </View>
       </ScrollView>
