@@ -1,137 +1,150 @@
 {
-    "settings": {
-        "settings": "Settings",
-        "personalizeWorkflow": "Personalize your workflow",
-        "totalTargetTime": "Total target time",
-        "expectedTime": "Expected time to complete the service",
-        "serviceSettings": "Service settings",
-        "unknownTask": "Unknown task",
-        "languageSettings": "Language settings",
-        "chooseLanguage": "Choose the app language",
-        "simplifiedChinese": "Simplified Chinese",
-        "traditionalChinese": "Traditional Chinese",
-        "pricing": "Pricing",
-        "close": "Close",
-        "edit": "Edit",
-        "minutes": "Minutes",
-        "time": "Time"
+  "settings": {
+    "settings": "Settings",
+    "personalizeWorkflow": "Personalize your workflow",
+    "totalTargetTime": "Total target time",
+    "expectedTime": "Expected time to complete the service",
+    "serviceSettings": "Service settings",
+    "unknownTask": "Unknown task",
+    "languageSettings": "Language settings",
+    "chooseLanguage": "Choose the app language",
+    "simplifiedChinese": "Simplified Chinese",
+    "traditionalChinese": "Traditional Chinese",
+    "pricing": "Pricing",
+    "close": "Close",
+    "edit": "Edit",
+    "minutes": "Minutes",
+    "time": "Time"
+  },
+  "settingsUpd": {
+    "enterText": "Enter text:",
+    "typeSomething": "Type something...",
+    "setTimer": "Set timer (HH:MM:SS):",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "pricing": {
+    "tabs": {
+      "free": "Free",
+      "premium": "Premium"
     },
-    "settingsUpd": {
-        "enterText": "Enter text:",
-        "typeSomething": "Type something...",
-        "setTimer": "Set timer (HH:MM:SS):",
-        "cancel": "Cancel",
-        "save": "Save"
+    "title": "Select the plan that helps you grow",
+    "subtitle": "Get unlimited steps, advanced analytics",
+    "freePlan": {
+      "name": "Free",
+      "features": {
+        "timer": "Timer and photo logging",
+        "calendar": "Calendar",
+        "calendarLimited": "Day-only logging",
+        "analytics": "Analytics",
+        "pdfExport": "Export PDF"
+      }
     },
-    "pricing": {
-        "tabs": {
-            "free": "Free",
-            "premium": "Premium"
-        },
-        "title": "Select the plan that helps you grow",
-        "subtitle": "Get unlimited steps, advanced analytics",
-        "freePlan": {
-            "name": "Free",
-            "features": {
-                "timer": "Timer and photo logging",
-                "calendar": "Calendar",
-                "calendarLimited": "Day-only logging",
-                "analytics": "Analytics",
-                "pdfExport": "Export PDF"
-            }
-        },
-        "premiumPlan": {
-            "name": "Premium",
-            "features": {
-                "timer": "Timer and photo logging",
-                "calendar": "Calendar",
-                "analytics": "Analytics",
-                "pdfExport": "Export PDF"
-            },
-            "cta": "Get Premium"
-        },
-        "close": "Close"
+    "premiumPlan": {
+      "name": "Premium",
+      "features": {
+        "timer": "Timer and photo logging",
+        "calendar": "Calendar",
+        "analytics": "Analytics",
+        "pdfExport": "Export PDF"
+      },
+      "cta": "Get Premium"
     },
-    "analytics": {
-        "averageTime": "Average Time",
-        "overview": "Overview",
-        "totalClients": "Total Clients",
-        "onTimeRate": "On-time Rate",
-        "overtimeRate": "Overtime Rate",
-        "fastest": "Fastest",
-        "slowest": "Slowest",
-        "stepAnalysis": "Step Analysis",
-        "completionTimeTrend": "Completion Time Trend",
-        "serviceDay": "Service Day",
-        "services": "Services"
+    "close": "Close"
+  },
+  "analytics": {
+    "averageTime": "Average Time",
+    "overview": "Overview",
+    "totalClients": "Total Clients",
+    "onTimeRate": "On-time Rate",
+    "overtimeRate": "Overtime Rate",
+    "fastest": "Fastest",
+    "slowest": "Slowest",
+    "stepAnalysis": "Step Analysis",
+    "completionTimeTrend": "Completion Time Trend",
+    "serviceDay": "Service Day",
+    "services": "Services"
+  },
+  "calendar": {
+    "title": "Service Calendar",
+    "subtitle": "Professional nail service tracking",
+    "processes": "Processes",
+    "clients": "Clients",
+    "noSteps": "No steps for this date",
+    "gradientTab": {
+      "title": "Export Portfolio",
+      "subtitle": "Share with instructor"
     },
-    "calendar": {
-        "title": "Service Calendar",
-        "subtitle": "Professional nail service tracking",
-        "processes": "Processes",
-        "clients": "Clients",
-        "noSteps": "No steps for this date",
-        "gradientTab": {
-            "title": "Export Portfolio",
-            "subtitle": "Share with instructor"
+    "exportTabs": {
+      "headerTitle": "Export Portfolio",
+      "headerSubtitle": "Share with instructor",
+      "exportButton": "Export",
+      "tab1": "Quick Export",
+      "tab2": "Settings",
+      "exportPreview": "Export Preview",
+      "clientsLabel": "Clients",
+      "photoLabel": "Photo",
+      "pdfLabel": "PDF Page",
+      "photoPreview": "Photo Preview"
+    },
+    "singleExport": {
+      "selectRange": "Select Export Range",
+      "options": {
+        "today": {
+          "title": "Today's Work",
+          "subtitle": "2 clients"
         },
-        "exportTabs": {
-            "headerTitle": "Export Portfolio",
-            "headerSubtitle": "Share with instructor",
-            "exportButton": "Export",
-            "tab1": "Quick Export",
-            "tab2": "Settings",
-            "exportPreview": "Export Preview",
-            "clientsLabel": "Clients",
-            "photoLabel": "Photo",
-            "pdfLabel": "PDF Page",
-            "photoPreview": "Photo Preview"
+        "recent": {
+          "title": "Recent Work",
+          "subtitle": "3 clients (yesterday + today)"
         },
-        "singleExport": {
-            "selectRange": "Select Export Range",
-            "options": {
-                "today": {
-                    "title": "Today's Work",
-                    "subtitle": "2 clients"
-                },
-                "recent": {
-                    "title": "Recent Work",
-                    "subtitle": "3 clients (yesterday + today)"
-                },
-                "week": {
-                    "title": "This week’s work",
-                    "subtitle": "3 clients (past 7 days)"
-                }
-            }
-        },
-        "clientList": {
-            "sort": "Sort",
-            "latest": "Latest",
-            "oldest": "Oldest",
-            "selectAll": "Select All",
-            "noPhotos": "No Photos",
-            "photos": "Photos"
-        },
-        "services": {
-            "serviceDetails": "Service Details",
-            "totalPhotos": "Total Photos",
-            "onTimeSteps": "On-time Steps",
-            "timeRange": "Time Range",
-            "notes": "Notes",
-            "removeRecord": "Remove This Record",
-            "add": "Add"
-        },
-        "tabs": {
-            "home": "Home",
-            "calendar": "Calendar",
-            "analytics": "Analytics",
-            "settings": "Settings",
-            "target": "Target"
+        "week": {
+          "title": "This week’s work",
+          "subtitle": "3 clients (past 7 days)"
         }
+      }
     },
-    "actions": {
-        "designComplete": "Design Complete",
-        "takePhoto": "Take Photo",
-        "skip": "Skip"
+    "clientList": {
+      "sort": "Sort",
+      "latest": "Latest",
+      "oldest": "Oldest",
+      "selectAll": "Select All",
+      "noPhotos": "No Photos",
+      "photos": "Photos"
+    },
+    "services": {
+      "serviceDetails": "Service Details",
+      "totalPhotos": "Total Photos",
+      "onTimeSteps": "On-time Steps",
+      "timeRange": "Time Range",
+      "notes": "Notes",
+      "removeRecord": "Remove This Record",
+      "add": "Add"
+    },
+    "tabs": {
+      "home": "Home",
+      "calendar": "Calendar",
+      "analytics": "Analytics",
+      "settings": "Settings",
+      "target": "Target"
     }
+  },
+  "actions": {
+    "designComplete": "Design Complete",
+    "takePhoto": "Take Photo",
+    "skip": "Skip"
+  },
+  "complete": {
+    "serviceComplete": "Service Complete",
+    "client": "Client",
+    "lightningEfficiency": "Lightning Efficiency",
+    "efficiency": "% efficiency",
+    "targetTime": "Target Time",
+    "totalTime": "Total Time",
+    "timeDifference": "Time Difference",
+    "ahead": "Ahead",
+    "stepDetails": "Step Details",
+    "downloadReport": "Download Report",
+    "newService": "New Service"
+  }
 }

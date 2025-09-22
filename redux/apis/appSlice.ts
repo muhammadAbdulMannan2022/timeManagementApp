@@ -1,11 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { router } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 
-export const baseUrl = "https://da65697a6bbb.ngrok-free.app";
+export const baseUrl = "https://tripersonal-homelessly-felecia.ngrok-free.app";
 
-// Wrap fetchBaseQuery to inject token
-const baseQuery = fetchBaseQuery({
-  baseUrl: "https://da65697a6bbb.ngrok-free.app",
+// raw base query
+const rawBaseQuery = fetchBaseQuery({
+  baseUrl,
   prepareHeaders: async (headers) => {
     const token = await SecureStore.getItemAsync("accessToken");
     if (token) {
@@ -15,10 +16,46 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
+// wrapper to catch 401
+const baseQueryWithAuth: typeof rawBaseQuery = async (
+  args,
+  api,
+  extraOptions
+) => {
+  const result = await rawBaseQuery(args, api, extraOptions);
+
+  if (result.error) {
+    const status =
+      typeof result.error.status === "number" ||
+      typeof result.error.status === "string"
+        ? result.error.status
+        : "UNKNOWN";
+
+    const url = result.meta?.request?.url ?? "N/A";
+    const data =
+      typeof result.error.data === "string"
+        ? result.error.data.trim()
+        : JSON.stringify(result.error.data, null, 2);
+
+    console.log(`⚠️ API Error [${status}] → ${url}\n${data}`);
+  }
+
+  if (result.error && result.error.status === 401) {
+    await SecureStore.deleteItemAsync("accessToken");
+    await SecureStore.deleteItemAsync("refreshToken");
+    await SecureStore.deleteItemAsync("userEmail");
+
+    api.dispatch({ type: "auth/logout" });
+
+    router.replace("/(auth)");
+  }
+
+  return result;
+};
+
 export const appApi = createApi({
   reducerPath: "appApi",
-  baseQuery,
-  // Define tag types for cache invalidation
+  baseQuery: baseQueryWithAuth,
   tagTypes: ["BoilerPlate"],
   endpoints: (builder) => ({
     updateBoilerPlate: builder.mutation({
@@ -27,7 +64,6 @@ export const appApi = createApi({
         method: "PATCH",
         body: data,
       }),
-      // Invalidate the "BoilerPlate" tag to refetch getBoilerPlate
       invalidatesTags: ["BoilerPlate"],
     }),
     tasks: builder.mutation({
@@ -40,7 +76,6 @@ export const appApi = createApi({
     getUser: builder.query({
       query: () => "/auth/user-details/",
     }),
-    // Calendar
     getDates: builder.query({
       query: () => "/api/get-all-date/",
     }),
@@ -54,10 +89,8 @@ export const appApi = createApi({
     getSingleById: builder.query({
       query: (id) => `/api/tasks/?client_uid=${id}`,
     }),
-    // Get boiler plate
     getBoilerPlate: builder.query({
       query: () => "/api/boiler-plate/",
-      // Provide the "BoilerPlate" tag for this query
       providesTags: ["BoilerPlate"],
     }),
     submitStep: builder.mutation({
@@ -74,7 +107,6 @@ export const appApi = createApi({
         body: data,
       }),
     }),
-    // PDF
     downloadPdf: builder.mutation({
       query: (data) => ({
         url: "/api/pdf/",

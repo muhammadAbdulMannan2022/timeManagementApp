@@ -65,7 +65,7 @@ const ForgotPasswordScreen: React.FC = () => {
       <StatusBar barStyle="light-content" />
       <ImageBackground
         source={{ uri: backgroundImage }}
-        className="flex-1 justify-center items-center"
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         imageStyle={{ opacity: 0.7 }}
       >
         <View className="bg-white/90 p-8 rounded-2xl w-11/12 max-w-md shadow-lg">

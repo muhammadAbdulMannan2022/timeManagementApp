@@ -13,7 +13,7 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   ActivityIndicator,
@@ -23,7 +23,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import PagerView from "react-native-pager-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const ExportPreview = ({
@@ -134,7 +133,6 @@ const ExportPreview = ({
 export default function CustomTabs() {
   const { t } = useTranslation();
   const res = useLocalSearchParams<{ date: string }>();
-  const pagerRef = useRef<PagerView>(null);
   const [activeTab, setActiveTab] = useState(0);
   const [getData, { data, error, isLoading }] =
     useGetDataBySingleDateMutation();
@@ -146,7 +144,6 @@ export default function CustomTabs() {
   const { savePdf, isDownloading, downloadProgress } = useSavePdf();
 
   const goToPage = (page: number) => {
-    pagerRef.current?.setPage(page);
     setActiveTab(page);
   };
 
@@ -278,27 +275,18 @@ export default function CustomTabs() {
         </TouchableOpacity>
       </View>
 
-      {/* Pager */}
-      <PagerView
-        ref={pagerRef}
-        style={{ flex: 1 }}
-        initialPage={0}
-        onPageSelected={(e) => setActiveTab(e.nativeEvent.position)}
-      >
-        {/* Tab 1 Content */}
-        <View key="1" style={{ flex: 1 }}>
+      {/* Content */}
+      <View style={{ flex: 1 }}>
+        {activeTab === 0 ? (
           <ExportPreview
             date={data}
             state={{ selected, setSelected }}
             data={data || []}
           />
-        </View>
-
-        {/* Tab 2 Content */}
-        <View key="2" style={{ flex: 1 }}>
+        ) : (
           <ClientList />
-        </View>
-      </PagerView>
+        )}
+      </View>
     </SafeAreaView>
   );
 }

@@ -6,9 +6,11 @@ import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useLocalSearchParams } from "expo-router/build/hooks";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import {
   ActivityIndicator,
   Animated,
+  Dimensions,
   Easing,
   Image,
   ImageBackground,
@@ -21,6 +23,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 
 export default function CompleteIndex() {
+  const { t, i18n } = useTranslation();
   const paddingAnim = useRef(new Animated.Value(10)).current; // start from 10
   //   const stepData = useSelector(
   //     (state: RootState) => state.clientRecords.processes[0]
@@ -102,8 +105,12 @@ export default function CompleteIndex() {
           <View>
             <ImageBackground
               source={require("@/assets/bg/done.png")}
-              style={{ flex: 1, justifyContent: "center" }}
-              className="bg-no-repeat bg-cover h-[30vh] items-center justify-center"
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                height: Dimensions.get("window").height * 0.3,
+              }}
+              className="bg-no-repeat bg-cover items-center justify-center"
             >
               <View>
                 <Animated.View
@@ -126,7 +133,7 @@ export default function CompleteIndex() {
             <View className="flex-col px-8">
               <View className="items-center justify-center">
                 <Text className="text-4xl font-bold text-[#222324]">
-                  Service Complete
+                  {t("complete.serviceComplete")}
                 </Text>
                 <View className="w-[150px] rounded-full my-8 h-2 bg-[#FAD50E]"></View>
                 <View className="flex-row items-center gap-2">
@@ -143,7 +150,7 @@ export default function CompleteIndex() {
               </View>
               <View className="items-center justify-center py-12">
                 <Text className="text-xl font-extrabold text-[#818181] py-6">
-                  Client{" "}
+                  {t("complete.client")}{" "}
                   {serviceData ? serviceData?.uid.split("-").pop() : "00"}
                 </Text>
                 {avg > 90 && (
@@ -162,10 +169,10 @@ export default function CompleteIndex() {
                     />
                     <View className="items-center justify-center">
                       <Text className="text-[#A0A0A0] text-2xl font-bold">
-                        Lightning Efficiency
+                        {t("complete.lightningEfficiency")}
                       </Text>
                       <Text className="text-[#A0A0A0] text-lg font-bold">
-                        {(avg / 4).toFixed()}% efficiency
+                        {(avg / 4).toFixed()} {t("complete.efficiency")}
                       </Text>
                     </View>
                   </View>
@@ -174,7 +181,7 @@ export default function CompleteIndex() {
               <View className="bg-white rounded-xl shadow p-4 mb-4 gap-4">
                 <View className="flex-row items-center justify-between">
                   <Text className="text-lg font-semibold text-gray-400">
-                    Target Time
+                    {t("complete.targetTime")}
                   </Text>
                   <Text className="text-xl font-bold text-black">
                     {totalTarget}
@@ -182,7 +189,7 @@ export default function CompleteIndex() {
                 </View>
                 <View className="flex-row items-center justify-between">
                   <Text className="text-lg font-semibold text-gray-400">
-                    Total Time
+                    {t("complete.totalTime")}
                   </Text>
                   <Text className="text-xl font-bold text-black">
                     {totalTaken}
@@ -190,11 +197,11 @@ export default function CompleteIndex() {
                 </View>
                 <View className="flex-row items-center justify-between mt-5">
                   <Text className="text-lg font-semibold text-gray-400">
-                    Time Difference
+                    {t("complete.timeDifference")}
                   </Text>
                   <Text className="text-xl font-bold text-[#00B8D4]">
                     {toSeconds(totalTarget) - toSeconds(totalTaken) > 0
-                      ? "Ahed"
+                      ? t("complete.ahead")
                       : "-"}{" "}
                     {difference}
                   </Text>
@@ -202,9 +209,11 @@ export default function CompleteIndex() {
               </View>
               <View className="border border-[#ececec] rounded-xl p-5 mt-4">
                 <View className="flex-row gap-2 items-center mb-2">
-                  <Text className="text-xl font-bold">Step Details</Text>
+                  <Text className="text-xl font-bold">
+                    {t("complete.stepDetails")}
+                  </Text>
                   <Text className="text-[#818181] ml-auto">
-                    {new Date().toLocaleDateString("en-US", {
+                    {new Date().toLocaleDateString(i18n.language, {
                       weekday: "long",
                     })}
                   </Text>
@@ -227,7 +236,7 @@ export default function CompleteIndex() {
                     <ActivityIndicator />
                   ) : (
                     <Text className="text-[#00B8D4] text-lg font-semibold">
-                      Download Report
+                      {t("complete.downloadReport")}
                     </Text>
                   )}
                 </TouchableOpacity>
@@ -240,7 +249,7 @@ export default function CompleteIndex() {
                 >
                   <FontAwesome6 name="circle-plus" size={24} color="#ffffff" />
                   <Text className="text-white text-lg font-semibold">
-                    New Service
+                    {t("complete.newService")}
                   </Text>
                 </TouchableOpacity>
               </View>

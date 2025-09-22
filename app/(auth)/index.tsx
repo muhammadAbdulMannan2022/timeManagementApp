@@ -57,7 +57,7 @@ const LoginScreen: React.FC = () => {
   return (
     <ImageBackground
       source={{ uri: backgroundImage }}
-      className="flex-1 bg-white"
+      style={{ flex: 1 }}
       imageStyle={{ opacity: 0.7 }}
     >
       <SafeAreaView className="flex-1 justify-center items-center">

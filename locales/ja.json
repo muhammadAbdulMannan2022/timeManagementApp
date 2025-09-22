@@ -1,137 +1,150 @@
 {
-    "settings": {
-        "settings": "設定",
-        "personalizeWorkflow": "ワークフローをパーソナライズ",
-        "totalTargetTime": "合計目標時間",
-        "expectedTime": "サービス完了の予定時間",
-        "serviceSettings": "サービス設定",
-        "unknownTask": "不明なタスク",
-        "languageSettings": "言語設定",
-        "chooseLanguage": "アプリの言語を選択",
-        "simplifiedChinese": "簡体字中国語",
-        "traditionalChinese": "繁体字中国語",
-        "pricing": "料金",
-        "close": "閉じる",
-        "edit": "編集",
-        "minutes": "分",
-        "time": "時間"
+  "settings": {
+    "settings": "設定",
+    "personalizeWorkflow": "ワークフローをパーソナライズ",
+    "totalTargetTime": "合計目標時間",
+    "expectedTime": "サービス完了の予定時間",
+    "serviceSettings": "サービス設定",
+    "unknownTask": "不明なタスク",
+    "languageSettings": "言語設定",
+    "chooseLanguage": "アプリの言語を選択",
+    "simplifiedChinese": "簡体字中国語",
+    "traditionalChinese": "繁体字中国語",
+    "pricing": "料金",
+    "close": "閉じる",
+    "edit": "編集",
+    "minutes": "分",
+    "time": "時間"
+  },
+  "settingsUpd": {
+    "enterText": "テキストを入力：",
+    "typeSomething": "何か入力してください...",
+    "setTimer": "タイマーを設定 (HH:MM:SS)：",
+    "cancel": "キャンセル",
+    "save": "保存"
+  },
+  "pricing": {
+    "tabs": {
+      "free": "無料",
+      "premium": "プレミアム"
     },
-    "settingsUpd": {
-        "enterText": "テキストを入力：",
-        "typeSomething": "何か入力してください...",
-        "setTimer": "タイマーを設定 (HH:MM:SS)：",
-        "cancel": "キャンセル",
-        "save": "保存"
+    "title": "成長を助けるプランを選択",
+    "subtitle": "無制限のステップ、高度な分析を利用",
+    "freePlan": {
+      "name": "無料",
+      "features": {
+        "timer": "タイマーと写真記録",
+        "calendar": "カレンダー",
+        "calendarLimited": "本日の記録のみ",
+        "analytics": "分析",
+        "pdfExport": "PDF エクスポート"
+      }
     },
-    "pricing": {
-        "tabs": {
-            "free": "無料",
-            "premium": "プレミアム"
-        },
-        "title": "成長を助けるプランを選択",
-        "subtitle": "無制限のステップ、高度な分析を利用",
-        "freePlan": {
-            "name": "無料",
-            "features": {
-                "timer": "タイマーと写真記録",
-                "calendar": "カレンダー",
-                "calendarLimited": "本日の記録のみ",
-                "analytics": "分析",
-                "pdfExport": "PDF エクスポート"
-            }
-        },
-        "premiumPlan": {
-            "name": "プレミアム",
-            "features": {
-                "timer": "タイマーと写真記録",
-                "calendar": "カレンダー",
-                "analytics": "分析",
-                "pdfExport": "PDF エクスポート"
-            },
-            "cta": "プレミアムを入手"
-        },
-        "close": "閉じる"
+    "premiumPlan": {
+      "name": "プレミアム",
+      "features": {
+        "timer": "タイマーと写真記録",
+        "calendar": "カレンダー",
+        "analytics": "分析",
+        "pdfExport": "PDF エクスポート"
+      },
+      "cta": "プレミアムを入手"
     },
-    "analytics": {
-        "averageTime": "平均時間",
-        "overview": "概要",
-        "totalClients": "総クライアント",
-        "onTimeRate": "時間通り率",
-        "overtimeRate": "遅延率",
-        "fastest": "最速",
-        "slowest": "最遅",
-        "stepAnalysis": "ステップ分析",
-        "completionTimeTrend": "完了時間の傾向",
-        "serviceDay": "サービス日",
-        "services": "サービス"
+    "close": "閉じる"
+  },
+  "analytics": {
+    "averageTime": "平均時間",
+    "overview": "概要",
+    "totalClients": "総クライアント",
+    "onTimeRate": "時間通り率",
+    "overtimeRate": "遅延率",
+    "fastest": "最速",
+    "slowest": "最遅",
+    "stepAnalysis": "ステップ分析",
+    "completionTimeTrend": "完了時間の傾向",
+    "serviceDay": "サービス日",
+    "services": "サービス"
+  },
+  "calendar": {
+    "title": "サービスカレンダー",
+    "subtitle": "プロのネイルサービス追跡",
+    "processes": "プロセス",
+    "clients": "クライアント",
+    "noSteps": "この日のステップはありません",
+    "gradientTab": {
+      "title": "ポートフォリオをエクスポート",
+      "subtitle": "インストラクターと共有"
     },
-    "calendar": {
-        "title": "サービスカレンダー",
-        "subtitle": "プロのネイルサービス追跡",
-        "processes": "プロセス",
-        "clients": "クライアント",
-        "noSteps": "この日のステップはありません",
-        "gradientTab": {
-            "title": "ポートフォリオをエクスポート",
-            "subtitle": "インストラクターと共有"
+    "exportTabs": {
+      "headerTitle": "ポートフォリオをエクスポート",
+      "headerSubtitle": "インストラクターと共有",
+      "exportButton": "エクスポート",
+      "tab1": "クイックエクスポート",
+      "tab2": "設定",
+      "exportPreview": "エクスポートプレビュー",
+      "clientsLabel": "クライアント",
+      "photoLabel": "写真",
+      "pdfLabel": "PDFページ",
+      "photoPreview": "写真プレビュー"
+    },
+    "singleExport": {
+      "selectRange": "エクスポート範囲を選択",
+      "options": {
+        "today": {
+          "title": "今日の作業",
+          "subtitle": "クライアント 2名"
         },
-        "exportTabs": {
-            "headerTitle": "ポートフォリオをエクスポート",
-            "headerSubtitle": "インストラクターと共有",
-            "exportButton": "エクスポート",
-            "tab1": "クイックエクスポート",
-            "tab2": "設定",
-            "exportPreview": "エクスポートプレビュー",
-            "clientsLabel": "クライアント",
-            "photoLabel": "写真",
-            "pdfLabel": "PDFページ",
-            "photoPreview": "写真プレビュー"
+        "recent": {
+          "title": "最近の作業",
+          "subtitle": "クライアント 3名 (昨日 + 今日)"
         },
-        "singleExport": {
-            "selectRange": "エクスポート範囲を選択",
-            "options": {
-                "today": {
-                    "title": "今日の作業",
-                    "subtitle": "クライアント 2名"
-                },
-                "recent": {
-                    "title": "最近の作業",
-                    "subtitle": "クライアント 3名 (昨日 + 今日)"
-                },
-                "week": {
-                    "title": "今週の作業",
-                    "subtitle": "クライアント 3名 (過去7日間)"
-                }
-            }
-        },
-        "clientList": {
-            "sort": "並べ替え",
-            "latest": "最新",
-            "oldest": "最古",
-            "selectAll": "すべて選択",
-            "noPhotos": "写真なし",
-            "photos": "写真"
-        },
-        "services": {
-            "serviceDetails": "サービス詳細",
-            "totalPhotos": "合計写真",
-            "onTimeSteps": "時間通りのステップ",
-            "timeRange": "時間範囲",
-            "notes": "メモ",
-            "removeRecord": "この記録を削除",
-            "add": "追加"
-        },
-        "tabs": {
-            "home": "ホーム",
-            "calendar": "カレンダー",
-            "analytics": "分析",
-            "settings": "設定",
-            "target": "目標"
+        "week": {
+          "title": "今週の作業",
+          "subtitle": "クライアント 3名 (過去7日間)"
         }
+      }
     },
-    "actions": {
-        "designComplete": "デザイン完了",
-        "takePhoto": "写真を撮る",
-        "skip": "スキップ"
+    "clientList": {
+      "sort": "並べ替え",
+      "latest": "最新",
+      "oldest": "最古",
+      "selectAll": "すべて選択",
+      "noPhotos": "写真なし",
+      "photos": "写真"
+    },
+    "services": {
+      "serviceDetails": "サービス詳細",
+      "totalPhotos": "合計写真",
+      "onTimeSteps": "時間通りのステップ",
+      "timeRange": "時間範囲",
+      "notes": "メモ",
+      "removeRecord": "この記録を削除",
+      "add": "追加"
+    },
+    "tabs": {
+      "home": "ホーム",
+      "calendar": "カレンダー",
+      "analytics": "分析",
+      "settings": "設定",
+      "target": "目標"
     }
+  },
+  "actions": {
+    "designComplete": "デザイン完了",
+    "takePhoto": "写真を撮る",
+    "skip": "スキップ"
+  },
+  "complete": {
+    "serviceComplete": "サービス完了",
+    "client": "クライアント",
+    "lightningEfficiency": "ライトニング効率",
+    "efficiency": "% 効率",
+    "targetTime": "目標時間",
+    "totalTime": "合計時間",
+    "timeDifference": "時間差",
+    "ahead": "先行",
+    "stepDetails": "ステップ詳細",
+    "downloadReport": "レポートをダウンロード",
+    "newService": "新規サービス"
+  }
 }

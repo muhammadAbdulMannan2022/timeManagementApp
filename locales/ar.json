@@ -1,136 +1,149 @@
 {
-    "settings": {
-        "settings": "الإعدادات",
-        "personalizeWorkflow": "تخصيص سير العمل الخاص بك",
-        "totalTargetTime": "إجمالي الوقت المستهدف",
-        "expectedTime": "الوقت المتوقع لإكمال الخدمة",
-        "serviceSettings": "إعدادات الخدمة",
-        "unknownTask": "مهمة غير معروفة",
-        "languageSettings": "إعدادات اللغة",
-        "chooseLanguage": "اختر لغة التطبيق",
-        "simplifiedChinese": "الصينية المبسطة",
-        "traditionalChinese": "الصينية التقليدية",
-        "pricing": "الأسعار",
-        "close": "إغلاق",
-        "edit": "تعديل",
-        "minutes": "دقائق",
-        "time": "الوقت"
+  "settings": {
+    "settings": "الإعدادات",
+    "personalizeWorkflow": "تخصيص سير العمل الخاص بك",
+    "totalTargetTime": "إجمالي الوقت المستهدف",
+    "expectedTime": "الوقت المتوقع لإكمال الخدمة",
+    "serviceSettings": "إعدادات الخدمة",
+    "unknownTask": "مهمة غير معروفة",
+    "languageSettings": "إعدادات اللغة",
+    "chooseLanguage": "اختر لغة التطبيق",
+    "simplifiedChinese": "الصينية المبسطة",
+    "traditionalChinese": "الصينية التقليدية",
+    "pricing": "الأسعار",
+    "close": "إغلاق",
+    "edit": "تعديل",
+    "minutes": "دقائق",
+    "time": "الوقت"
+  },
+  "settingsUpd": {
+    "enterText": "أدخل النص:",
+    "typeSomething": "اكتب شيئًا...",
+    "setTimer": "ضبط المؤقت (HH:MM:SS):",
+    "cancel": "إلغاء",
+    "save": "حفظ"
+  },
+  "pricing": {
+    "tabs": {
+      "free": "مجاني",
+      "premium": "بريميوم"
     },
-    "settingsUpd": {
-        "enterText": "أدخل النص:",
-        "typeSomething": "اكتب شيئًا...",
-        "setTimer": "ضبط المؤقت (HH:MM:SS):",
-        "cancel": "إلغاء",
-        "save": "حفظ"
+    "title": "اختر الخطة التي تساعدك على النمو",
+    "subtitle": "احصل على خطوات غير محدودة وتحليلات متقدمة",
+    "freePlan": {
+      "name": "مجاني",
+      "features": {
+        "timer": "مؤقت وتسجيل الصور",
+        "calendar": "التقويم",
+        "calendarLimited": "التسجيلات لليوم فقط",
+        "analytics": "التحليلات",
+        "pdfExport": "تصدير PDF"
+      }
     },
-    "pricing": {
-        "tabs": {
-            "free": "مجاني",
-            "premium": "بريميوم"
-        },
-        "title": "اختر الخطة التي تساعدك على النمو",
-        "subtitle": "احصل على خطوات غير محدودة وتحليلات متقدمة",
-        "freePlan": {
-            "name": "مجاني",
-            "features": {
-                "timer": "مؤقت وتسجيل الصور",
-                "calendar": "التقويم",
-                "calendarLimited": "التسجيلات لليوم فقط",
-                "analytics": "التحليلات",
-                "pdfExport": "تصدير PDF"
-            }
-        },
-        "premiumPlan": {
-            "name": "بريميوم",
-            "features": {
-                "timer": "مؤقت وتسجيل الصور",
-                "calendar": "التقويم",
-                "analytics": "التحليلات",
-                "pdfExport": "تصدير PDF"
-            },
-            "cta": "احصل على بريميوم"
-        },
-        "close": "إغلاق"
+    "premiumPlan": {
+      "name": "بريميوم",
+      "features": {
+        "timer": "مؤقت وتسجيل الصور",
+        "calendar": "التقويم",
+        "analytics": "التحليلات",
+        "pdfExport": "تصدير PDF"
+      },
+      "cta": "احصل على بريميوم"
     },
-    "analytics": {
-        "averageTime": "متوسط الوقت",
-        "overview": "نظرة عامة",
-        "totalClients": "إجمالي العملاء",
-        "onTimeRate": "معدل في الوقت المحدد",
-        "overtimeRate": "معدل التأخير",
-        "fastest": "الأسرع",
-        "slowest": "الأبطأ",
-        "stepAnalysis": "تحليل الخطوة",
-        "completionTimeTrend": "اتجاه وقت الإنجاز",
-        "serviceDay": "يوم الخدمة",
-        "services": "الخدمات"
+    "close": "إغلاق"
+  },
+  "analytics": {
+    "averageTime": "متوسط الوقت",
+    "overview": "نظرة عامة",
+    "totalClients": "إجمالي العملاء",
+    "onTimeRate": "معدل في الوقت المحدد",
+    "overtimeRate": "معدل التأخير",
+    "fastest": "الأسرع",
+    "slowest": "الأبطأ",
+    "stepAnalysis": "تحليل الخطوة",
+    "completionTimeTrend": "اتجاه وقت الإنجاز",
+    "serviceDay": "يوم الخدمة",
+    "services": "الخدمات"
+  },
+  "calendar": {
+    "title": "تقويم الخدمة",
+    "subtitle": "تتبع خدمة الأظافر الاحترافية",
+    "processes": "العمليات",
+    "clients": "العملاء",
+    "noSteps": "لا توجد خطوات لهذا التاريخ",
+    "gradientTab": {
+      "title": "تصدير المحفظة",
+      "subtitle": "مشاركتها مع المدرس"
     },
-    "calendar": {
-        "title": "تقويم الخدمة",
-        "subtitle": "تتبع خدمة الأظافر الاحترافية",
-        "processes": "العمليات",
-        "clients": "العملاء",
-        "noSteps": "لا توجد خطوات لهذا التاريخ",
-        "gradientTab": {
-            "title": "تصدير المحفظة",
-            "subtitle": "مشاركتها مع المدرس"
+    "exportTabs": {
+      "headerTitle": "تصدير المحفظة",
+      "headerSubtitle": "مشاركتها مع المدرس",
+      "exportButton": "تصدير",
+      "tab1": "تصدير سريع",
+      "tab2": "الإعدادات",
+      "exportPreview": "معاينة التصدير",
+      "clientsLabel": "العملاء",
+      "photoLabel": "صورة",
+      "pdfLabel": "صفحة PDF",
+      "photoPreview": "معاينة الصورة"
+    },
+    "singleExport": {
+      "selectRange": "اختر نطاق التصدير",
+      "options": {
+        "today": {
+          "title": "عمل اليوم",
+          "subtitle": "2 عميل"
         },
-        "exportTabs": {
-            "headerTitle": "تصدير المحفظة",
-            "headerSubtitle": "مشاركتها مع المدرس",
-            "exportButton": "تصدير",
-            "tab1": "تصدير سريع",
-            "tab2": "الإعدادات",
-            "exportPreview": "معاينة التصدير",
-            "clientsLabel": "العملاء",
-            "photoLabel": "صورة",
-            "pdfLabel": "صفحة PDF",
-            "photoPreview": "معاينة الصورة"
+        "recent": {
+          "title": "العمل الأخير",
+          "subtitle": "3 عملاء (أمس + اليوم)"
         },
-        "singleExport": {
-            "selectRange": "اختر نطاق التصدير",
-            "options": {
-                "today": {
-                    "title": "عمل اليوم",
-                    "subtitle": "2 عميل"
-                },
-                "recent": {
-                    "title": "العمل الأخير",
-                    "subtitle": "3 عملاء (أمس + اليوم)"
-                },
-                "week": {
-                    "title": "عمل هذا الأسبوع",
-                    "subtitle": "3 عملاء (آخر 7 أيام)"
-                }
-            }
-        },
-        "clientList": {
-            "sort": "فرز",
-            "latest": "الأحدث",
-            "oldest": "الأقدم",
-            "selectAll": "تحديد الكل",
-            "noPhotos": "لا توجد صور",
-            "photos": "صور"
-        },
-        "services": {
-            "serviceDetails": "تفاصيل الخدمة",
-            "totalPhotos": "إجمالي الصور",
-            "onTimeSteps": "الخطوات في الوقت المحدد",
-            "timeRange": "النطاق الزمني",
-            "notes": "ملاحظات",
-            "removeRecord": "إزالة هذا السجل"
-        },
-        "tabs": {
-            "home": "الرئيسية",
-            "calendar": "التقويم",
-            "analytics": "تحليلات",
-            "settings": "الإعدادات",
-            "target": "الهدف"
+        "week": {
+          "title": "عمل هذا الأسبوع",
+          "subtitle": "3 عملاء (آخر 7 أيام)"
         }
+      }
     },
-    "actions": {
-        "designComplete": "اكتمل التصميم",
-        "takePhoto": "التقط صورة",
-        "skip": "تخطي"
+    "clientList": {
+      "sort": "فرز",
+      "latest": "الأحدث",
+      "oldest": "الأقدم",
+      "selectAll": "تحديد الكل",
+      "noPhotos": "لا توجد صور",
+      "photos": "صور"
+    },
+    "services": {
+      "serviceDetails": "تفاصيل الخدمة",
+      "totalPhotos": "إجمالي الصور",
+      "onTimeSteps": "الخطوات في الوقت المحدد",
+      "timeRange": "النطاق الزمني",
+      "notes": "ملاحظات",
+      "removeRecord": "إزالة هذا السجل"
+    },
+    "tabs": {
+      "home": "الرئيسية",
+      "calendar": "التقويم",
+      "analytics": "تحليلات",
+      "settings": "الإعدادات",
+      "target": "الهدف"
     }
+  },
+  "actions": {
+    "designComplete": "اكتمل التصميم",
+    "takePhoto": "التقط صورة",
+    "skip": "تخطي"
+  },
+  "complete": {
+    "serviceComplete": "اكتمل الخدمة",
+    "client": "العميل",
+    "lightningEfficiency": "كفاءة البرق",
+    "efficiency": "% كفاءة",
+    "targetTime": "الوقت المستهدف",
+    "totalTime": "الوقت الإجمالي",
+    "timeDifference": "فرق الوقت",
+    "ahead": "مقدم",
+    "stepDetails": "تفاصيل الخطوات",
+    "downloadReport": "تحميل التقرير",
+    "newService": "خدمة جديدة"
+  }
 }
