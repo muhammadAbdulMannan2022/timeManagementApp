@@ -1,5 +1,6 @@
 import { LanguageProvider } from "@/components/context/languageContext";
 import store from "@/redux/store";
+// import { DefaultTheme, ThemeProvider } from "";
 import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router"; // Import Slot
@@ -18,7 +19,7 @@ export default function RootLayout() {
     Purchases.setLogLevel(LOG_LEVEL.VERBOSE);
 
     if (Platform.OS === "ios") {
-      //  Purchases.configure({apiKey: <revenuecat_project_apple_api_key>});
+      Purchases.configure({ apiKey: "appl_zwIrravyMOjGnNRrxujYLlErkwE" });
     } else if (Platform.OS === "android") {
       Purchases.configure({ apiKey: "goog_NrpbuWNNnlvFpYtwFRXxsiUlQLc" });
     }

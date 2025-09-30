@@ -30,6 +30,17 @@ import { useDispatch, useSelector } from "react-redux";
 import DynamicStepIndicator from "../helpers/StepIndicator";
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+function secondsToHMS(seconds: any) {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+
+  const hh = h.toString().padStart(2, "0");
+  const mm = m.toString().padStart(2, "0");
+  const ss = s.toString().padStart(2, "0");
+
+  return `${hh}:${mm}:${ss}`;
+}
 
 export default function Timer({
   time = 1,
@@ -91,7 +102,7 @@ export default function Timer({
 
     const task = {
       task_name: type,
-      current_time: currentTime,
+      current_time: secondsToHMS(currentTime),
       target_time: time * 60,
       completion_percentage: ((time * 60) / currentTime) * 100,
     };
@@ -112,6 +123,7 @@ export default function Timer({
       easing: Easing.inOut(Easing.ease),
     });
     setPlaying(false);
+    console.log(dataToSubmit, "data to submit");
 
     try {
       console.log("Submitting task...");

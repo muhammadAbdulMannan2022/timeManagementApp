@@ -1,3 +1,4 @@
+import { useUpdateSubscriptionMutation } from "@/redux/apis/appSlice";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -7,6 +8,7 @@ import Purchases from "react-native-purchases";
 const PremiumPlanPage: React.FC = () => {
   const { t } = useTranslation();
   const [offerings, setOfferings] = useState<any>(null);
+  const [update, isLoading] = useUpdateSubscriptionMutation();
 
   useEffect(() => {
     async function loadOfferings() {
@@ -147,8 +149,11 @@ const PremiumPlanPage: React.FC = () => {
             // Optional: check if entitlement is active
             const purchaserInfo = await Purchases.getCustomerInfo();
             const isPremiumActive =
-              purchaserInfo.entitlements.active["premium"];
+              purchaserInfo.entitlements.active["premium"] ||
+              purchaserInfo.entitlements.active["Premium"];
             console.log("Premium active:", isPremiumActive);
+            const res = await update({ is_subscribed: true });
+            console.log(res);
           } catch (err: any) {
             if (!err.userCancelled) {
               console.error("Purchase failed:", err);

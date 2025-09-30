@@ -137,7 +137,7 @@ export const appApi = createApi({
     }),
     updateSubscription: builder.mutation({
       query: (data) => ({
-        url: "/auth/user-details/",
+        url: "/auth/update/",
         method: "PATCH",
         body: data,
       }),
