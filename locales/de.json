@@ -109,6 +109,7 @@
       "latest": "Neueste",
       "oldest": "Älteste",
       "selectAll": "Alle auswählen",
+      "exportSelected": "Ausgewählte exportieren",
       "noPhotos": "Keine Fotos",
       "photos": "Fotos"
     },

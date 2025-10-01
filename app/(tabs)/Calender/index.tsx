@@ -51,7 +51,7 @@ export default function App() {
     useGetDataBySingleDateMutation();
   const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp>();
-  const [processedData, setProcessesData] = useState([]);
+  const [processedData, setProcessesData] = useState<any[]>([]);
 
   const formatDate = (date: string | undefined | null) => {
     if (!date) return "";
@@ -83,7 +83,7 @@ export default function App() {
   // Processes for selected date
   const processesInADay = useMemo(
     () =>
-      processedData.filter(
+      (Array.isArray(processedData) ? processedData : []).filter(
         (p: { created_at: string | null | undefined }) =>
           formatDate(p.created_at) === selectedDate
       ),
@@ -94,7 +94,7 @@ export default function App() {
   const tasksInADay = useMemo(
     () =>
       processesInADay.flatMap((proc: { tasks: any[] }) =>
-        proc.tasks.map((task) => ({
+        (Array.isArray(proc.tasks) ? proc.tasks : []).map((task) => ({
           ...task,
           processName: task.task_name,
           photo: task.images ?? [],
@@ -139,7 +139,7 @@ export default function App() {
       setSelectedDate(day.dateString);
       try {
         const res = await getSingeDatesData({ date: day.dateString });
-        setProcessesData(res.data);
+        setProcessesData(Array.isArray(res?.data) ? res.data : []);
         console.log(res.data);
       } catch (error) {
         console.log(error);

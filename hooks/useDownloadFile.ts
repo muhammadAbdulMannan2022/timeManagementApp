@@ -10,9 +10,10 @@ export const useDownloadFile = () => {
   const [downloadProgress, setDownloadProgress] = useState(0);
 
   const download = useCallback(
-    async (id: string) => {
+    async (ids: string | string[]) => {
       try {
-        const res = await getPdf({ uids: [id] }).unwrap();
+        const uids = Array.isArray(ids) ? ids : [ids];
+        const res = await getPdf({ uids }).unwrap();
         if (!res?.pdf_link) {
           Alert.alert("Error", "File URL not found");
           return;

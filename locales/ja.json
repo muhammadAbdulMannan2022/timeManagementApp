@@ -109,6 +109,7 @@
       "latest": "最新",
       "oldest": "最古",
       "selectAll": "すべて選択",
+      "exportSelected": "選択をエクスポート",
       "noPhotos": "写真なし",
       "photos": "写真"
     },

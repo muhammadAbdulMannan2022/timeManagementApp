@@ -109,6 +109,7 @@
       "latest": "最新",
       "oldest": "最旧",
       "selectAll": "全选",
+      "exportSelected": "导出所选",
       "noPhotos": "没有照片",
       "photos": "照片"
     },

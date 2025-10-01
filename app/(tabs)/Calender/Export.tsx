@@ -1,9 +1,11 @@
 import ClientList from "@/components/Custom/tabs/bulkExp";
 import SingleExport from "@/components/Custom/tabs/SingleExp";
+import { useDownloadFile } from "@/hooks/useDownloadFile";
 import { useSavePdf } from "@/hooks/useSaveFile";
 import {
   baseUrl,
   useGetDataBySingleDateMutation,
+  useGetDatesQuery,
   useMultipleItemPdfMutation,
 } from "@/redux/apis/appSlice";
 import {
@@ -136,6 +138,11 @@ export default function CustomTabs() {
   const [activeTab, setActiveTab] = useState(0);
   const [getData, { data, error, isLoading }] =
     useGetDataBySingleDateMutation();
+  const { data: datesData, isLoading: datesLoading } = useGetDatesQuery(
+    undefined as any
+  );
+  const { download: downloadFile, isPdfLoading: isPdfLoading } =
+    useDownloadFile();
   const router = useRouter();
   //
   const [selected, setSelected] = useState("today");
@@ -172,6 +179,75 @@ export default function CustomTabs() {
     );
   }
 
+  if (datesLoading) {
+    return (
+      <SafeAreaView className="flex-1 items-center justify-center bg-white">
+        <ActivityIndicator size="large" color="#00B8D4" />
+      </SafeAreaView>
+    );
+  }
+
+  // Normalize server response (process groups) into Client[] for ClientList
+  const clients = (data || []).map((proc: any, idx: number) => {
+    // tasks array may contain images arrays
+    const tasks: any[] = Array.isArray(proc.tasks) ? proc.tasks : [];
+    const photos = tasks.reduce(
+      (acc: number, t: any) =>
+        acc + (Array.isArray(t.images) ? t.images.length : 0),
+      0
+    );
+    // get first image path if exists
+    let image: string | null = null;
+    for (const t of tasks) {
+      if (Array.isArray(t.images) && t.images.length > 0) {
+        // images items might have .image field or be strings
+        const img = t.images[0];
+        image = img?.image ? baseUrl + img.image : img?.uri || img || null;
+        break;
+      }
+    }
+
+    // derive start/end times from tasks created_at
+    const times = tasks
+      .map((t) => (t.created_at ? new Date(t.created_at) : null))
+      .filter(Boolean) as Date[];
+    const start =
+      times.length > 0 ? times.reduce((a, b) => (a < b ? a : b)) : null;
+    const end =
+      times.length > 0 ? times.reduce((a, b) => (a > b ? a : b)) : null;
+    const formatTime = (d: Date | null) =>
+      d
+        ? `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`
+        : "";
+
+    // duration: difference between start and end in mm:ss
+    let duration = "0:00";
+    if (start && end) {
+      const diff = Math.max(
+        0,
+        Math.floor((end.getTime() - start.getTime()) / 1000)
+      );
+      const m = Math.floor(diff / 60);
+      const s = diff % 60;
+      duration = `${m}:${String(s).padStart(2, "0")}`;
+    }
+
+    return {
+      id: proc.uid,
+      client: proc.uid?.split("-")?.pop() || `Client ${idx}`,
+      date: proc.created_at
+        ? new Date(proc.created_at).toLocaleDateString()
+        : "",
+      startTime: formatTime(start),
+      endTime: formatTime(end),
+      duration,
+      photos,
+      image,
+      // keep original group for potential further use
+      __group: proc,
+    } as any;
+  });
+
   const images =
     data?.flatMap((group: any) =>
       group.tasks.flatMap((task: any) =>
@@ -190,6 +266,18 @@ export default function CustomTabs() {
       console.log(error);
     } finally {
       setLoadingPdf(false);
+    }
+  };
+
+  // Download handler for bulk export (selected uids from ClientList)
+  const handleBulkDownload = async (uids: number[] | string[]) => {
+    if (!uids || uids.length === 0) return;
+    try {
+      // convert to string ids if numbers
+      const stringIds = uids.map((u) => String(u));
+      await downloadFile(stringIds);
+    } catch (err) {
+      console.log("bulk download error", err);
     }
   };
 
@@ -212,21 +300,24 @@ export default function CustomTabs() {
               {t("calendar.exportTabs.headerSubtitle")}
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={getPdfData}
-            className="flex-row items-center gap-2 bg-[#00B8D4AB] px-3 py-3 rounded-lg"
-          >
-            {loadingPdf ? (
-              <ActivityIndicator />
-            ) : (
-              <>
-                <FontAwesome6 name="file-export" size={18} color="#ffffff" />
-                <Text className="text-white">
-                  {t("calendar.exportTabs.exportButton")}
-                </Text>
-              </>
-            )}
-          </TouchableOpacity>
+
+          {activeTab === 0 && (
+            <TouchableOpacity
+              onPress={getPdfData}
+              className="flex-row items-center gap-2 bg-[#00B8D4AB] px-3 py-3 rounded-lg"
+            >
+              {loadingPdf ? (
+                <ActivityIndicator />
+              ) : (
+                <>
+                  <FontAwesome6 name="file-export" size={18} color="#ffffff" />
+                  <Text className="text-white">
+                    {t("calendar.exportTabs.exportButton")}
+                  </Text>
+                </>
+              )}
+            </TouchableOpacity>
+          )}
         </View>
       </View>
 
@@ -284,7 +375,7 @@ export default function CustomTabs() {
             data={data || []}
           />
         ) : (
-          <ClientList />
+          <ClientList data={clients || []} onDownload={handleBulkDownload} />
         )}
       </View>
     </SafeAreaView>

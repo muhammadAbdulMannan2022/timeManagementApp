@@ -65,25 +65,27 @@ export default function Services() {
   }
 
   const process = processData;
-  const tasks = process.tasks;
+  const tasks = Array.isArray(process?.tasks) ? process.tasks : [];
 
   // Stats calculations
-  const totalPhotos = tasks.reduce(
-    (acc: any, task: any) => acc + (task.images?.length || 0),
-    0
-  );
 
-  const totalSteps = tasks.length;
+  const totalPhotos = Array.isArray(tasks)
+    ? tasks.reduce((acc: any, task: any) => acc + (task.images?.length || 0), 0)
+    : 0;
 
-  const onTimeSteps = tasks.filter((task: any) => {
-    const target = parseToSeconds(task.target_time);
-    const taken = parseToSeconds(task.current_time);
-    return taken <= target;
-  }).length;
+  const totalSteps = tasks.length || 0;
 
-  const allTakenTimes = tasks.map((task: any) =>
-    parseToSeconds(task.current_time)
-  );
+  const onTimeSteps = Array.isArray(tasks)
+    ? tasks.filter((task: any) => {
+        const target = parseToSeconds(task.target_time);
+        const taken = parseToSeconds(task.current_time);
+        return taken <= target;
+      }).length
+    : 0;
+
+  const allTakenTimes = Array.isArray(tasks)
+    ? tasks.map((task: any) => parseToSeconds(task.current_time))
+    : [];
   const minTime =
     allTakenTimes.length > 0
       ? formatTime(Math.min(...allTakenTimes))

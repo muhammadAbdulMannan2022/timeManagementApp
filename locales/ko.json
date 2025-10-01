@@ -109,6 +109,7 @@
       "latest": "최신",
       "oldest": "오래된",
       "selectAll": "모두 선택",
+      "exportSelected": "선택 항목 내보내기",
       "noPhotos": "사진 없음",
       "photos": "사진"
     },
