@@ -5,7 +5,7 @@ export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     // baseUrl: "http://10.10.13.52:7040", // replace with your backend
-    baseUrl: "https://tripersonal-homelessly-felecia.ngrok-free.app",
+    baseUrl: "https://www.tickin.tools",
   }),
   endpoints: (builder) => ({
     // POST request

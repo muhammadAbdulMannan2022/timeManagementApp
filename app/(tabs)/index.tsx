@@ -79,7 +79,7 @@ export default function App() {
       <SafeAreaView className="flex-1 items-center justify-center">
         {currentTask ? (
           <Timer
-            client={currentTask.client.split("-").pop()}
+            // client={currentTask.client.split("-").pop()}
             time={targetMinutes}
             type={currentTask.task_name}
             stepId={currentTask.client}

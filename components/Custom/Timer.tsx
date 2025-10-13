@@ -45,7 +45,7 @@ function secondsToHMS(seconds: any) {
 export default function Timer({
   time = 1,
   type,
-  client,
+  // client,
 }: {
   time?: number;
   type?: string;
@@ -322,9 +322,9 @@ export default function Timer({
         }}
       >
         <View>
-          <Text className="text-lg font-bold text-center text-secondary-default">
+          {/* <Text className="text-lg font-bold text-center text-secondary-default">
             Client {client || 81}
-          </Text>
+          </Text> */}
           <Text
             className="text-3xl font-bold text-center capitalize"
             style={{ color: progressColor }}

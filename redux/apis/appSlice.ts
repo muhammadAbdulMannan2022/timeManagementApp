@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { router } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 
-export const baseUrl = "https://tripersonal-homelessly-felecia.ngrok-free.app";
+export const baseUrl = "https://www.tickin.tools";
 
 // raw base query
 const rawBaseQuery = fetchBaseQuery({
