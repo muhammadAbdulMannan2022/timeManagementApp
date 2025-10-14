@@ -116,6 +116,7 @@ const StepBarChart = ({ stepAnalysis, dateRange }: BarChartProps) => {
             color: (opacity = 1) => `rgba(0, 184, 212, ${opacity})`,
             labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
             barPercentage: 0.5,
+            // @ts-ignore
             yAxisInterval: 0.1,
           }}
           verticalLabelRotation={30}

@@ -104,23 +104,25 @@ const Settings: React.FC = () => {
       i18n.off("languageChanged", onLanguageChange);
     };
   }, [i18n, t]);
-  const onSubmitEdit = async (icon: any, name: any, time: any) => {
-    const res = await updateBoiler({
-      task_name: name,
-      iconColor: "#00B8D4",
-      iconType: icon.iconSet,
-      iconName: icon.iconName,
-      id: editingId,
-    });
+  const onSubmitEdit = async (icon?: any, name?: any, time?: any) => {
+    let dataToSend: Record<string, any> = {};
+
+    if (name) dataToSend.task_name = name;
+    if (icon) {
+      dataToSend.iconColor = "#00B8D4";
+      dataToSend.iconType = icon.iconSet;
+      dataToSend.iconName = icon.iconName;
+    }
+    if (time) dataToSend.target_time = time;
+
+    dataToSend.id = editingId; // always needed
+
+    const res = await updateBoiler(dataToSend);
     refetch();
-    console.log(
-      icon,
-      name,
-      time,
-      res,
-      "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
-    );
+
+    console.log(icon, name, time, res, "✅ updated data");
   };
+
   if (boilerPlaateLoading) return <ActivityIndicator />;
 
   return (

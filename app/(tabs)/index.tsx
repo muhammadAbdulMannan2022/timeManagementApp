@@ -48,7 +48,10 @@ export default function App() {
           <AntDesign name="exclamationcircleo" size={48} color="#F9A61D" />
           <Text className="text-xl text-[#818181] font-semibold mt-4 text-center">
             {t("error.title")}:{" "}
-            {error?.data?.error || t("error.defaultMessage")}
+            {
+              // @ts-ignore
+              error?.data?.error || t("error.defaultMessage")
+            }
           </Text>
           <Text className="text-base text-[#818181] mt-2 text-center">
             {t("error.tryAgainMessage")}

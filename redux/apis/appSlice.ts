@@ -56,7 +56,7 @@ const baseQueryWithAuth: typeof rawBaseQuery = async (
 export const appApi = createApi({
   reducerPath: "appApi",
   baseQuery: baseQueryWithAuth,
-  tagTypes: ["BoilerPlate"],
+  tagTypes: ["BoilerPlate", "Tasks", "User", "Dates"], // Added tag types for resources
   endpoints: (builder) => ({
     updateBoilerPlate: builder.mutation({
       query: (data) => ({
@@ -64,7 +64,7 @@ export const appApi = createApi({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: ["BoilerPlate"],
+      invalidatesTags: ["BoilerPlate"], // Already invalidates BoilerPlate
     }),
     tasks: builder.mutation({
       query: (data) => ({
@@ -72,12 +72,15 @@ export const appApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Tasks"], // Invalidate Tasks to refetch getSingleById
     }),
     getUser: builder.query({
       query: () => "/auth/user-details/",
+      providesTags: ["User"], // Provide User tag for refetching
     }),
     getDates: builder.query({
       query: () => "/api/get-all-date/",
+      providesTags: ["Dates"], // Provide Dates tag for refetching
     }),
     getDataBySingleDate: builder.mutation({
       query: (data) => ({
@@ -85,13 +88,15 @@ export const appApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Tasks"], // Invalidate Tasks to refetch getSingleById
     }),
     getSingleById: builder.query({
       query: (id) => `/api/tasks/?client_uid=${id}`,
+      providesTags: ["Tasks"], // Provide Tasks tag for refetching
     }),
     getBoilerPlate: builder.query({
       query: () => "/api/boiler-plate/",
-      providesTags: ["BoilerPlate"],
+      providesTags: ["BoilerPlate"], // Already provides BoilerPlate
     }),
     submitStep: builder.mutation({
       query: (data) => ({
@@ -99,6 +104,7 @@ export const appApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Tasks"], // Invalidate Tasks to refetch getSingleById
     }),
     updateTask: builder.mutation({
       query: (data) => ({
@@ -106,6 +112,7 @@ export const appApi = createApi({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: ["Tasks"], // Invalidate Tasks to refetch getSingleById
     }),
     downloadPdf: builder.mutation({
       query: (data) => ({
@@ -113,6 +120,7 @@ export const appApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Tasks"], // Invalidate Tasks if it affects task data
     }),
     multipleItemPdf: builder.mutation({
       query: (data: any) => ({
@@ -120,6 +128,7 @@ export const appApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Tasks"], // Invalidate Tasks if it affects task data
     }),
     analytics: builder.mutation({
       query: (data: any) => ({
@@ -127,6 +136,7 @@ export const appApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Tasks"], // Invalidate Tasks if analytics affects task data
     }),
     deleteItem: builder.mutation({
       query: (data) => ({
@@ -134,6 +144,7 @@ export const appApi = createApi({
         method: "DELETE",
         body: data,
       }),
+      invalidatesTags: ["Tasks"], // Invalidate Tasks to refetch getSingleById
     }),
     updateSubscription: builder.mutation({
       query: (data) => ({
@@ -141,6 +152,7 @@ export const appApi = createApi({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: ["User"], // Invalidate User to refetch getUser
     }),
   }),
 });

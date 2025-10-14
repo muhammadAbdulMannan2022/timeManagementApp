@@ -4,6 +4,7 @@ import { RootState } from "@/redux/store";
 import { Ionicons } from "@expo/vector-icons";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+// @ts-ignore
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store";

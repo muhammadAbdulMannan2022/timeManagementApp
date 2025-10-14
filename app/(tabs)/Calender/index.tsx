@@ -5,26 +5,26 @@ import {
   useGetDatesQuery,
 } from "@/redux/apis/appSlice";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useRouter } from "expo-router";
+
 import * as SecureStore from "expo-secure-store";
+import { StatusBar } from "expo-status-bar";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   ActivityIndicator,
   ScrollView,
-  StatusBar,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import { Calendar, DateData } from "react-native-calendars";
 
+// Define navigation param list
 type RootStackParamList = {
   "(auth)": undefined;
+  // Add other routes as needed
 };
-
-type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 type MarkedDatesType = Record<
   string,
@@ -37,112 +37,97 @@ type MarkedDatesType = Record<
   }
 >;
 
-interface DateItem {
-  created_at: string;
-}
-
-interface Process {
-  uid: string;
-  created_at: string | null | undefined;
-  tasks: any[];
-}
-
 export default function App() {
+  // RTK Query for dates
   const {
-    data: dates = [], // Default to empty array
+    data: dates,
     isLoading: isDateLoading,
     isError,
     error,
-  }: {
-    data: DateItem[] | undefined;
-    isLoading: boolean;
-    isError: boolean;
-    error: any;
-  } = useGetDatesQuery(undefined);
+  }: any = useGetDatesQuery(undefined);
   const [getSingeDatesData, { isLoading: isDateDataLoading }] =
     useGetDataBySingleDateMutation();
   const { t } = useTranslation();
-  const navigation = useNavigation<NavigationProp>();
-  const [processedData, setProcessesData] = useState<Process[]>([]);
+  const navigation = useRouter();
+  const [processedData, setProcessesData] = useState<any[]>([]);
 
+  // Format date with error handling (kept for potential object dates)
   const formatDate = (date: string | undefined | null) => {
     if (!date) {
-      console.log("formatDate: No date provided");
+      console.warn("Invalid date input:", date);
       return "";
     }
-    try {
-      const d = new Date(date);
-      if (isNaN(d.getTime())) {
-        console.log(`formatDate: Invalid date - ${date}`);
-        return "";
-      }
-      const y = d.getFullYear();
-      const m = String(d.getMonth() + 1).padStart(2, "0");
-      const day = String(d.getDate()).padStart(2, "0");
-      const formatted = `${y}-${m}-${day}`;
-      console.log(`formatDate: ${date} -> ${formatted}`);
-      return formatted;
-    } catch (e) {
-      console.log(`formatDate: Error parsing date ${date} - ${e}`);
+    const d = new Date(date);
+    if (isNaN(d.getTime())) {
+      console.warn("Invalid date format:", date);
       return "";
     }
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
   };
 
+  // Log raw dates for debugging
   useEffect(() => {
-    console.log("useEffect: Data updated", JSON.stringify(dates));
+    if (dates) {
+      console.log("Raw dates from API:", dates);
+    }
   }, [dates]);
 
-  // Collect dates from API response
+  // Collect dates from API response - handle both strings and objects
   const datesList: string[] = useMemo(() => {
-    console.log("useMemo: Computing datesList", {
-      dates: JSON.stringify(dates),
-      isDateLoading,
-    });
-    if (isDateLoading) {
-      console.log("useMemo: Returning empty datesList due to isDateLoading");
-      return [];
-    }
-    if (!Array.isArray(dates)) {
-      console.log("useMemo: Returning empty datesList due to invalid data", {
-        dates,
-      });
-      return [];
-    }
-    const computedDates = dates
-      .map((d: DateItem) => formatDate(d.created_at))
-      .filter((date) => {
-        if (!date)
-          console.log("useMemo: Filtered out empty date", d.created_at);
-        return Boolean(date);
-      });
-    const uniqueDates = [...new Set(computedDates)];
-    console.log("useMemo: datesList computed", uniqueDates);
-    return uniqueDates as string[];
-  }, [dates, isDateLoading]);
+    if (!dates) return [];
+    const list = dates
+      .map((d: any) => {
+        if (typeof d === "string") {
+          return d; // Already formatted string
+        }
+        return formatDate(d.created_at); // Object with created_at
+      })
+      .filter((date: string) => date && /^\d{4}-\d{2}-\d{2}$/.test(date)); // Validate YYYY-MM-DD
+    console.log("datesList:", list); // Debug datesList
+    return list;
+  }, [dates]);
 
+  // Set initial selected date
+  const today = new Date().toISOString().split("T")[0];
   const [selectedDate, setSelectedDate] = useState<string>(
-    new Date().toISOString().split("T")[0]
+    datesList[0] || today
   );
+  const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
+  const bottomBarHeight = 85;
 
+  // Fetch data for initial selected date
   useEffect(() => {
-    if (datesList.length > 0 && !datesList.includes(selectedDate)) {
-      console.log("useEffect: Updating selectedDate to", datesList[0]);
-      setSelectedDate(datesList[0]);
+    if (datesList.length > 0 || selectedDate) {
+      const fetchInitialData = async () => {
+        try {
+          const res = await getSingeDatesData({ date: selectedDate });
+          setProcessesData(Array.isArray(res?.data) ? res.data : []);
+          console.log("Initial data for selected date:", res.data);
+        } catch (error) {
+          console.error("Error fetching initial data:", error);
+        }
+      };
+      fetchInitialData();
     }
-  }, [datesList]);
+  }, [datesList, selectedDate, getSingeDatesData]);
 
   // Processes for selected date
-  const processesInADay = useMemo(() => {
-    console.log("useMemo: Computing processesInADay for", selectedDate);
-    return (Array.isArray(processedData) ? processedData : []).filter(
-      (p: Process) => formatDate(p.created_at) === selectedDate
-    );
-  }, [processedData, selectedDate]);
+  const processesInADay = useMemo(
+    () =>
+      (Array.isArray(processedData) ? processedData : []).filter(
+        (p: { created_at: string | null | undefined }) =>
+          formatDate(p.created_at) === selectedDate
+      ),
+    [processedData, selectedDate]
+  );
 
-  // Tasks for selected processes
+  // Tasks for selected processes (kept as is)
   const tasksInADay = useMemo(
     () =>
-      processesInADay.flatMap((proc: Process) =>
+      processesInADay.flatMap((proc: { tasks: any[] }) =>
         (Array.isArray(proc.tasks) ? proc.tasks : []).map((task) => ({
           ...task,
           processName: task.task_name,
@@ -167,10 +152,9 @@ export default function App() {
     "December",
   ];
 
-  // Marked dates for calendar
+  // Marked dates: dot for all, background for selected
   const markedDates: MarkedDatesType = useMemo(() => {
-    console.log("useMemo: Computing markedDates", datesList);
-    return datesList.reduce((acc, date) => {
+    const marked = datesList.reduce((acc, date) => {
       acc[date] = {
         marked: true,
         dotColor: "#00B8D4",
@@ -179,23 +163,20 @@ export default function App() {
       };
       return acc;
     }, {} as MarkedDatesType);
+    console.log("markedDates:", marked); // Debug markedDates
+    return marked;
   }, [datesList, selectedDate]);
 
   const onDayPress = async (day: DateData) => {
-    console.log("onDayPress: Selected date", day.dateString, { datesList });
-    setSelectedDate(day.dateString);
     if (datesList.includes(day.dateString)) {
+      setSelectedDate(day.dateString);
       try {
-        console.log("onDayPress: Fetching data for", day.dateString);
         const res = await getSingeDatesData({ date: day.dateString });
-        console.log("onDayPress: Fetched data", JSON.stringify(res.data));
         setProcessesData(Array.isArray(res?.data) ? res.data : []);
+        console.log("Data for selected date:", res.data);
       } catch (error) {
-        console.log("onDayPress: Error fetching data", error);
+        console.error("Error fetching data for date:", error);
       }
-    } else {
-      console.log("onDayPress: No data for date, clearing processes");
-      setProcessesData([]);
     }
   };
 
@@ -232,14 +213,12 @@ export default function App() {
   const totalProcesses = processedData?.length ?? 0;
   const totalProcessesToday = processesInADay?.length ?? 0;
 
-  const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
-  const bottomBarHeight = 85;
-
-  // Handle loading state
-  if (isDateLoading || isDateDataLoading) {
+  // Handle loading state - show spinner, but dates/indicators load independently
+  if (isDateLoading) {
     return (
       <View className="flex-1 bg-white justify-center items-center">
-        <ActivityIndicator />
+        <ActivityIndicator size="large" color="#00B8D4" />
+        <Text className="mt-4 text-gray-500">{t("calendar.loadingDates")}</Text>
       </View>
     );
   }
@@ -247,21 +226,18 @@ export default function App() {
   // Handle error state
   if (isError) {
     const isTokenInvalid =
-      error &&
-      "data" in error &&
-      (error as any).data?.code === "token_not_valid";
+      error && "data" in error && error.data?.code === "token_not_valid";
     if (isTokenInvalid) {
       SecureStore.deleteItemAsync("accessToken");
       SecureStore.deleteItemAsync("refreshToken");
-      navigation.push("(auth)");
+      navigation.push("/(auth)");
       return null;
     }
 
     return (
       <View className="flex-1 bg-white justify-center items-center">
         <Text className="text-lg text-red-500">
-          {t("calendar.error")}{" "}
-          {(error as any)?.data?.detail || "Failed to load data"}
+          {t("calendar.error")} {error?.data?.detail || "Failed to load data"}
         </Text>
       </View>
     );
@@ -272,7 +248,7 @@ export default function App() {
       className="flex-1 bg-white pt-16"
       style={{ paddingBottom: bottomBarHeight }}
     >
-      <StatusBar barStyle="dark-content" />
+      <StatusBar style="dark" />
       <ScrollView
         contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 20 }}
       >
@@ -324,7 +300,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
 
-        {/* Calendar */}
+        {/* Calendar - removed overflow hidden to ensure dots visible */}
         <View
           style={{
             backgroundColor: "#ffffff",
@@ -334,11 +310,9 @@ export default function App() {
             shadowRadius: 4,
             elevation: 1.5,
             borderRadius: 12,
-            overflow: "hidden",
           }}
         >
           <Calendar
-            key={getCalendarCurrentMonth()}
             onDayPress={onDayPress}
             current={getCalendarCurrentMonth()}
             markingType="dot"
@@ -350,8 +324,7 @@ export default function App() {
               calendarBackground: "#ffffff",
               textSectionTitleColor: "#000000",
               dayTextColor: "#000000",
-              todayBackgroundColor: "#00B8ff",
-              todayTextColor: "#ffffff",
+              todayTextColor: "#00B8D4",
               selectedDayBackgroundColor: "#00B8D4",
               selectedDayTextColor: "#ffffff",
               textDisabledColor: "#999999",
@@ -362,15 +335,6 @@ export default function App() {
             }}
           />
         </View>
-
-        {/* Message for no dates */}
-        {(!dates || dates.length === 0) && (
-          <View className="mt-4">
-            <Text className="text-lg text-gray-500 text-center">
-              {t("calendar.noDatesAvailable")}
-            </Text>
-          </View>
-        )}
 
         {/* Processes + Tasks */}
         <View
@@ -400,8 +364,15 @@ export default function App() {
           </View>
 
           <View className="mt-8">
-            {processesInADay.length > 0 ? (
-              processesInADay.map((process: Process, i: number) => (
+            {isDateDataLoading ? (
+              <View className="items-center">
+                <ActivityIndicator size="large" color="#00B8D4" />
+                <Text className="mt-2 text-gray-500">
+                  {t("calendar.loadingData")}
+                </Text>
+              </View>
+            ) : processesInADay.length > 0 ? (
+              processesInADay.map((process: any, i) => (
                 <ItemsCard key={process.uid} item={process} titleId={i} />
               ))
             ) : (
