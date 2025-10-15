@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "Tickin .",
+    "name": "Tickin",
     "slug": "alvinluTimeApp",
     "owner": "muhammadabdulmannan21",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/images/splash-icon.png",
-    "scheme": "alvinluTimeApp",
+    "scheme": ["alvinlutimeapp"],
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -71,6 +71,20 @@
           "savePhotosPermission": "Allow Tickin to save photos.",
           "isAccessMediaLocationEnabled": true,
           "granularPermissions": ["audio", "photo"]
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "minSdkVersion": 24,
+            "buildToolsVersion": "35.0.0",
+            "gradleVersion": "8.13",
+            "agpVersion": "8.8.2",
+            "kotlinVersion": "2.0.21"
+          }
         }
       ]
     ],
