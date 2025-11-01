@@ -9,7 +9,7 @@ import { useRouter } from "expo-router";
 
 import * as SecureStore from "expo-secure-store";
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   ActivityIndicator,
@@ -19,12 +19,6 @@ import {
   View,
 } from "react-native";
 import { Calendar, DateData } from "react-native-calendars";
-
-// Define navigation param list
-type RootStackParamList = {
-  "(auth)": undefined;
-  // Add other routes as needed
-};
 
 type MarkedDatesType = Record<
   string,
@@ -38,7 +32,6 @@ type MarkedDatesType = Record<
 >;
 
 export default function App() {
-  // RTK Query for dates
   const {
     data: dates,
     isLoading: isDateLoading,
@@ -47,99 +40,64 @@ export default function App() {
   }: any = useGetDatesQuery(undefined);
   const [getSingeDatesData, { isLoading: isDateDataLoading }] =
     useGetDataBySingleDateMutation();
+
   const { t } = useTranslation();
   const navigation = useRouter();
   const [processedData, setProcessesData] = useState<any[]>([]);
 
-  // Format date with error handling
   const formatDate = (date: string | undefined | null) => {
-    if (!date) {
-      console.warn("Invalid date input:", date);
-      return "";
-    }
+    if (!date) return "";
     const d = new Date(date);
-    if (isNaN(d.getTime())) {
-      console.warn("Invalid date format:", date);
-      return "";
-    }
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    return `${y}-${m}-${day}`;
+    if (isNaN(d.getTime())) return "";
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
 
-  // Log raw dates for debugging
-  useEffect(() => {
-    if (dates) {
-      console.log("Raw dates from API:", dates);
-    }
-  }, [dates]);
-
-  // Current date in YYYY-MM-DD format
   const today = new Date().toISOString().split("T")[0];
 
-  // Collect dates from API response + add today if empty
   const datesList: string[] = useMemo(() => {
     if (!dates || !Array.isArray(dates)) return [today];
-
     const apiDates = dates
-      .map((d: any) => {
-        if (typeof d === "string") {
-          return d; // Already formatted string
-        }
-        return formatDate(d.created_at); // Object with created_at
-      })
-      .filter((date: string) => date && /^\d{4}-\d{2}-\d{2}$/.test(date));
-
-    // If no valid dates from API, use today
-    const finalDates = apiDates.length > 0 ? apiDates : [today];
-
-    console.log("datesList (final):", finalDates);
-    return finalDates;
+      .map((d: any) => (typeof d === "string" ? d : formatDate(d.created_at)))
+      .filter((d: string) => d && /^\d{4}-\d{2}-\d{2}$/.test(d));
+    return apiDates.length > 0 ? apiDates : [today];
   }, [dates, today]);
 
-  // Set initial selected date (first in list or today)
   const [selectedDate, setSelectedDate] = useState<string>(datesList[0]);
-  const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
-  const bottomBarHeight = 85;
 
-  // Fetch data for initial selected date
+  // This controls the visible month in header AND calendar
+  const [displayMonth, setDisplayMonth] = useState<string>(() => {
+    const [y, m] = selectedDate.split("-").map(Number);
+    return `${y}-${String(m).padStart(2, "0")}-01`;
+  });
+
+  const calendarRef = useRef<any>(null);
+
+  // Sync displayMonth when selectedDate changes
   useEffect(() => {
-    if (datesList.length > 0) {
-      const fetchInitialData = async () => {
-        try {
-          const res = await getSingeDatesData({ date: selectedDate });
-          setProcessesData(Array.isArray(res?.data) ? res.data : []);
-          console.log("Initial data for selected date:", res.data);
-        } catch (error) {
-          console.error("Error fetching initial data:", error);
-        }
-      };
-      fetchInitialData();
-    }
-  }, [datesList, selectedDate, getSingeDatesData]);
+    const [y, m] = selectedDate.split("-").map(Number);
+    const newMonth = `${y}-${String(m).padStart(2, "0")}-01`;
+    setDisplayMonth(newMonth);
+  }, [selectedDate]);
 
-  // Processes for selected date
+  // Fetch data on selectedDate change
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await getSingeDatesData({ date: selectedDate });
+        setProcessesData(Array.isArray(res?.data) ? res.data : []);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchData();
+  }, [selectedDate, getSingeDatesData]);
+
   const processesInADay = useMemo(
     () =>
       (Array.isArray(processedData) ? processedData : []).filter(
-        (p: { created_at: string | null | undefined }) =>
-          formatDate(p.created_at) === selectedDate
+        (p: any) => formatDate(p.created_at) === selectedDate
       ),
     [processedData, selectedDate]
-  );
-
-  // Tasks for selected processes
-  const tasksInADay = useMemo(
-    () =>
-      processesInADay.flatMap((proc: { tasks: any[] }) =>
-        (Array.isArray(proc.tasks) ? proc.tasks : []).map((task) => ({
-          ...task,
-          processName: task.task_name,
-          photo: task.images ?? [],
-        }))
-      ),
-    [processesInADay]
   );
 
   const monthNames = [
@@ -157,80 +115,75 @@ export default function App() {
     "December",
   ];
 
-  // Marked dates: dot for all, background for selected
   const markedDates: MarkedDatesType = useMemo(() => {
-    const marked = datesList.reduce((acc, date) => {
-      acc[date] = {
+    const map = datesList.reduce((acc, d) => {
+      acc[d] = {
         marked: true,
         dotColor: "#00B8D4",
-        selected: date === selectedDate,
-        selectedColor: date === selectedDate ? "#00B8D4" : undefined,
+        selected: d === selectedDate,
+        selectedColor: d === selectedDate ? "#00B8D4" : undefined,
       };
       return acc;
     }, {} as MarkedDatesType);
 
-    // Always mark today with a dot even if not in API
     if (!datesList.includes(today)) {
-      marked[today] = {
+      map[today] = {
         marked: true,
         dotColor: "#00B8D4",
         selected: today === selectedDate,
         selectedColor: today === selectedDate ? "#00B8D4" : undefined,
       };
     }
-
-    console.log("markedDates:", marked);
-    return marked;
+    return map;
   }, [datesList, selectedDate, today]);
+
+  // CRITICAL: Handle month change from calendar swipe
+  const onMonthChange = (date: DateData) => {
+    const newMonth = `${date.year}-${String(date.month).padStart(2, "0")}-01`;
+    setDisplayMonth(newMonth);
+  };
 
   const onDayPress = async (day: DateData) => {
     const dateStr = day.dateString;
     if (datesList.includes(dateStr) || dateStr === today) {
       setSelectedDate(dateStr);
-      try {
-        const res = await getSingeDatesData({ date: dateStr });
-        setProcessesData(Array.isArray(res?.data) ? res.data : []);
-        console.log("Data for selected date:", res.data);
-      } catch (error) {
-        console.error("Error fetching data for date:", error);
-      }
     }
   };
 
   const goPrevMonth = () => {
-    setCurrentMonth(
-      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1)
-    );
+    const prev = new Date(displayMonth);
+    prev.setMonth(prev.getMonth() - 1);
+    const newMonth = `${prev.getFullYear()}-${String(prev.getMonth() + 1).padStart(2, "0")}-01`;
+    setDisplayMonth(newMonth);
+    calendarRef.current?.addMonth?.(-1); // Force calendar to go back
   };
 
   const goNextMonth = () => {
-    setCurrentMonth(
-      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1)
-    );
-  };
-
-  const getCalendarCurrentMonth = () => {
-    const y = currentMonth.getFullYear();
-    const m = String(currentMonth.getMonth() + 1).padStart(2, "0");
-    return `${y}-${m}-01`;
+    const next = new Date(displayMonth);
+    next.setMonth(next.getMonth() + 1);
+    const newMonth = `${next.getFullYear()}-${String(next.getMonth() + 1).padStart(2, "0")}-01`;
+    setDisplayMonth(newMonth);
+    calendarRef.current?.addMonth?.(1); // Force calendar to go forward
   };
 
   const formatHeaderDate = () => {
-    const selected = new Date(selectedDate);
-    const current = new Date(getCalendarCurrentMonth());
+    const cur = new Date(displayMonth);
+    const sel = new Date(selectedDate);
+
     if (
-      selected.getMonth() === current.getMonth() &&
-      selected.getFullYear() === current.getFullYear()
+      sel.getFullYear() === cur.getFullYear() &&
+      sel.getMonth() === cur.getMonth()
     ) {
-      return `${monthNames[selected.getMonth()]} ${selected.getDate()}, ${selected.getFullYear()}`;
+      return `${monthNames[sel.getMonth()]} ${sel.getDate()}, ${sel.getFullYear()}`;
     }
-    return `${monthNames[current.getMonth()]} ${current.getFullYear()}`;
+    return `${monthNames[cur.getMonth()]} ${cur.getFullYear()}`;
   };
 
   const totalProcesses = processedData?.length ?? 0;
   const totalProcessesToday = processesInADay?.length ?? 0;
 
-  // Handle loading state
+  const bottomBarHeight = 85;
+
   if (isDateLoading) {
     return (
       <View className="flex-1 bg-white justify-center items-center">
@@ -240,17 +193,15 @@ export default function App() {
     );
   }
 
-  // Handle error state
   if (isError) {
-    const isTokenInvalid =
+    const tokenInvalid =
       error && "data" in error && error.data?.code === "token_not_valid";
-    if (isTokenInvalid) {
+    if (tokenInvalid) {
       SecureStore.deleteItemAsync("accessToken");
       SecureStore.deleteItemAsync("refreshToken");
       navigation.push("/(auth)");
       return null;
     }
-
     return (
       <View className="flex-1 bg-white justify-center items-center">
         <Text className="text-lg text-red-500">
@@ -269,7 +220,6 @@ export default function App() {
       <ScrollView
         contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 20 }}
       >
-        {/* Header */}
         <View className="flex-row items-center gap-4 my-8">
           <Ionicons name="calendar-sharp" size={40} color="#00B8D4" />
           <View>
@@ -306,9 +256,11 @@ export default function App() {
           >
             <Ionicons name="chevron-back" size={28} color="#00B8D4" />
           </TouchableOpacity>
+
           <Text className="text-xl font-bold" style={{ flexShrink: 1 }}>
             {formatHeaderDate()}
           </Text>
+
           <TouchableOpacity
             className="bg-[#00B8D42E] p-1.5 rounded-full"
             onPress={goNextMonth}
@@ -317,7 +269,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
 
-        {/* Calendar */}
+        {/* Calendar – FULLY CONTROLLED */}
         <View
           style={{
             backgroundColor: "#ffffff",
@@ -330,8 +282,10 @@ export default function App() {
           }}
         >
           <Calendar
+            ref={calendarRef}
+            initialDate={displayMonth} // Only for first render
             onDayPress={onDayPress}
-            current={getCalendarCurrentMonth()}
+            onMonthChange={onMonthChange} // CRITICAL: Sync swipe
             markingType="dot"
             markedDates={markedDates}
             hideArrows={true}
@@ -389,7 +343,7 @@ export default function App() {
                 </Text>
               </View>
             ) : processesInADay.length > 0 ? (
-              processesInADay.map((process: any, i) => (
+              processesInADay.map((process: any, i: number) => (
                 <ItemsCard key={process.uid} item={process} titleId={i} />
               ))
             ) : (
