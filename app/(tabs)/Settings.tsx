@@ -130,14 +130,6 @@ const Settings: React.FC = () => {
       <SafeAreaView className="flex-1" style={{ paddingBottom: 70 }}>
         <ScrollView className="flex-1 px-5">
           <View className="gap-5 items-start">
-            <TouchableOpacity
-              onPress={() => {
-                router.back();
-                console.log("Go back pressed");
-              }}
-            >
-              <Ionicons name="arrow-back" size={24} color="#000" />
-            </TouchableOpacity>
             <View className="flex-row items-center gap-3">
               <Ionicons name="settings" size={30} color="#00B8D4" />
               <View>
