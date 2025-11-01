@@ -66,16 +66,6 @@ export default function SettingsUpdate({
         >
           <TouchableOpacity
             onPress={() => {
-              setTime((time) => (time += 10));
-            }}
-            className="p-2 border border-gray-200"
-            style={{ borderRadius: "100%" }}
-          >
-            <Entypo name="plus" size={24} color="#00B8D4" />
-          </TouchableOpacity>
-          <Text className="text-lg p-3 rounded-lg">{time}</Text>
-          <TouchableOpacity
-            onPress={() => {
               if (time > 10) {
                 return setTime((time) => (time -= 10));
               }
@@ -84,6 +74,16 @@ export default function SettingsUpdate({
             style={{ borderRadius: "100%" }}
           >
             <Entypo name="minus" size={24} color="#00B8D4" />
+          </TouchableOpacity>
+          <Text className="text-lg p-3 rounded-lg">{time} m</Text>
+          <TouchableOpacity
+            onPress={() => {
+              setTime((time) => (time += 10));
+            }}
+            className="p-2 border border-gray-200"
+            style={{ borderRadius: "100%" }}
+          >
+            <Entypo name="plus" size={24} color="#00B8D4" />
           </TouchableOpacity>
         </View>
       </View>
