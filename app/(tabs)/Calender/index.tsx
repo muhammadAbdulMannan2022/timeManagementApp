@@ -51,7 +51,7 @@ export default function App() {
   const navigation = useRouter();
   const [processedData, setProcessesData] = useState<any[]>([]);
 
-  // Format date with error handling (kept for potential object dates)
+  // Format date with error handling
   const formatDate = (date: string | undefined | null) => {
     if (!date) {
       console.warn("Invalid date input:", date);
@@ -75,32 +75,37 @@ export default function App() {
     }
   }, [dates]);
 
-  // Collect dates from API response - handle both strings and objects
+  // Current date in YYYY-MM-DD format
+  const today = new Date().toISOString().split("T")[0];
+
+  // Collect dates from API response + add today if empty
   const datesList: string[] = useMemo(() => {
-    if (!dates) return [];
-    const list = dates
+    if (!dates || !Array.isArray(dates)) return [today];
+
+    const apiDates = dates
       .map((d: any) => {
         if (typeof d === "string") {
           return d; // Already formatted string
         }
         return formatDate(d.created_at); // Object with created_at
       })
-      .filter((date: string) => date && /^\d{4}-\d{2}-\d{2}$/.test(date)); // Validate YYYY-MM-DD
-    console.log("datesList:", list); // Debug datesList
-    return list;
-  }, [dates]);
+      .filter((date: string) => date && /^\d{4}-\d{2}-\d{2}$/.test(date));
 
-  // Set initial selected date
-  const today = new Date().toISOString().split("T")[0];
-  const [selectedDate, setSelectedDate] = useState<string>(
-    datesList[0] || today
-  );
+    // If no valid dates from API, use today
+    const finalDates = apiDates.length > 0 ? apiDates : [today];
+
+    console.log("datesList (final):", finalDates);
+    return finalDates;
+  }, [dates, today]);
+
+  // Set initial selected date (first in list or today)
+  const [selectedDate, setSelectedDate] = useState<string>(datesList[0]);
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const bottomBarHeight = 85;
 
   // Fetch data for initial selected date
   useEffect(() => {
-    if (datesList.length > 0 || selectedDate) {
+    if (datesList.length > 0) {
       const fetchInitialData = async () => {
         try {
           const res = await getSingeDatesData({ date: selectedDate });
@@ -124,7 +129,7 @@ export default function App() {
     [processedData, selectedDate]
   );
 
-  // Tasks for selected processes (kept as is)
+  // Tasks for selected processes
   const tasksInADay = useMemo(
     () =>
       processesInADay.flatMap((proc: { tasks: any[] }) =>
@@ -163,15 +168,27 @@ export default function App() {
       };
       return acc;
     }, {} as MarkedDatesType);
-    console.log("markedDates:", marked); // Debug markedDates
+
+    // Always mark today with a dot even if not in API
+    if (!datesList.includes(today)) {
+      marked[today] = {
+        marked: true,
+        dotColor: "#00B8D4",
+        selected: today === selectedDate,
+        selectedColor: today === selectedDate ? "#00B8D4" : undefined,
+      };
+    }
+
+    console.log("markedDates:", marked);
     return marked;
-  }, [datesList, selectedDate]);
+  }, [datesList, selectedDate, today]);
 
   const onDayPress = async (day: DateData) => {
-    if (datesList.includes(day.dateString)) {
-      setSelectedDate(day.dateString);
+    const dateStr = day.dateString;
+    if (datesList.includes(dateStr) || dateStr === today) {
+      setSelectedDate(dateStr);
       try {
-        const res = await getSingeDatesData({ date: day.dateString });
+        const res = await getSingeDatesData({ date: dateStr });
         setProcessesData(Array.isArray(res?.data) ? res.data : []);
         console.log("Data for selected date:", res.data);
       } catch (error) {
@@ -213,7 +230,7 @@ export default function App() {
   const totalProcesses = processedData?.length ?? 0;
   const totalProcessesToday = processesInADay?.length ?? 0;
 
-  // Handle loading state - show spinner, but dates/indicators load independently
+  // Handle loading state
   if (isDateLoading) {
     return (
       <View className="flex-1 bg-white justify-center items-center">
@@ -300,7 +317,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
 
-        {/* Calendar - removed overflow hidden to ensure dots visible */}
+        {/* Calendar */}
         <View
           style={{
             backgroundColor: "#ffffff",
