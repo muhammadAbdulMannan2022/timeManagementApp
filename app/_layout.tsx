@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { LanguageProvider } from "@/components/context/languageContext";
 import store from "@/redux/store";
 // import { DefaultTheme, ThemeProvider } from "";
@@ -32,7 +33,7 @@ export default function RootLayout() {
 
   async function getCustomerInfo() {
     const customerInfo = await Purchases.getCustomerInfo();
-    console.log(customerInfo);
+    console.log("lkdsfglajsdfljgljdslfgl\n\n\n", customerInfo);
   }
 
   return (

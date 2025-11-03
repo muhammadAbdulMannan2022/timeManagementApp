@@ -14,6 +14,7 @@ const PremiumPlanPage: React.FC = () => {
     async function loadOfferings() {
       const data = await Purchases.getOfferings();
       setOfferings(data);
+      console.log("\n\n\n\n", data, "\n\n\n\n");
     }
     loadOfferings();
   }, []);
@@ -132,7 +133,7 @@ const PremiumPlanPage: React.FC = () => {
               return console.log("Offerings not loaded yet");
 
             // Find the $rc_annual package
-            console.log(offerings, "kkkkkkkkkkkkkkkkkkkkkkk");
+            console.log("\n\n\n\n", offerings, "kkkkkkkkkkkkkkkkkkkkkkk");
             const annual = offerings.current.availablePackages.find(
               (pkg: any) => pkg.identifier === "$rc_annual"
             );

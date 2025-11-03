@@ -8,14 +8,18 @@
     "icon": "./assets/images/splash-icon.png",
     "scheme": ["alvinlutimeapp"],
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "ios": {
       "supportsTablet": true,
       "buildNumber": "1",
       "bundleIdentifier": "com.muhammadabdulmannan21.alvinluTimeApp",
       "icon": "./assets/images/splash-icon.png",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "This app requires camera access to take photos and scan barcodes.",
+        "NSMicrophoneUsageDescription": "This app requires microphone access to record audio when using the camera.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to select and share photos.",
+        "NSPhotoLibraryAddUsageDescription": "This app needs permission to save photos to your library."
       }
     },
     "android": {
