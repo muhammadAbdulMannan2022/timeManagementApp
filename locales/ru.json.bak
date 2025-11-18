@@ -1,0 +1,179 @@
+{
+  "settings": {
+    "settings": "Настройки",
+    "personalizeWorkflow": "Персонализируйте ваш рабочий процесс",
+    "totalTargetTime": "Общее целевое время",
+    "expectedTime": "Ожидаемое время выполнения услуги",
+    "serviceSettings": "Настройки сервиса",
+    "unknownTask": "Неизвестная задача",
+    "languageSettings": "Настройки языка",
+    "chooseLanguage": "Выберите язык приложения",
+    "simplifiedChinese": "Упрощённый китайский",
+    "traditionalChinese": "Традиционный китайский",
+    "pricing": "Цены",
+    "close": "Закрыть",
+    "edit": "Редактировать",
+    "minutes": "Минуты",
+    "time": "Время"
+  },
+  "settingsUpd": {
+    "enterText": "Введите текст:",
+    "typeSomething": "Введите что-нибудь...",
+    "setTimer": "Установить таймер (HH:MM:SS):",
+    "cancel": "Отмена",
+    "save": "Сохранить"
+  },
+  "pricing": {
+    "tabs": {
+      "free": "Бесплатно",
+      "premium": "Премиум"
+    },
+    "title": "Выберите план, который поможет расти",
+    "subtitle": "Получите неограниченные шаги, расширенную аналитику",
+    "freePlan": {
+      "name": "Бесплатно",
+      "features": {
+        "timer": "Таймер и запись фото",
+        "calendar": "Календарь",
+        "calendarLimited": "Записи только за день",
+        "analytics": "Аналитика",
+        "pdfExport": "Экспорт PDF"
+      }
+    },
+    "premiumPlan": {
+      "name": "Премиум",
+      "features": {
+        "timer": "Таймер и запись фото",
+        "calendar": "Календарь",
+        "analytics": "Аналитика",
+        "pdfExport": "Экспорт PDF"
+      },
+      "cta": "Получить Премиум"
+    },
+    "close": "Закрыть"
+  },
+  "analytics": {
+    "averageTime": "Среднее время",
+    "overview": "Обзор",
+    "totalClients": "Всего клиентов",
+    "onTimeRate": "Процент вовремя",
+    "overtimeRate": "Процент с опозданием",
+    "fastest": "Самый быстрый",
+    "slowest": "Самый медленный",
+    "stepAnalysis": "Анализ шагов",
+    "completionTimeTrend": "Тренд времени выполнения",
+    "serviceDay": "День обслуживания",
+    "services": "Услуги",
+    "noData": "analytics.noData"
+  },
+  "calendar": {
+    "title": "Календарь обслуживания",
+    "subtitle": "Отслеживание профессиональных услуг по ногтям",
+    "processes": "Процессы",
+    "clients": "Клиенты",
+    "noSteps": "Нет шагов для этой даты",
+    "gradientTab": {
+      "title": "Экспорт портфолио",
+      "subtitle": "Поделиться с инструктором"
+    },
+    "exportTabs": {
+      "headerTitle": "Экспорт портфолио",
+      "headerSubtitle": "Поделиться с инструктором",
+      "exportButton": "Экспорт",
+      "tab1": "Быстрый экспорт",
+      "tab2": "Настройки",
+      "exportPreview": "Предпросмотр экспорта",
+      "clientsLabel": "Клиенты",
+      "photoLabel": "Фото",
+      "pdfLabel": "PDF страница",
+      "photoPreview": "Предпросмотр фото",
+      "noPhotos": "calendar.exportTabs.noPhotos"
+    },
+    "singleExport": {
+      "selectRange": "Выберите диапазон экспорта",
+      "options": {
+        "today": {
+          "title": "Сегодняшняя работа",
+          "subtitle": "2 клиента"
+        },
+        "recent": {
+          "title": "Недавняя работа",
+          "subtitle": "3 клиента (вчера + сегодня)"
+        },
+        "week": {
+          "title": "Работа за неделю",
+          "subtitle": "3 клиента (последние 7 дней)"
+        }
+      }
+    },
+    "clientList": {
+      "sort": "Сортировать",
+      "latest": "Последние",
+      "oldest": "Старые",
+      "selectAll": "Выбрать все",
+      "exportSelected": "Экспортировать выбранное",
+      "noPhotos": "Нет фотографий",
+      "photos": "Фотографии"
+    },
+    "services": {
+      "serviceDetails": "Детали услуги",
+      "totalPhotos": "Всего фото",
+      "onTimeSteps": "Шаги вовремя",
+      "timeRange": "Диапазон времени",
+      "notes": "Заметки",
+      "removeRecord": "Удалить эту запись",
+      "add": "Добавить"
+    },
+    "tabs": {
+      "home": "Главная",
+      "calendar": "Календарь",
+      "analytics": "Аналитика",
+      "settings": "Настройки",
+      "target": "Цель"
+    },
+    "error": "calendar.error",
+    "loadingData": "calendar.loadingData",
+    "loadingDates": "calendar.loadingDates"
+  },
+  "actions": {
+    "designComplete": "Дизайн завершен",
+    "takePhoto": "Сделать фото",
+    "skip": "Пропустить"
+  },
+  "complete": {
+    "serviceComplete": "Услуга завершена",
+    "client": "Клиент",
+    "lightningEfficiency": "Молниеносная эффективность",
+    "efficiency": "% эффективности",
+    "targetTime": "Целевое время",
+    "totalTime": "Общее время",
+    "timeDifference": "Разница во времени",
+    "ahead": "Впереди",
+    "stepDetails": "Детали шагов",
+    "downloadReport": "Скачать отчет",
+    "newService": "Новая услуга"
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "error.defaultMessage",
+    "retry": "error.retry",
+    "title": "error.title",
+    "tryAgainMessage": "error.tryAgainMessage"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "noData.message",
+    "retry": "noData.retry",
+    "title": "noData.title"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
+}

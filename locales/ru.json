@@ -63,7 +63,8 @@
     "stepAnalysis": "Анализ шагов",
     "completionTimeTrend": "Тренд времени выполнения",
     "serviceDay": "День обслуживания",
-    "services": "Услуги"
+    "services": "Услуги",
+    "noData": "Данные отсутствуют"
   },
   "calendar": {
     "title": "Календарь обслуживания",
@@ -85,7 +86,8 @@
       "clientsLabel": "Клиенты",
       "photoLabel": "Фото",
       "pdfLabel": "PDF страница",
-      "photoPreview": "Предпросмотр фото"
+      "photoPreview": "Предпросмотр фото",
+      "noPhotos": "Фотографий нет"
     },
     "singleExport": {
       "selectRange": "Выберите диапазон экспорта",
@@ -128,7 +130,10 @@
       "analytics": "Аналитика",
       "settings": "Настройки",
       "target": "Цель"
-    }
+    },
+    "error": "Ошибка календаря",
+    "loadingData": "Загрузка данных...",
+    "loadingDates": "Загрузка дат..."
   },
   "actions": {
     "designComplete": "Дизайн завершен",
@@ -147,5 +152,28 @@
     "stepDetails": "Детали шагов",
     "downloadReport": "Скачать отчет",
     "newService": "Новая услуга"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "Произошла ошибка",
+    "retry": "Повторить",
+    "title": "Ошибка",
+    "tryAgainMessage": "Пожалуйста, попробуйте снова"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "Данные отсутствуют",
+    "retry": "Повторить",
+    "title": "Нет данных"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

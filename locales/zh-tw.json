@@ -63,7 +63,8 @@
     "stepAnalysis": "步驟分析",
     "completionTimeTrend": "完成時間趨勢",
     "serviceDay": "服務日",
-    "services": "服務"
+    "services": "服務",
+    "noData": "沒有可用的資料"
   },
   "calendar": {
     "title": "服務日曆",
@@ -85,7 +86,8 @@
       "clientsLabel": "客戶",
       "photoLabel": "照片",
       "pdfLabel": "PDF 頁面",
-      "photoPreview": "照片預覽"
+      "photoPreview": "照片預覽",
+      "noPhotos": "沒有照片"
     },
     "singleExport": {
       "selectRange": "選擇匯出範圍",
@@ -128,7 +130,10 @@
       "analytics": "分析",
       "settings": "設定",
       "target": "目標"
-    }
+    },
+    "error": "行事曆錯誤",
+    "loadingData": "正在載入資料...",
+    "loadingDates": "正在載入日期..."
   },
   "actions": {
     "designComplete": "設計完成",
@@ -147,5 +152,28 @@
     "stepDetails": "步驟詳情",
     "downloadReport": "下載報告",
     "newService": "新服務"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "發生錯誤",
+    "retry": "重試",
+    "title": "錯誤",
+    "tryAgainMessage": "請再試一次"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "沒有可用的資料",
+    "retry": "重試",
+    "title": "無資料"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

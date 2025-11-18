@@ -63,7 +63,8 @@
     "stepAnalysis": "ステップ分析",
     "completionTimeTrend": "完了時間の傾向",
     "serviceDay": "サービス日",
-    "services": "サービス"
+    "services": "サービス",
+    "noData": "データがありません"
   },
   "calendar": {
     "title": "サービスカレンダー",
@@ -85,7 +86,8 @@
       "clientsLabel": "クライアント",
       "photoLabel": "写真",
       "pdfLabel": "PDFページ",
-      "photoPreview": "写真プレビュー"
+      "photoPreview": "写真プレビュー",
+      "noPhotos": "写真がありません"
     },
     "singleExport": {
       "selectRange": "エクスポート範囲を選択",
@@ -128,7 +130,10 @@
       "analytics": "分析",
       "settings": "設定",
       "target": "目標"
-    }
+    },
+    "error": "カレンダーエラー",
+    "loadingData": "データを読み込み中...",
+    "loadingDates": "日付を読み込み中..."
   },
   "actions": {
     "designComplete": "デザイン完了",
@@ -147,5 +152,28 @@
     "stepDetails": "ステップ詳細",
     "downloadReport": "レポートをダウンロード",
     "newService": "新規サービス"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "エラーが発生しました",
+    "retry": "再試行",
+    "title": "エラー",
+    "tryAgainMessage": "もう一度お試しください"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "データがありません",
+    "retry": "再試行",
+    "title": "データなし"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

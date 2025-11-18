@@ -63,7 +63,8 @@
     "stepAnalysis": "Schrittanalyse",
     "completionTimeTrend": "Trend der Abschlusszeit",
     "serviceDay": "Servicetag",
-    "services": "Dienste"
+    "services": "Dienste",
+    "noData": "Keine Daten verfügbar"
   },
   "calendar": {
     "title": "Servicekalender",
@@ -85,7 +86,8 @@
       "clientsLabel": "Kunden",
       "photoLabel": "Foto",
       "pdfLabel": "Seite PDF",
-      "photoPreview": "Fotovorschau"
+      "photoPreview": "Fotovorschau",
+      "noPhotos": "Keine Fotos"
     },
     "singleExport": {
       "selectRange": "Exportbereich auswählen",
@@ -128,7 +130,10 @@
       "analytics": "Analytik",
       "settings": "Einstellungen",
       "target": "Ziel"
-    }
+    },
+    "error": "Kalenderfehler",
+    "loadingData": "Daten werden geladen...",
+    "loadingDates": "Termine werden geladen..."
   },
   "actions": {
     "designComplete": "Design abgeschlossen",
@@ -147,5 +152,28 @@
     "stepDetails": "Schrittdetails",
     "downloadReport": "Bericht herunterladen",
     "newService": "Neuer Service"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "Ein Fehler ist aufgetreten",
+    "retry": "Erneut versuchen",
+    "title": "Fehler",
+    "tryAgainMessage": "Bitte versuchen Sie es erneut"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "Keine Daten verfügbar",
+    "retry": "Erneut versuchen",
+    "title": "Keine Daten"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

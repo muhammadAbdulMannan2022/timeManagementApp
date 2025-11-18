@@ -63,7 +63,8 @@
     "stepAnalysis": "Step Analysis",
     "completionTimeTrend": "completion time Trend",
     "serviceDay": "service day",
-    "services": "services"
+    "services": "services",
+    "noData": "No data available"
   },
   "calendar": {
     "title": "Service Calendar",
@@ -85,7 +86,8 @@
       "clientsLabel": "Clients",
       "photoLabel": "Photo",
       "pdfLabel": "PDF Page",
-      "photoPreview": "Photo Preview"
+      "photoPreview": "Photo Preview",
+      "noPhotos": "No photos"
     },
     "singleExport": {
       "selectRange": "Select Export Range",
@@ -128,7 +130,10 @@
       "analytics": "Analytics",
       "settings": "Settings",
       "target": "Target"
-    }
+    },
+    "error": "Calendar error",
+    "loadingData": "Loading data...",
+    "loadingDates": "Loading dates..."
   },
   "actions": {
     "designComplete": "Design Complete",
@@ -147,5 +152,28 @@
     "stepDetails": "Step Details",
     "downloadReport": "Download Report",
     "newService": "New Service"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "An error occurred",
+    "retry": "Retry",
+    "title": "Error",
+    "tryAgainMessage": "Please try again"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "No data available",
+    "retry": "Retry",
+    "title": "No Data"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

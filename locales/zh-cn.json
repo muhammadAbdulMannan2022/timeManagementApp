@@ -63,7 +63,8 @@
     "stepAnalysis": "步骤分析",
     "completionTimeTrend": "完成时间趋势",
     "serviceDay": "服务日",
-    "services": "服务"
+    "services": "服务",
+    "noData": "没有可用数据"
   },
   "calendar": {
     "title": "服务日历",
@@ -85,7 +86,8 @@
       "clientsLabel": "客户",
       "photoLabel": "照片",
       "pdfLabel": "PDF 页面",
-      "photoPreview": "照片预览"
+      "photoPreview": "照片预览",
+      "noPhotos": "没有照片"
     },
     "singleExport": {
       "selectRange": "选择导出范围",
@@ -128,7 +130,10 @@
       "analytics": "分析",
       "settings": "设置",
       "target": "目标"
-    }
+    },
+    "error": "日历错误",
+    "loadingData": "正在加载数据...",
+    "loadingDates": "正在加载日期..."
   },
   "actions": {
     "designComplete": "设计完成",
@@ -147,5 +152,28 @@
     "stepDetails": "步骤详情",
     "downloadReport": "下载报告",
     "newService": "新服务"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "发生错误",
+    "retry": "重试",
+    "title": "错误",
+    "tryAgainMessage": "请再试一次"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "没有可用数据",
+    "retry": "重试",
+    "title": "无数据"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

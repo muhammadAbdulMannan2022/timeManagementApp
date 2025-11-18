@@ -63,7 +63,8 @@
     "stepAnalysis": "단계 분석",
     "completionTimeTrend": "완료 시간 추세",
     "serviceDay": "서비스 일",
-    "services": "서비스"
+    "services": "서비스",
+    "noData": "데이터 없음"
   },
   "calendar": {
     "title": "서비스 달력",
@@ -85,7 +86,8 @@
       "clientsLabel": "고객",
       "photoLabel": "사진",
       "pdfLabel": "PDF 페이지",
-      "photoPreview": "사진 미리보기"
+      "photoPreview": "사진 미리보기",
+      "noPhotos": "사진 없음"
     },
     "singleExport": {
       "selectRange": "내보낼 범위 선택",
@@ -128,7 +130,10 @@
       "analytics": "분석",
       "settings": "설정",
       "target": "목표"
-    }
+    },
+    "error": "캘린더 오류",
+    "loadingData": "데이터 로드 중...",
+    "loadingDates": "날짜 로드 중..."
   },
   "actions": {
     "designComplete": "디자인 완료",
@@ -147,5 +152,28 @@
     "stepDetails": "단계 세부사항",
     "downloadReport": "보고서 다운로드",
     "newService": "새 서비스"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "오류가 발생했습니다",
+    "retry": "다시 시도",
+    "title": "오류",
+    "tryAgainMessage": "다시 시도해주세요"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "데이터 없음",
+    "retry": "다시 시도",
+    "title": "데이터 없음"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

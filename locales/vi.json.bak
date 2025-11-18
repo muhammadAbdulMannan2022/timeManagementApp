@@ -1,0 +1,179 @@
+{
+  "settings": {
+    "settings": "Cài đặt",
+    "personalizeWorkflow": "Cá nhân hóa quy trình làm việc của bạn",
+    "totalTargetTime": "Tổng thời gian mục tiêu",
+    "expectedTime": "Thời gian dự kiến để hoàn thành dịch vụ",
+    "serviceSettings": "Cài đặt dịch vụ",
+    "unknownTask": "Nhiệm vụ không xác định",
+    "languageSettings": "Cài đặt ngôn ngữ",
+    "chooseLanguage": "Chọn ngôn ngữ ứng dụng",
+    "simplifiedChinese": "Tiếng Trung giản thể",
+    "traditionalChinese": "Tiếng Trung phồn thể",
+    "pricing": "Giá cả",
+    "close": "Đóng",
+    "edit": "Chỉnh sửa",
+    "minutes": "Phút",
+    "time": "Thời gian"
+  },
+  "settingsUpd": {
+    "enterText": "Nhập văn bản:",
+    "typeSomething": "Gõ gì đó...",
+    "setTimer": "Đặt bộ hẹn giờ (HH:MM:SS):",
+    "cancel": "Hủy",
+    "save": "Lưu"
+  },
+  "pricing": {
+    "tabs": {
+      "free": "Miễn phí",
+      "premium": "Cao cấp"
+    },
+    "title": "Chọn gói giúp bạn phát triển",
+    "subtitle": "Nhận các bước không giới hạn, phân tích nâng cao",
+    "freePlan": {
+      "name": "Miễn phí",
+      "features": {
+        "timer": "Bộ hẹn giờ và ghi lại ảnh",
+        "calendar": "Lịch",
+        "calendarLimited": "Chỉ ghi lại trong ngày",
+        "analytics": "Phân tích",
+        "pdfExport": "Xuất PDF"
+      }
+    },
+    "premiumPlan": {
+      "name": "Cao cấp",
+      "features": {
+        "timer": "Bộ hẹn giờ và ghi lại ảnh",
+        "calendar": "Lịch",
+        "analytics": "Phân tích",
+        "pdfExport": "Xuất PDF"
+      },
+      "cta": "Nhận Cao cấp"
+    },
+    "close": "Đóng"
+  },
+  "analytics": {
+    "averageTime": "Thời gian trung bình",
+    "overview": "Tổng quan",
+    "totalClients": "Tổng số khách hàng",
+    "onTimeRate": "Tỷ lệ đúng giờ",
+    "overtimeRate": "Tỷ lệ trễ",
+    "fastest": "Nhanh nhất",
+    "slowest": "Chậm nhất",
+    "stepAnalysis": "Phân tích bước",
+    "completionTimeTrend": "Xu hướng thời gian hoàn thành",
+    "serviceDay": "Ngày dịch vụ",
+    "services": "Dịch vụ",
+    "noData": "analytics.noData"
+  },
+  "calendar": {
+    "title": "Lịch Dịch Vụ",
+    "subtitle": "Theo dõi dịch vụ làm móng chuyên nghiệp",
+    "processes": "Quy trình",
+    "clients": "Khách hàng",
+    "noSteps": "Không có bước nào cho ngày này",
+    "gradientTab": {
+      "title": "Xuất Portfolio",
+      "subtitle": "Chia sẻ với giảng viên"
+    },
+    "exportTabs": {
+      "headerTitle": "Xuất Portfolio",
+      "headerSubtitle": "Chia sẻ với giảng viên",
+      "exportButton": "Xuất",
+      "tab1": "Xuất nhanh",
+      "tab2": "Cài đặt",
+      "exportPreview": "Xem trước xuất",
+      "clientsLabel": "Khách hàng",
+      "photoLabel": "Ảnh",
+      "pdfLabel": "Trang PDF",
+      "photoPreview": "Xem trước ảnh",
+      "noPhotos": "calendar.exportTabs.noPhotos"
+    },
+    "singleExport": {
+      "selectRange": "Chọn phạm vi xuất",
+      "options": {
+        "today": {
+          "title": "Công việc hôm nay",
+          "subtitle": "2 khách hàng"
+        },
+        "recent": {
+          "title": "Công việc gần đây",
+          "subtitle": "3 khách hàng (hôm qua + hôm nay)"
+        },
+        "week": {
+          "title": "Công việc tuần này",
+          "subtitle": "3 khách hàng (7 ngày qua)"
+        }
+      }
+    },
+    "clientList": {
+      "sort": "Sắp xếp",
+      "latest": "Mới nhất",
+      "oldest": "Cũ nhất",
+      "selectAll": "Chọn tất cả",
+      "exportSelected": "Xuất mục đã chọn",
+      "noPhotos": "Không có ảnh",
+      "photos": "Ảnh"
+    },
+    "services": {
+      "serviceDetails": "Chi tiết dịch vụ",
+      "totalPhotos": "Tổng ảnh",
+      "onTimeSteps": "Bước đúng giờ",
+      "timeRange": "Khoảng thời gian",
+      "notes": "Ghi chú",
+      "removeRecord": "Xóa bản ghi này",
+      "add": "Thêm"
+    },
+    "tabs": {
+      "home": "Trang chủ",
+      "calendar": "Lịch",
+      "analytics": "Phân tích",
+      "settings": "Cài đặt",
+      "target": "Mục tiêu"
+    },
+    "error": "calendar.error",
+    "loadingData": "calendar.loadingData",
+    "loadingDates": "calendar.loadingDates"
+  },
+  "actions": {
+    "designComplete": "Hoàn thành thiết kế",
+    "takePhoto": "Chụp ảnh",
+    "skip": "Bỏ qua"
+  },
+  "complete": {
+    "serviceComplete": "Dịch vụ hoàn thành",
+    "client": "Khách hàng",
+    "lightningEfficiency": "Hiệu suất chớp nhoáng",
+    "efficiency": "% hiệu suất",
+    "targetTime": "Thời gian mục tiêu",
+    "totalTime": "Tổng thời gian",
+    "timeDifference": "Chênh lệch thời gian",
+    "ahead": "Trước",
+    "stepDetails": "Chi tiết bước",
+    "downloadReport": "Tải báo cáo",
+    "newService": "Dịch vụ mới"
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "error.defaultMessage",
+    "retry": "error.retry",
+    "title": "error.title",
+    "tryAgainMessage": "error.tryAgainMessage"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "noData.message",
+    "retry": "noData.retry",
+    "title": "noData.title"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
+}

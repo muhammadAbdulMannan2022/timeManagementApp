@@ -1,0 +1,179 @@
+{
+  "settings": {
+    "settings": "सेटिंग्स",
+    "personalizeWorkflow": "अपने वर्कफ़्लो को वैयक्तिकृत करें",
+    "totalTargetTime": "कुल लक्ष्य समय",
+    "expectedTime": "सेवा पूरी करने का अनुमानित समय",
+    "serviceSettings": "सेवा सेटिंग्स",
+    "unknownTask": "अज्ञात कार्य",
+    "languageSettings": "भाषा सेटिंग्स",
+    "chooseLanguage": "ऐप की भाषा चुनें",
+    "simplifiedChinese": "सरलीकृत चीनी",
+    "traditionalChinese": "परंपरागत चीनी",
+    "pricing": "मूल्य निर्धारण",
+    "close": "बंद करें",
+    "edit": "संपादित करें",
+    "minutes": "मिनट",
+    "time": "समय"
+  },
+  "settingsUpd": {
+    "enterText": "पाठ दर्ज करें:",
+    "typeSomething": "कुछ टाइप करें...",
+    "setTimer": "टाइमर सेट करें (HH:MM:SS):",
+    "cancel": "रद्द करें",
+    "save": "सहेजें"
+  },
+  "pricing": {
+    "tabs": {
+      "free": "मुफ़्त",
+      "premium": "प्रीमियम"
+    },
+    "title": "वह योजना चुनें जो बढ़ने में मदद करे",
+    "subtitle": "असीमित कदम और उन्नत विश्लेषण प्राप्त करें",
+    "freePlan": {
+      "name": "मुफ़्त",
+      "features": {
+        "timer": "टाइमर और फ़ोटो रिकॉर्डिंग",
+        "calendar": "कैलेंडर",
+        "calendarLimited": "केवल दिन की रिकॉर्डिंग",
+        "analytics": "विश्लेषण",
+        "pdfExport": "पीडीएफ निर्यात"
+      }
+    },
+    "premiumPlan": {
+      "name": "प्रीमियम",
+      "features": {
+        "timer": "टाइमर और फ़ोटो रिकॉर्डिंग",
+        "calendar": "कैलेंडर",
+        "analytics": "विश्लेषण",
+        "pdfExport": "पीडीएफ निर्यात"
+      },
+      "cta": "प्रीमियम प्राप्त करें"
+    },
+    "close": "बंद करें"
+  },
+  "analytics": {
+    "averageTime": "औसत समय",
+    "overview": "समीक्षा",
+    "totalClients": "कुल ग्राहक",
+    "onTimeRate": "समय पर दर",
+    "overtimeRate": "अतिरिक्त समय दर",
+    "fastest": "सबसे तेज़",
+    "slowest": "सबसे धीमा",
+    "stepAnalysis": "चरण विश्लेषण",
+    "completionTimeTrend": "समाप्ति समय रुझान",
+    "serviceDay": "सेवा दिवस",
+    "services": "सेवाएं",
+    "noData": "analytics.noData"
+  },
+  "calendar": {
+    "title": "सेवा कैलेंडर",
+    "subtitle": "पेशेवर नेल सेवा ट्रैकिंग",
+    "processes": "प्रक्रियाएँ",
+    "clients": "क्लाइंट्स",
+    "noSteps": "इस तारीख के लिए कोई स्टेप्स नहीं",
+    "gradientTab": {
+      "title": "पोर्टफोलियो निर्यात करें",
+      "subtitle": "Instruktor के साथ साझा करें"
+    },
+    "exportTabs": {
+      "headerTitle": "पोर्टफोलियो निर्यात करें",
+      "headerSubtitle": "Instruktor के साथ साझा करें",
+      "exportButton": "निर्यात करें",
+      "tab1": "त्वरित निर्यात",
+      "tab2": "सेटिंग्स",
+      "exportPreview": "निर्यात पूर्वावलोकन",
+      "clientsLabel": "ग्राहक",
+      "photoLabel": "फ़ोटो",
+      "pdfLabel": "पीडीएफ पृष्ठ",
+      "photoPreview": "फ़ोटो पूर्वावलोकन",
+      "noPhotos": "calendar.exportTabs.noPhotos"
+    },
+    "singleExport": {
+      "selectRange": "निर्यात सीमा चुनें",
+      "options": {
+        "today": {
+          "title": "आज का काम",
+          "subtitle": "2 ग्राहक"
+        },
+        "recent": {
+          "title": "हाल का काम",
+          "subtitle": "3 ग्राहक (कल + आज)"
+        },
+        "week": {
+          "title": "इस सप्ताह का काम",
+          "subtitle": "3 ग्राहक (पिछले 7 दिन)"
+        }
+      }
+    },
+    "clientList": {
+      "sort": "छाँटें",
+      "latest": "नवीनतम",
+      "oldest": "सबसे पुराने",
+      "exportSelected": "चयनित निर्यात करें",
+      "noPhotos": "कोई फ़ोटो नहीं",
+      "photos": "फ़ोटो",
+      "selectAll": "calendar.clientList.selectAll"
+    },
+    "services": {
+      "serviceDetails": "सेवा विवरण",
+      "totalPhotos": "कुल फ़ोटो",
+      "onTimeSteps": "समय पर चरण",
+      "timeRange": "समय सीमा",
+      "notes": "नोट्स",
+      "removeRecord": "इस रिकॉर्ड को हटाएँ",
+      "add": "जोड़ें"
+    },
+    "tabs": {
+      "home": "होम",
+      "calendar": "कैलेंडर",
+      "analytics": "विश्लेषण",
+      "settings": "सेटिंग्स",
+      "target": "लक्ष्य"
+    },
+    "error": "calendar.error",
+    "loadingData": "calendar.loadingData",
+    "loadingDates": "calendar.loadingDates"
+  },
+  "actions": {
+    "designComplete": "डिज़ाइन पूर्ण",
+    "takePhoto": "फ़ोटो लें",
+    "skip": "छोड़ें"
+  },
+  "complete": {
+    "serviceComplete": "सेवा पूर्ण",
+    "client": "क्लाइंट",
+    "lightningEfficiency": "बिजली दक्षता",
+    "efficiency": "% दक्षता",
+    "targetTime": "लक्ष्य समय",
+    "totalTime": "कुल समय",
+    "timeDifference": "समय अंतर",
+    "ahead": "आगे",
+    "stepDetails": "चरण विवरण",
+    "downloadReport": "रिपोर्ट डाउनलोड करें",
+    "newService": "नई सेवा"
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "error.defaultMessage",
+    "retry": "error.retry",
+    "title": "error.title",
+    "tryAgainMessage": "error.tryAgainMessage"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "noData.message",
+    "retry": "noData.retry",
+    "title": "noData.title"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
+}

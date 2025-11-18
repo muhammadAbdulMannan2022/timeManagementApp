@@ -15,7 +15,7 @@
         "buildType": "app-bundle"
       },
       "ios": {
-        "simulator": false
+        "simulator": true
       }
     },
     "production": {

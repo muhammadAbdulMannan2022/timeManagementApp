@@ -63,7 +63,8 @@
     "stepAnalysis": "Analyse des Étapes",
     "completionTimeTrend": "Tendance du Temps de Réalisation",
     "serviceDay": "Jour de Service",
-    "services": "Services"
+    "services": "Services",
+    "noData": "Aucune donnée disponible"
   },
   "calendar": {
     "title": "Calendrier des services",
@@ -85,7 +86,8 @@
       "clientsLabel": "Clients",
       "photoLabel": "Photo",
       "pdfLabel": "Page PDF",
-      "photoPreview": "Aperçu photo"
+      "photoPreview": "Aperçu photo",
+      "noPhotos": "Aucune photo"
     },
     "singleExport": {
       "selectRange": "Sélectionner la plage d'exportation",
@@ -128,7 +130,10 @@
       "analytics": "Analytique",
       "settings": "Paramètres",
       "target": "Objectif"
-    }
+    },
+    "error": "Erreur du calendrier",
+    "loadingData": "Chargement des données...",
+    "loadingDates": "Chargement des dates..."
   },
   "actions": {
     "designComplete": "Design terminé",
@@ -147,5 +152,28 @@
     "stepDetails": "Détails des Étapes",
     "downloadReport": "Télécharger le Rapport",
     "newService": "Nouveau Service"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "Une erreur est survenue",
+    "retry": "Réessayer",
+    "title": "Erreur",
+    "tryAgainMessage": "Veuillez réessayer"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "Aucune donnée disponible",
+    "retry": "Réessayer",
+    "title": "Aucune donnée"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

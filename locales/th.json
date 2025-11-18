@@ -63,7 +63,8 @@
     "stepAnalysis": "การวิเคราะห์ขั้นตอน",
     "completionTimeTrend": "แนวโน้มเวลาการเสร็จสิ้น",
     "serviceDay": "วันให้บริการ",
-    "services": "บริการ"
+    "services": "บริการ",
+    "noData": "ไม่มีข้อมูล"
   },
   "calendar": {
     "title": "ปฏิทินบริการ",
@@ -85,7 +86,8 @@
       "clientsLabel": "ลูกค้า",
       "photoLabel": "รูปภาพ",
       "pdfLabel": "หน้า PDF",
-      "photoPreview": "ตัวอย่างรูปภาพ"
+      "photoPreview": "ตัวอย่างรูปภาพ",
+      "noPhotos": "ไม่มีรูปภาพ"
     },
     "singleExport": {
       "selectRange": "เลือกช่วงการส่งออก",
@@ -128,7 +130,10 @@
       "analytics": "วิเคราะห์",
       "settings": "การตั้งค่า",
       "target": "เป้าหมาย"
-    }
+    },
+    "error": "ข้อผิดพลาดปฏิทิน",
+    "loadingData": "กำลังโหลดข้อมูล...",
+    "loadingDates": "กำลังโหลดวันที่..."
   },
   "actions": {
     "designComplete": "ออกแบบเสร็จสิ้น",
@@ -147,5 +152,28 @@
     "stepDetails": "รายละเอียดขั้นตอน",
     "downloadReport": "ดาวน์โหลดรายงาน",
     "newService": "บริการใหม่"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "เกิดข้อผิดพลาด",
+    "retry": "ลองอีกครั้ง",
+    "title": "ข้อผิดพลาด",
+    "tryAgainMessage": "กรุณาลองอีกครั้ง"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "ไม่มีข้อมูล",
+    "retry": "ลองอีกครั้ง",
+    "title": "ไม่มีข้อมูล"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

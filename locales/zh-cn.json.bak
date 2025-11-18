@@ -1,0 +1,179 @@
+{
+  "settings": {
+    "settings": "设置",
+    "personalizeWorkflow": "个性化你的工作流程",
+    "totalTargetTime": "总目标时间",
+    "expectedTime": "完成服务的预期时间",
+    "serviceSettings": "服务设置",
+    "unknownTask": "未知任务",
+    "languageSettings": "语言设置",
+    "chooseLanguage": "选择应用语言",
+    "simplifiedChinese": "简体中文",
+    "traditionalChinese": "繁体中文",
+    "pricing": "定价",
+    "close": "关闭",
+    "edit": "編輯",
+    "minutes": "分鐘",
+    "time": "時間"
+  },
+  "settingsUpd": {
+    "enterText": "輸入文字：",
+    "typeSomething": "輸入一些文字...",
+    "setTimer": "設定計時器 (HH:MM:SS)：",
+    "cancel": "取消",
+    "save": "保存"
+  },
+  "pricing": {
+    "tabs": {
+      "free": "免費",
+      "premium": "高級版"
+    },
+    "title": "選擇幫助成長的方案",
+    "subtitle": "獲取無限步驟，高級分析",
+    "freePlan": {
+      "name": "免費",
+      "features": {
+        "timer": "計時器與照片記錄",
+        "calendar": "日曆",
+        "calendarLimited": "僅限今天的記錄",
+        "analytics": "分析",
+        "pdfExport": "PDF 匯出"
+      }
+    },
+    "premiumPlan": {
+      "name": "高級版",
+      "features": {
+        "timer": "計時器與照片記錄",
+        "calendar": "日曆",
+        "analytics": "分析",
+        "pdfExport": "PDF 匯出"
+      },
+      "cta": "升級到高級版"
+    },
+    "close": "關閉"
+  },
+  "analytics": {
+    "averageTime": "平均时间",
+    "overview": "概览",
+    "totalClients": "客户总数",
+    "onTimeRate": "准时率",
+    "overtimeRate": "超时率",
+    "fastest": "最快",
+    "slowest": "最慢",
+    "stepAnalysis": "步骤分析",
+    "completionTimeTrend": "完成时间趋势",
+    "serviceDay": "服务日",
+    "services": "服务",
+    "noData": "analytics.noData"
+  },
+  "calendar": {
+    "title": "服务日历",
+    "subtitle": "专业美甲服务追踪",
+    "processes": "流程",
+    "clients": "客户",
+    "noSteps": "该日期没有步骤",
+    "gradientTab": {
+      "title": "导出作品集",
+      "subtitle": "与导师分享"
+    },
+    "exportTabs": {
+      "headerTitle": "导出作品集",
+      "headerSubtitle": "与导师分享",
+      "exportButton": "导出",
+      "tab1": "快速导出",
+      "tab2": "设置",
+      "exportPreview": "导出预览",
+      "clientsLabel": "客户",
+      "photoLabel": "照片",
+      "pdfLabel": "PDF 页面",
+      "photoPreview": "照片预览",
+      "noPhotos": "calendar.exportTabs.noPhotos"
+    },
+    "singleExport": {
+      "selectRange": "选择导出范围",
+      "options": {
+        "today": {
+          "title": "今天的工作",
+          "subtitle": "2 客户"
+        },
+        "recent": {
+          "title": "最近的工作",
+          "subtitle": "3 客户 (昨天 + 今天)"
+        },
+        "week": {
+          "title": "本周的工作",
+          "subtitle": "3 客户 (过去 7 天)"
+        }
+      }
+    },
+    "clientList": {
+      "sort": "排序",
+      "latest": "最新",
+      "oldest": "最旧",
+      "selectAll": "全选",
+      "exportSelected": "导出所选",
+      "noPhotos": "没有照片",
+      "photos": "照片"
+    },
+    "services": {
+      "serviceDetails": "服务详情",
+      "totalPhotos": "照片总数",
+      "onTimeSteps": "按时步骤",
+      "timeRange": "时间范围",
+      "notes": "备注",
+      "removeRecord": "删除此记录",
+      "add": "添加"
+    },
+    "tabs": {
+      "home": "首页",
+      "calendar": "日历",
+      "analytics": "分析",
+      "settings": "设置",
+      "target": "目标"
+    },
+    "error": "calendar.error",
+    "loadingData": "calendar.loadingData",
+    "loadingDates": "calendar.loadingDates"
+  },
+  "actions": {
+    "designComplete": "设计完成",
+    "takePhoto": "拍照",
+    "skip": "跳过"
+  },
+  "complete": {
+    "serviceComplete": "服务完成",
+    "client": "客户",
+    "lightningEfficiency": "闪电效率",
+    "efficiency": "% 效率",
+    "targetTime": "目标时间",
+    "totalTime": "总时间",
+    "timeDifference": "时间差",
+    "ahead": "提前",
+    "stepDetails": "步骤详情",
+    "downloadReport": "下载报告",
+    "newService": "新服务"
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "error.defaultMessage",
+    "retry": "error.retry",
+    "title": "error.title",
+    "tryAgainMessage": "error.tryAgainMessage"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "noData.message",
+    "retry": "noData.retry",
+    "title": "noData.title"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
+}

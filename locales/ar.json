@@ -63,7 +63,8 @@
     "stepAnalysis": "تحليل الخطوة",
     "completionTimeTrend": "اتجاه وقت الإنجاز",
     "serviceDay": "يوم الخدمة",
-    "services": "الخدمات"
+    "services": "الخدمات",
+    "noData": "لا تتوفر بيانات"
   },
   "calendar": {
     "title": "تقويم الخدمة",
@@ -85,7 +86,8 @@
       "clientsLabel": "العملاء",
       "photoLabel": "صورة",
       "pdfLabel": "صفحة PDF",
-      "photoPreview": "معاينة الصورة"
+      "photoPreview": "معاينة الصورة",
+      "noPhotos": "لا توجد صور"
     },
     "singleExport": {
       "selectRange": "اختر نطاق التصدير",
@@ -119,7 +121,8 @@
       "onTimeSteps": "الخطوات في الوقت المحدد",
       "timeRange": "النطاق الزمني",
       "notes": "ملاحظات",
-      "removeRecord": "إزالة هذا السجل"
+      "removeRecord": "إزالة هذا السجل",
+      "add": "إضافة"
     },
     "tabs": {
       "home": "الرئيسية",
@@ -127,7 +130,10 @@
       "analytics": "تحليلات",
       "settings": "الإعدادات",
       "target": "الهدف"
-    }
+    },
+    "error": "خطأ في التقويم",
+    "loadingData": "جارٍ تحميل البيانات...",
+    "loadingDates": "جارٍ تحميل التواريخ..."
   },
   "actions": {
     "designComplete": "اكتمل التصميم",
@@ -146,5 +152,28 @@
     "stepDetails": "تفاصيل الخطوات",
     "downloadReport": "تحميل التقرير",
     "newService": "خدمة جديدة"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "حدث خطأ",
+    "retry": "إعادة المحاولة",
+    "title": "خطأ",
+    "tryAgainMessage": "الرجاء المحاولة مرة أخرى"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "لا توجد بيانات",
+    "retry": "إعادة المحاولة",
+    "title": "لا توجد بيانات"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

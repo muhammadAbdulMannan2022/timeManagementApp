@@ -63,7 +63,8 @@
     "stepAnalysis": "चरण विश्लेषण",
     "completionTimeTrend": "समाप्ति समय रुझान",
     "serviceDay": "सेवा दिवस",
-    "services": "सेवाएं"
+    "services": "सेवाएं",
+    "noData": "कोई डेटा उपलब्ध नहीं"
   },
   "calendar": {
     "title": "सेवा कैलेंडर",
@@ -85,7 +86,8 @@
       "clientsLabel": "ग्राहक",
       "photoLabel": "फ़ोटो",
       "pdfLabel": "पीडीएफ पृष्ठ",
-      "photoPreview": "फ़ोटो पूर्वावलोकन"
+      "photoPreview": "फ़ोटो पूर्वावलोकन",
+      "noPhotos": "कोई फ़ोटो नहीं"
     },
     "singleExport": {
       "selectRange": "निर्यात सीमा चुनें",
@@ -110,7 +112,8 @@
       "oldest": "सबसे पुराने",
       "exportSelected": "चयनित निर्यात करें",
       "noPhotos": "कोई फ़ोटो नहीं",
-      "photos": "फ़ोटो"
+      "photos": "फ़ोटो",
+      "selectAll": "Select All"
     },
     "services": {
       "serviceDetails": "सेवा विवरण",
@@ -127,7 +130,10 @@
       "analytics": "विश्लेषण",
       "settings": "सेटिंग्स",
       "target": "लक्ष्य"
-    }
+    },
+    "error": "कैलेंडर त्रुटि",
+    "loadingData": "डेटा लोड हो रहा है...",
+    "loadingDates": "तिथियाँ लोड हो रही हैं..."
   },
   "actions": {
     "designComplete": "डिज़ाइन पूर्ण",
@@ -146,5 +152,28 @@
     "stepDetails": "चरण विवरण",
     "downloadReport": "रिपोर्ट डाउनलोड करें",
     "newService": "नई सेवा"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "एक त्रुटि हुई",
+    "retry": "पुनः प्रयास करें",
+    "title": "त्रुटि",
+    "tryAgainMessage": "कृपया पुनः प्रयास करें"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "कोई डेटा उपलब्ध नहीं",
+    "retry": "पुनः प्रयास करें",
+    "title": "कोई डेटा नहीं"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

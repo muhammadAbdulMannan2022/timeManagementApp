@@ -63,7 +63,8 @@
     "stepAnalysis": "Análise de Passos",
     "completionTimeTrend": "Tendência de Tempo de Conclusão",
     "serviceDay": "Dia de Serviço",
-    "services": "Serviços"
+    "services": "Serviços",
+    "noData": "Nenhum dado disponível"
   },
   "calendar": {
     "title": "Calendário de Serviços",
@@ -85,7 +86,8 @@
       "clientsLabel": "Clientes",
       "photoLabel": "Foto",
       "pdfLabel": "Página PDF",
-      "photoPreview": "Pré-visualização de Foto"
+      "photoPreview": "Pré-visualização de Foto",
+      "noPhotos": "Sem fotos"
     },
     "singleExport": {
       "selectRange": "Selecione o intervalo de exportação",
@@ -128,7 +130,10 @@
       "analytics": "Análise",
       "settings": "Configurações",
       "target": "Meta"
-    }
+    },
+    "error": "Erro no calendário",
+    "loadingData": "Carregando dados...",
+    "loadingDates": "Carregando datas..."
   },
   "actions": {
     "designComplete": "Design concluído",
@@ -147,5 +152,28 @@
     "stepDetails": "Detalhes dos Passos",
     "downloadReport": "Baixar Relatório",
     "newService": "Novo Serviço"
-  }
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "Ocorreu um erro",
+    "retry": "Tentar novamente",
+    "title": "Erro",
+    "tryAgainMessage": "Por favor, tente novamente"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "Nenhum dado disponível",
+    "retry": "Tentar novamente",
+    "title": "Sem dados"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
 }

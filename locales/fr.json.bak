@@ -1,0 +1,179 @@
+{
+  "settings": {
+    "settings": "Paramètres",
+    "personalizeWorkflow": "Personnalisez votre flux de travail",
+    "totalTargetTime": "Temps total cible",
+    "expectedTime": "Temps prévu pour terminer le service",
+    "serviceSettings": "Paramètres du service",
+    "unknownTask": "Tâche inconnue",
+    "languageSettings": "Paramètres de langue",
+    "chooseLanguage": "Choisissez la langue de l'application",
+    "simplifiedChinese": "Chinois simplifié",
+    "traditionalChinese": "Chinois traditionnel",
+    "pricing": "Tarification",
+    "close": "Fermer",
+    "edit": "Éditer",
+    "minutes": "Minutes",
+    "time": "Temps"
+  },
+  "settingsUpd": {
+    "enterText": "Entrez le texte :",
+    "typeSomething": "Tapez quelque chose...",
+    "setTimer": "Définir le minuteur (HH:MM:SS) :",
+    "cancel": "Annuler",
+    "save": "Enregistrer"
+  },
+  "pricing": {
+    "tabs": {
+      "free": "Gratuit",
+      "premium": "Premium"
+    },
+    "title": "Sélectionnez le plan qui aide à grandir",
+    "subtitle": "Obtenez des étapes illimitées, analyses avancées",
+    "freePlan": {
+      "name": "Gratuit",
+      "features": {
+        "timer": "Minuteur et enregistrement photo",
+        "calendar": "Calendrier",
+        "calendarLimited": "Enregistrements du jour uniquement",
+        "analytics": "Analytique",
+        "pdfExport": "Export PDF"
+      }
+    },
+    "premiumPlan": {
+      "name": "Premium",
+      "features": {
+        "timer": "Minuteur et enregistrement photo",
+        "calendar": "Calendrier",
+        "analytics": "Analytique",
+        "pdfExport": "Export PDF"
+      },
+      "cta": "Obtenir Premium"
+    },
+    "close": "Fermer"
+  },
+  "analytics": {
+    "averageTime": "Temps Moyen",
+    "overview": "Aperçu",
+    "totalClients": "Clients Totaux",
+    "onTimeRate": "Taux à l'Heure",
+    "overtimeRate": "Taux de Retard",
+    "fastest": "Le Plus Rapide",
+    "slowest": "Le Plus Lent",
+    "stepAnalysis": "Analyse des Étapes",
+    "completionTimeTrend": "Tendance du Temps de Réalisation",
+    "serviceDay": "Jour de Service",
+    "services": "Services",
+    "noData": "analytics.noData"
+  },
+  "calendar": {
+    "title": "Calendrier des services",
+    "subtitle": "Suivi professionnel des services de manucure",
+    "processes": "Processus",
+    "clients": "clients",
+    "noSteps": "Aucune étape pour cette date",
+    "gradientTab": {
+      "title": "Exporter le Portfolio",
+      "subtitle": "Partager avec l'instructeur"
+    },
+    "exportTabs": {
+      "headerTitle": "Exporter le Portfolio",
+      "headerSubtitle": "Partager avec l'instructeur",
+      "exportButton": "Exporter",
+      "tab1": "Export rapide",
+      "tab2": "Paramètres",
+      "exportPreview": "Aperçu de l'exportation",
+      "clientsLabel": "Clients",
+      "photoLabel": "Photo",
+      "pdfLabel": "Page PDF",
+      "photoPreview": "Aperçu photo",
+      "noPhotos": "calendar.exportTabs.noPhotos"
+    },
+    "singleExport": {
+      "selectRange": "Sélectionner la plage d'exportation",
+      "options": {
+        "today": {
+          "title": "Travail d'aujourd'hui",
+          "subtitle": "2 clients"
+        },
+        "recent": {
+          "title": "Travail récent",
+          "subtitle": "3 clients (hier + aujourd'hui)"
+        },
+        "week": {
+          "title": "Travail de cette semaine",
+          "subtitle": "3 clients (7 derniers jours)"
+        }
+      }
+    },
+    "clientList": {
+      "sort": "Trier",
+      "latest": "Les plus récents",
+      "oldest": "Les plus anciens",
+      "selectAll": "Tout sélectionner",
+      "exportSelected": "Exporter la sélection",
+      "noPhotos": "Pas de photos",
+      "photos": "Photos"
+    },
+    "services": {
+      "serviceDetails": "Détails du service",
+      "totalPhotos": "Photos totales",
+      "onTimeSteps": "Étapes à l'heure",
+      "timeRange": "Plage horaire",
+      "notes": "Notes",
+      "removeRecord": "Supprimer cet enregistrement",
+      "add": "Ajouter"
+    },
+    "tabs": {
+      "home": "Accueil",
+      "calendar": "Calendrier",
+      "analytics": "Analytique",
+      "settings": "Paramètres",
+      "target": "Objectif"
+    },
+    "error": "calendar.error",
+    "loadingData": "calendar.loadingData",
+    "loadingDates": "calendar.loadingDates"
+  },
+  "actions": {
+    "designComplete": "Design terminé",
+    "takePhoto": "Prendre une photo",
+    "skip": "Passer"
+  },
+  "complete": {
+    "serviceComplete": "Service Terminé",
+    "client": "Client",
+    "lightningEfficiency": "Efficacité Éclair",
+    "efficiency": "% d'efficacité",
+    "targetTime": "Temps Cible",
+    "totalTime": "Temps Total",
+    "timeDifference": "Différence de Temps",
+    "ahead": "En Avance",
+    "stepDetails": "Détails des Étapes",
+    "downloadReport": "Télécharger le Rapport",
+    "newService": "Nouveau Service"
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "error.defaultMessage",
+    "retry": "error.retry",
+    "title": "error.title",
+    "tryAgainMessage": "error.tryAgainMessage"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "noData.message",
+    "retry": "noData.retry",
+    "title": "noData.title"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
+}

@@ -1,0 +1,179 @@
+{
+  "settings": {
+    "settings": "การตั้งค่า",
+    "personalizeWorkflow": "ปรับแต่งเวิร์กโฟลว์ของคุณ",
+    "totalTargetTime": "เวลารวมเป้าหมาย",
+    "expectedTime": "เวลาที่คาดว่าจะเสร็จสิ้นบริการ",
+    "serviceSettings": "การตั้งค่าบริการ",
+    "unknownTask": "งานที่ไม่ทราบ",
+    "languageSettings": "การตั้งค่าภาษา",
+    "chooseLanguage": "เลือกภาษาของแอป",
+    "simplifiedChinese": "ภาษาจีนแบบง่าย",
+    "traditionalChinese": "ภาษาจีนแบบดั้งเดิม",
+    "pricing": "การตั้งราคา",
+    "close": "ปิด",
+    "edit": "แก้ไข",
+    "minutes": "นาที",
+    "time": "เวลา"
+  },
+  "settingsUpd": {
+    "enterText": "กรอกข้อความ:",
+    "typeSomething": "พิมพ์บางอย่าง...",
+    "setTimer": "ตั้งเวลา (HH:MM:SS):",
+    "cancel": "ยกเลิก",
+    "save": "บันทึก"
+  },
+  "pricing": {
+    "tabs": {
+      "free": "ฟรี",
+      "premium": "พรีเมียม"
+    },
+    "title": "เลือกแผนที่ช่วยให้คุณเติบโต",
+    "subtitle": "รับขั้นตอนแบบไม่จำกัด การวิเคราะห์ขั้นสูง",
+    "freePlan": {
+      "name": "ฟรี",
+      "features": {
+        "timer": "ตัวจับเวลาและบันทึกรูปภาพ",
+        "calendar": "ปฏิทิน",
+        "calendarLimited": "บันทึกได้เฉพาะวันนี้",
+        "analytics": "การวิเคราะห์",
+        "pdfExport": "ส่งออก PDF"
+      }
+    },
+    "premiumPlan": {
+      "name": "พรีเมียม",
+      "features": {
+        "timer": "ตัวจับเวลาและบันทึกรูปภาพ",
+        "calendar": "ปฏิทิน",
+        "analytics": "การวิเคราะห์",
+        "pdfExport": "ส่งออก PDF"
+      },
+      "cta": "รับพรีเมียม"
+    },
+    "close": "ปิด"
+  },
+  "analytics": {
+    "averageTime": "เวลาเฉลี่ย",
+    "overview": "ภาพรวม",
+    "totalClients": "ลูกค้าทั้งหมด",
+    "onTimeRate": "อัตราตรงเวลา",
+    "overtimeRate": "อัตราล่าช้า",
+    "fastest": "เร็วที่สุด",
+    "slowest": "ช้าที่สุด",
+    "stepAnalysis": "การวิเคราะห์ขั้นตอน",
+    "completionTimeTrend": "แนวโน้มเวลาการเสร็จสิ้น",
+    "serviceDay": "วันให้บริการ",
+    "services": "บริการ",
+    "noData": "analytics.noData"
+  },
+  "calendar": {
+    "title": "ปฏิทินบริการ",
+    "subtitle": "ติดตามการให้บริการเล็บแบบมืออาชีพ",
+    "processes": "กระบวนการ",
+    "clients": "ลูกค้า",
+    "noSteps": "ไม่มีขั้นตอนสำหรับวันที่นี้",
+    "gradientTab": {
+      "title": "ส่งออกผลงาน",
+      "subtitle": "แชร์กับผู้สอน"
+    },
+    "exportTabs": {
+      "headerTitle": "ส่งออกผลงาน",
+      "headerSubtitle": "แชร์กับผู้สอน",
+      "exportButton": "ส่งออก",
+      "tab1": "ส่งออกด่วน",
+      "tab2": "การตั้งค่า",
+      "exportPreview": "ตัวอย่างการส่งออก",
+      "clientsLabel": "ลูกค้า",
+      "photoLabel": "รูปภาพ",
+      "pdfLabel": "หน้า PDF",
+      "photoPreview": "ตัวอย่างรูปภาพ",
+      "noPhotos": "calendar.exportTabs.noPhotos"
+    },
+    "singleExport": {
+      "selectRange": "เลือกช่วงการส่งออก",
+      "options": {
+        "today": {
+          "title": "งานวันนี้",
+          "subtitle": "ลูกค้า 2 ราย"
+        },
+        "recent": {
+          "title": "งานล่าสุด",
+          "subtitle": "ลูกค้า 3 ราย (เมื่อวาน + วันนี้)"
+        },
+        "week": {
+          "title": "งานสัปดาห์นี้",
+          "subtitle": "ลูกค้า 3 ราย (7 วันที่ผ่านมา)"
+        }
+      }
+    },
+    "clientList": {
+      "sort": "จัดเรียง",
+      "latest": "ล่าสุด",
+      "oldest": "เก่าที่สุด",
+      "selectAll": "เลือกทั้งหมด",
+      "exportSelected": "ส่งออกที่เลือก",
+      "noPhotos": "ไม่มีรูปภาพ",
+      "photos": "รูปภาพ"
+    },
+    "services": {
+      "serviceDetails": "รายละเอียดบริการ",
+      "totalPhotos": "รูปภาพทั้งหมด",
+      "onTimeSteps": "ขั้นตอนตรงเวลา",
+      "timeRange": "ช่วงเวลา",
+      "notes": "หมายเหตุ",
+      "removeRecord": "ลบระเบียนนี้",
+      "add": "เพิ่ม"
+    },
+    "tabs": {
+      "home": "หน้าแรก",
+      "calendar": "ปฏิทิน",
+      "analytics": "วิเคราะห์",
+      "settings": "การตั้งค่า",
+      "target": "เป้าหมาย"
+    },
+    "error": "calendar.error",
+    "loadingData": "calendar.loadingData",
+    "loadingDates": "calendar.loadingDates"
+  },
+  "actions": {
+    "designComplete": "ออกแบบเสร็จสิ้น",
+    "takePhoto": "ถ่ายรูป",
+    "skip": "ข้าม"
+  },
+  "complete": {
+    "serviceComplete": "บริการเสร็จสิ้น",
+    "client": "ลูกค้า",
+    "lightningEfficiency": "ประสิทธิภาพสายฟ้า",
+    "efficiency": "% ประสิทธิภาพ",
+    "targetTime": "เวลาที่กำหนด",
+    "totalTime": "เวลารวม",
+    "timeDifference": "ความแตกต่างของเวลา",
+    "ahead": "ล่วงหน้า",
+    "stepDetails": "รายละเอียดขั้นตอน",
+    "downloadReport": "ดาวน์โหลดรายงาน",
+    "newService": "บริการใหม่"
+  },
+  "-": "-",
+  "": {
+    "": "."
+  },
+  "/": "/",
+  ":": ":",
+  "OTP sent to your email": "OTP sent to your email",
+  "T": "T",
+  "error": {
+    "defaultMessage": "error.defaultMessage",
+    "retry": "error.retry",
+    "title": "error.title",
+    "tryAgainMessage": "error.tryAgainMessage"
+  },
+  "key": "key",
+  "loading": "loading",
+  "noData": {
+    "message": "noData.message",
+    "retry": "noData.retry",
+    "title": "noData.title"
+  },
+  "tailwindcss": "tailwindcss",
+  "window": "window"
+}
