@@ -6,7 +6,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -32,22 +32,34 @@ export default function ViewImage() {
     })();
   }, []);
 
-  const { uri, width, height, format } = useLocalSearchParams<{
+  const params = useLocalSearchParams<{
     uri: string;
     width: string;
     height: string;
     format: string;
+    client_uid: string;
+    task_id: string;
   }>();
+  
+  const { uri, format } = params;
+
+  // Use params as fallback if state is empty, though state is set from SecureStore in useEffect.
+  // It's safer to use what was passed directly if available.
+  const activeClientUid = params.client_uid || client_uid;
+  const activeTaskId = params.task_id || task_id;
 
   const handleBack = () => router.back();
 
   const handleSave = async () => {
-    const c = await SecureStore.getItemAsync("item_id");
-    console.log(client_uid, task_id, "dslkgalsj", c);
+    if (!activeClientUid || !activeTaskId) {
+        Alert.alert("Error", "Missing client or task ID.");
+        return;
+    }
+
     const data = new FormData();
 
-    data.append("client_uid", client_uid);
-    data.append("task_id", task_id);
+    data.append("client_uid", activeClientUid);
+    data.append("task_id", activeTaskId);
     // ✅ Correct image append
     data.append("image", {
       uri,
@@ -58,13 +70,20 @@ export default function ViewImage() {
     try {
       const res = await updateTask(data).unwrap();
       console.log(res, "view 45");
-      //   dispatch(addImage({ step: Number(step.currentStep), uri }));
-      router.push({
-        pathname: "/SelectedImage",
-        params: { client_uid, task_id },
-      });
-    } catch (err) {
+      Alert.alert("Success", "Photo saved successfully", [
+        {
+             text: "OK",
+             onPress: () => router.push({
+                pathname: "/SelectedImage",
+                params: { client_uid: activeClientUid, task_id: activeTaskId },
+              })
+        }
+      ]);
+
+    } catch (err: any) {
       console.error("Upload failed:", err);
+      const errorMessage = err?.data?.message || "Failed to save photo. Please try again.";
+      Alert.alert("Error", errorMessage);
     }
   };
 

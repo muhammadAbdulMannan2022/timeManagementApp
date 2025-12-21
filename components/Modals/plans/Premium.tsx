@@ -2,7 +2,14 @@ import { useUpdateSubscriptionMutation } from "@/redux/apis/appSlice";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Purchases from "react-native-purchases";
 
 const PremiumPlanPage: React.FC = () => {
@@ -14,6 +21,8 @@ const PremiumPlanPage: React.FC = () => {
     async function loadOfferings() {
       const data = await Purchases.getOfferings();
       setOfferings(data);
+      Alert.alert(JSON.stringify(data));
+
       console.log("\n\n\n\n", data, "\n\n\n\n");
     }
     loadOfferings();
@@ -122,6 +131,9 @@ const PremiumPlanPage: React.FC = () => {
             )}
           </View>
         ))}
+        <View className="mt-3 items-end justify-end">
+          <Text className="text-2xl font-bold">10$</Text>
+        </View>
       </View>
 
       {/* CTA Button */}

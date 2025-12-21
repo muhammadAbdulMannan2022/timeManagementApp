@@ -12,6 +12,7 @@ import * as ImagePicker from "expo-image-picker";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import {
+  Alert,
   FlatList,
   Image,
   ScrollView,
@@ -43,13 +44,14 @@ export default function SelectedImages() {
       task.images.map((img: any) => img.image)
     ) || [];
 
-  const stepImages = useSelector(
+  const stepImagesRaw = useSelector(
     (state: RootState) =>
       state.image.find(
         (item: { step: number; images: { uri: string }[] }) =>
           item.step === currentStep
-      )?.images || []
+      )?.images
   );
+  const stepImages = stepImagesRaw || [];
   const stepsDataFinal = useSelector((state: RootState) =>
     state.fullStepData.find((item) => item.stepNumber === currentStep)
   );
@@ -78,7 +80,7 @@ export default function SelectedImages() {
             uri: photo.uri,
             width: String(photo.width),
             height: String(photo.height),
-            format: photo.mimeType ? photo.mimeType.split("/")[1] : "", // Extracts 'jpeg' from 'image/jpeg' or empty string if undefined
+            format: photo.mimeType ? photo.mimeType.split("/")[1] : "jpg", // Default to jpg
             task_id,
             client_uid,
           },
@@ -86,8 +88,10 @@ export default function SelectedImages() {
       }
     } catch (error) {
       console.error("Error picking image:", error);
+      Alert.alert("Error", "Failed to pick image from library.");
     }
   };
+
 
   // Render each image item in the FlatList with a remove button
   const renderImageItem = ({ item }: { item: string }) => {
@@ -141,7 +145,6 @@ export default function SelectedImages() {
   const updatImage = async () => {
     try {
       console.log(client_uid, task_id, "dslkgalsj");
-      console.log(stepData);
       const data = new FormData();
       const note = {
         note: finalNote,
@@ -154,22 +157,20 @@ export default function SelectedImages() {
       const res = await updateTask(data).unwrap();
       refetch();
       console.log(res);
+
+      if (currentStep < maxStep) {
+        dispatch(setStep(currentStep + 1));
+        router.navigate("/(tabs)");
+      } else {
+        dispatch(setStep(1));
+        router.push({
+          pathname: "/(complete)",
+          params: { id: client_uid },
+        });
+      }
     } catch (error) {
-      console.log(error, "selected img 129");
-    }
-    // ✅ Correct image append
-    // dispatch(
-    //   updateStepImages({ stepNumber: currentStep, stepImages: stepImages })
-    // );
-    if (currentStep < maxStep) {
-      // dispatch(setStep(currentStep + 1))
-      router.navigate("/(tabs)");
-    } else {
-      dispatch(setStep(1));
-      router.push({
-        pathname: "/(complete)",
-        params: { id: client_uid },
-      });
+      console.error("Update failed:", error);
+      Alert.alert("Error", "Failed to save notes. Please try again.");
     }
   };
 

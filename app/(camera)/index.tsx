@@ -4,7 +4,7 @@ import { useCameraPermissions } from 'expo-camera'
 import * as ImagePicker from "expo-image-picker"
 import { useRouter } from 'expo-router'
 import { useTranslation } from 'react-i18next'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useSelector } from 'react-redux'
 
@@ -33,12 +33,13 @@ const Index = () => {
                         uri: photo.uri,
                         width: String(photo.width),
                         height: String(photo.height),
-                        format: photo.mimeType ? photo.mimeType.split('/')[1] : '', // Extracts 'jpeg' from 'image/jpeg' or empty string if undefined
+                        format: photo.mimeType ? photo.mimeType.split('/')[1] : 'jpg', // Default to jpg
                     },
                 });
             }
         } catch (error) {
             console.error('Error picking image:', error);
+            Alert.alert("Error", "Failed to pick image from library. Please try again.");
         }
     };
     return (

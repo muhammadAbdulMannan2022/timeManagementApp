@@ -5,11 +5,11 @@ import {
   FlashMode,
   useCameraPermissions,
 } from "expo-camera";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useRef, useState } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Camera() {
@@ -17,9 +17,10 @@ export default function Camera() {
   const [flash, setFlash] = useState<FlashMode>("off");
   const [permission, requestPermission] = useCameraPermissions();
   const router = useRouter();
+  const params = useLocalSearchParams<{ id: string; stepId: string }>();
   const cameraRef = useRef<CameraView>(null);
-  const [id, setId] = useState("");
-  const [stepId, setStepId] = useState("");
+  const [id, setId] = useState(params.id || "");
+  const [stepId, setStepId] = useState(params.stepId || "");
 
   // photo
   //   const { id, stepId } = useLocalSearchParams();
@@ -31,8 +32,8 @@ export default function Camera() {
         console.log("storedId raw:", storedId);
         console.log("storedStepId raw:", storedStepId);
 
-        if (storedId) setId(storedId);
-        if (storedStepId) setStepId(storedStepId);
+        if (storedId && !id) setId(storedId);
+        if (storedStepId && !stepId) setStepId(storedStepId);
       } catch (error) {
         console.log("Error reading SecureStore:", error);
       }
@@ -60,19 +61,26 @@ export default function Camera() {
 
   async function takePicture() {
     if (cameraRef.current) {
-      const photo = await cameraRef.current.takePictureAsync();
-      console.log(id, stepId, "camers 46");
-      router.push({
-        pathname: "/View",
-        params: {
-          uri: photo.uri,
-          width: String(photo.width),
-          height: String(photo.height),
-          format: photo.uri.split(".").pop() || "jpg",
-          client_uid: id,
-          task_id: stepId,
-        },
-      });
+      try {
+        const photo = await cameraRef.current.takePictureAsync();
+        console.log("Captured:", photo.uri);
+        router.push({
+          pathname: "/View",
+          params: {
+            uri: photo.uri,
+            width: String(photo.width),
+            height: String(photo.height),
+            format: photo.uri.split(".").pop() || "jpg",
+            client_uid: id,
+            task_id: stepId,
+          },
+        });
+      } catch (error) {
+        console.error("Failed to take picture:", error);
+        Alert.alert("Error", "Failed to take picture. Please try again.");
+      }
+    } else {
+        Alert.alert("Error", "Camera is not ready.");
     }
   }
 
