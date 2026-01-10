@@ -3,12 +3,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Alert,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    Linking,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import Purchases from "react-native-purchases";
 
@@ -21,7 +21,7 @@ const PremiumPlanPage: React.FC = () => {
     async function loadOfferings() {
       const data = await Purchases.getOfferings();
       setOfferings(data);
-      Alert.alert(JSON.stringify(data));
+
 
       console.log("\n\n\n\n", data, "\n\n\n\n");
     }
@@ -180,6 +180,28 @@ const PremiumPlanPage: React.FC = () => {
           {t("pricing.premiumPlan.cta")}
         </Text>
       </TouchableOpacity>
+
+      <View className="flex-row justify-center items-center mt-5 gap-4 mb-5">
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL("https://nimble-sable-b9fe8e.netlify.app/")
+          }
+        >
+          <Text className="text-gray-500 text-xs underline">
+            Privacy Policy
+          </Text>
+        </TouchableOpacity>
+        <Text className="text-gray-500 text-xs">|</Text>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL(
+              "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+            )
+          }
+        >
+          <Text className="text-gray-500 text-xs underline">Terms of Use</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };

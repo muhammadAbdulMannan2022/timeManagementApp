@@ -4,7 +4,10 @@ import { RootState } from "@/redux/store";
 import { AntDesign } from "@expo/vector-icons"; // Added for error icon
 import { useRouter } from "expo-router";
 
-import { useEffect } from "react";
+import { GUEST_BOILERPLATE } from "@/constants/GuestData";
+import { useFocusEffect } from "expo-router";
+import * as SecureStore from "expo-secure-store";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next"; // Added for translations
 import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeInUp } from "react-native-reanimated"; // Added for animations
@@ -20,14 +23,41 @@ export default function App() {
   const { t } = useTranslation(); // Added for translations
   const router = useRouter(); // Added for navigation
   const step = useSelector((state: RootState) => state.step);
-  const { data, isLoading, error, refetch } = useGetBoilerPlateQuery(undefined);
+  const [isGuest, setIsGuest] = useState(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      const checkGuest = async () => {
+        const guest = await SecureStore.getItemAsync("isGuest");
+        setIsGuest(guest === "true");
+      };
+      checkGuest();
+    }, [])
+  );
+
+  const {
+    data: apiData,
+    isLoading: apiLoading,
+    error,
+    refetch,
+  } = useGetBoilerPlateQuery(undefined, {
+    skip: isGuest,
+  });
+
+  const data = isGuest ? GUEST_BOILERPLATE : apiData;
+  const isLoading = isGuest ? false : apiLoading;
 
   // Handle 401 error and navigate to Auth screen
   useEffect(() => {
-    if (error && "status" in error && error.status === 401) {
+    if (
+      !isGuest &&
+      error &&
+      "status" in error &&
+      error.status === 401
+    ) {
       router.replace("/(auth)");
     }
-  }, [error]);
+  }, [error, isGuest]);
 
   if (isLoading) {
     return (
@@ -86,6 +116,7 @@ export default function App() {
             time={targetMinutes}
             type={currentTask.task_name}
             stepId={currentTask.client}
+            isGuest={isGuest}
           />
         ) : (
           <Animated.View

@@ -1,0 +1,38 @@
+export const GUEST_BOILERPLATE = [
+  {
+    id: 1,
+    task_name: "Removal",
+    target_time: "00:15:00",
+    client: "Guest-Client",
+    iconType: "MaterialCommunityIcons",
+    iconName: "hand-wash",
+    iconColor: "#00B8D4",
+  },
+  {
+    id: 2,
+    task_name: "Prep",
+    target_time: "00:15:00",
+    client: "Guest-Client",
+    iconType: "MaterialCommunityIcons",
+    iconName: "file-document-edit",
+    iconColor: "#00B8D4",
+  },
+  {
+    id: 3,
+    task_name: "Application",
+    target_time: "00:45:00",
+    client: "Guest-Client",
+    iconType: "MaterialCommunityIcons",
+    iconName: "brush",
+    iconColor: "#00B8D4",
+  },
+  {
+    id: 4,
+    task_name: "Finish",
+    target_time: "00:10:00",
+    client: "Guest-Client",
+    iconType: "MaterialCommunityIcons",
+    iconName: "check-circle",
+    iconColor: "#00B8D4",
+  },
+];

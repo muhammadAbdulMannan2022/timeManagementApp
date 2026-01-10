@@ -14,7 +14,8 @@
     "close": "Close",
     "edit": "EDIT",
     "minutes": "Minutes",
-    "time": "Time"
+    "time": "Time",
+    "logout": "Log Out"
   },
   "settingsUpd": {
     "enterText": "Enter text:",

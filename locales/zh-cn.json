@@ -14,7 +14,8 @@
     "close": "关闭",
     "edit": "編輯",
     "minutes": "分鐘",
-    "time": "時間"
+    "time": "時間",
+    "logout": "退出"
   },
   "settingsUpd": {
     "enterText": "輸入文字：",

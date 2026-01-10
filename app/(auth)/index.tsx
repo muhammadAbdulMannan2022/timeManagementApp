@@ -4,12 +4,12 @@ import { useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 import React, { useState } from "react";
 import {
-  ImageBackground,
-  StatusBar,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    ImageBackground,
+    StatusBar,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -39,6 +39,7 @@ const LoginScreen: React.FC = () => {
       await SecureStore.setItemAsync("accessToken", res.tokens.access);
       await SecureStore.setItemAsync("refreshToken", res.tokens.refresh);
       await SecureStore.setItemAsync("userEmail", res.user_info.email); // <- fixed
+      await SecureStore.deleteItemAsync("isGuest");
 
       router.push("/(tabs)");
     } catch (err: any) {
@@ -160,6 +161,18 @@ const LoginScreen: React.FC = () => {
               <Text className="text-cyan font-semibold">Sign Up</Text>
             </TouchableOpacity>
           </View>
+
+          <TouchableOpacity
+            onPress={async () => {
+              await SecureStore.setItemAsync("isGuest", "true");
+              router.push("/(tabs)");
+            }}
+            className="mt-4"
+          >
+            <Text className="text-center text-gray-400 underline">
+              Continue as Guest
+            </Text>
+          </TouchableOpacity>
         </View>
         <StatusBar barStyle="dark-content" />
       </SafeAreaView>

@@ -11,20 +11,20 @@ import * as SecureStore from "expo-secure-store";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Dimensions,
-  Modal,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
+    Dimensions,
+    Modal,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import Animated, {
-  Easing,
-  cancelAnimation,
-  useAnimatedProps,
-  useSharedValue,
-  withRepeat,
-  withTiming,
+    Easing,
+    cancelAnimation,
+    useAnimatedProps,
+    useSharedValue,
+    withRepeat,
+    withTiming,
 } from "react-native-reanimated";
 import Svg, { Circle, Defs, RadialGradient, Stop } from "react-native-svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,11 +47,13 @@ export default function Timer({
   time = 1,
   type,
   // client,
+  isGuest,
 }: {
   time?: number;
   type?: string;
   client?: string;
   stepId?: string;
+  isGuest?: boolean;
 }) {
   const router = useRouter();
   const { t } = useTranslation();
@@ -127,6 +129,12 @@ export default function Timer({
     console.log(dataToSubmit, "data to submit");
 
     try {
+      if (isGuest) {
+        console.log("Guest mode: Skipping submission");
+        setShowModal(true);
+        return;
+      }
+
       console.log("Submitting task...");
       const res = await submitTask(dataToSubmit);
 
@@ -263,7 +271,7 @@ export default function Timer({
     // itemId && dataToSubmit.append("client_uid", itemId);
     // try {
     //   const res = await submitTask(dataToSubmit);
-    //   setItemId(res?.data?.uid || res?.uid || "");
+    //   if (!isGuest) setItemId(res?.data?.uid || res?.uid || "");
     //   console.log(res);
     // dispatch(
     //   addStep({
@@ -278,14 +286,24 @@ export default function Timer({
     if (currentStep < maxStep) {
       dispatch(setStep(currentStep + 1));
     } else {
-      const id = await SecureStore.getItemAsync("item_id");
-      dispatch(setStep(1));
-      // setItemId("");
-      await SecureStore.deleteItemAsync("item_id");
-      router.push({
-        pathname: "/(complete)",
-        params: { id },
-      });
+      if (isGuest) {
+        dispatch(setStep(1));
+        router.push("/(tabs)"); // Go back to start or stay
+        // Or navigate to complete screen without ID?
+        // Let's just reset for now or go to complete with dummy ID
+        // router.push({ pathname: "/(complete)", params: { id: "guest" } });
+        // Actually, preventing error in complete screen is safer:
+        dispatch(setStep(1));
+      } else {
+        const id = await SecureStore.getItemAsync("item_id");
+        dispatch(setStep(1));
+        // setItemId("");
+        await SecureStore.deleteItemAsync("item_id");
+        router.push({
+          pathname: "/(complete)",
+          params: { id },
+        });
+      }
     }
 
     setShowModal(false);
@@ -298,6 +316,15 @@ export default function Timer({
 
     setShowModal(false);
     rewind();
+    if (isGuest) {
+      // Guest cannot take photo because it likely involves uploading
+      // Or we let them but camera screen logic needs to handle no serviceId
+      // For safety, just treat as skip for now or navigate without params
+      // But user clicked "Take Photo"...
+      // Let's just alert restricted feature
+      alert("Photo feature requires an account.");
+      return;
+    }
     router.push({
       pathname: "/(camera)/Camera",
       params: { id, stepId: serviceId },

@@ -3,31 +3,33 @@ import SettingsUpdate from "@/components/Custom/SettingsUpdate";
 
 import LanguageModal from "@/components/Modals/LanguageModal";
 import PricingModal from "@/components/Modals/PriceingModal";
+import { GUEST_BOILERPLATE } from "@/constants/GuestData";
 import {
-  useGetBoilerPlateQuery,
-  useUpdateBoilerPlateMutation,
+    useGetBoilerPlateQuery,
+    useUpdateBoilerPlateMutation,
 } from "@/redux/apis/appSlice";
 import { RootState } from "@/redux/store";
 import {
-  AntDesign,
-  Entypo,
-  FontAwesome,
-  FontAwesome5,
-  FontAwesome6,
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons,
+    AntDesign,
+    Entypo,
+    FontAwesome,
+    FontAwesome5,
+    FontAwesome6,
+    Ionicons,
+    MaterialCommunityIcons,
+    MaterialIcons,
 } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
-import { useEffect, useState } from "react";
+import { useFocusEffect, useRouter } from "expo-router";
+import * as SecureStore from "expo-secure-store";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  ActivityIndicator,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
+    ActivityIndicator,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
@@ -76,11 +78,29 @@ const Settings: React.FC = () => {
   );
   const [languageModalVisible, setLanguageModalVisible] = useState(false);
   const [pricingModalVisible, setPricingModalVisible] = useState(false);
+  const [isGuest, setIsGuest] = useState(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      const checkGuest = async () => {
+        const guest = await SecureStore.getItemAsync("isGuest");
+        setIsGuest(guest === "true");
+      };
+      checkGuest();
+    }, [])
+  );
+
   const {
-    data: boilerPlaate,
-    isLoading: boilerPlaateLoading,
+    data: apiBoilerPlate,
+    isLoading: apiLoading,
     refetch,
-  } = useGetBoilerPlateQuery(undefined);
+  } = useGetBoilerPlateQuery(undefined, {
+    skip: isGuest,
+  });
+
+  const boilerPlaate = isGuest ? GUEST_BOILERPLATE : apiBoilerPlate;
+  const boilerPlaateLoading = isGuest ? false : apiLoading;
+
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState<any>(null);
   const [updateBoiler] = useUpdateBoilerPlateMutation();
@@ -123,12 +143,23 @@ const Settings: React.FC = () => {
     console.log(icon, name, time, res, "✅ updated data");
   };
 
+  const handleLogout = async () => {
+    await SecureStore.deleteItemAsync("accessToken");
+    await SecureStore.deleteItemAsync("refreshToken");
+    await SecureStore.deleteItemAsync("userEmail");
+    await SecureStore.deleteItemAsync("isGuest");
+    router.replace("/(auth)");
+  };
+
   if (boilerPlaateLoading) return <ActivityIndicator />;
 
   return (
     <View className="flex-1 bg-white" key={i18n.language}>
-      <SafeAreaView className="flex-1" style={{ paddingBottom: 70 }}>
-        <ScrollView className="flex-1 px-5">
+      <SafeAreaView className="flex-1">
+        <ScrollView
+          className="flex-1 px-5"
+          contentContainerStyle={{ paddingBottom: 120 }}
+        >
           <View className="gap-5 items-start">
             <View className="flex-row items-center gap-3">
               <Ionicons name="settings" size={30} color="#00B8D4" />
@@ -246,6 +277,16 @@ const Settings: React.FC = () => {
                   <FontAwesome5 name="bolt" size={24} color="#00B8D4" />
                   <Text className="font-semibold text-gray-600 text-2xl">
                     {t("settings.pricing")}
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  className="flex-row items-center gap-4 border border-gray-200 rounded-xl mb-10 w-full p-4"
+                  onPress={handleLogout}
+                >
+                  <Ionicons name="log-out-outline" size={24} color="#FF5252" />
+                  <Text className="font-semibold text-gray-600 text-2xl">
+                    {t("settings.logout") || "Log Out"}
                   </Text>
                 </TouchableOpacity>
               </View>

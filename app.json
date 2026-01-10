@@ -3,7 +3,7 @@
     "name": "Tickin",
     "slug": "alvinluTimeApp",
     "owner": "muhammadabdulmannan21",
-    "version": "1.0.4",
+    "version": "1.0.7",
     "orientation": "portrait",
     "icon": "./assets/images/splash-icon.png",
     "scheme": ["alvinlutimeapp"],
@@ -14,6 +14,7 @@
       "buildNumber": "1",
       "bundleIdentifier": "com.muhammadabdulmannan21.alvinluTimeApp",
       "icon": "./assets/images/splash-icon.png",
+      "usesNonExemptEncryption": false,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "NSCameraUsageDescription": "This app requires camera access to take photos and scan barcodes.",
