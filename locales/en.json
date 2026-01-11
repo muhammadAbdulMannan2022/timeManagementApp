@@ -139,7 +139,9 @@
   "actions": {
     "designComplete": "Design Complete",
     "takePhoto": "Take Photo",
-    "skip": "Skip"
+    "skip": "Skip",
+    "library": "Library",
+    "photoRecords": "Photo Records"
   },
   "complete": {
     "serviceComplete": "Service Complete",

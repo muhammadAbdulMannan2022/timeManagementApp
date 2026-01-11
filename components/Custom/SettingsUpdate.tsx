@@ -8,6 +8,7 @@ interface SettingsUpdateProps {
   setIsEditing: (data: boolean) => void;
   setIsEditingId: (data: any) => void;
   onSubmitEdit: (icon: any, name: any, time: any) => void;
+  initialData?: any;
 }
 
 const formatTimeToHHMMSS = (seconds: number): string => {
@@ -23,15 +24,35 @@ const formatTimeToHHMMSS = (seconds: number): string => {
   return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 };
 
+const parseTimeToMinutes = (timeStr: string) => {
+  if (!timeStr) return 0;
+  const parts = timeStr.split(":");
+  // Handle basic cases like "MM" or "HH:MM" or "HH:MM:SS"
+  if (parts.length === 1) return parseInt(parts[0]);
+  if (parts.length >= 2) {
+      const hh = parseInt(parts[0]) || 0;
+      const mm = parseInt(parts[1]) || 0;
+      // We ignore seconds for the minute input usually, or round them?
+      // let's just stick to hours * 60 + minutes
+      return hh * 60 + mm;
+  }
+  return 0;
+};
+
 export default function SettingsUpdate({
   setIsEditing,
   setIsEditingId,
   onSubmitEdit,
+  initialData,
 }: SettingsUpdateProps) {
   const { t } = useTranslation();
-  const [text, setText] = useState("");
-  const [time, setTime] = useState(0);
-  const [icon, setIcon] = useState();
+  const [text, setText] = useState(initialData?.task_name || "");
+  const [time, setTime] = useState(initialData?.target_time ? parseTimeToMinutes(initialData.target_time) : 0);
+  const [icon, setIcon] = useState(
+      initialData 
+      ? { iconSet: initialData.iconType, iconName: initialData.iconName } 
+      : undefined
+  );
 
   const submitData = async () => {
     const timeFormated = formatTimeToHHMMSS(time * 60);

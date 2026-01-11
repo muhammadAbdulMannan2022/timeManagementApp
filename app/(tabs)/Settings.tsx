@@ -107,8 +107,15 @@ const Settings: React.FC = () => {
 
   const router = useRouter();
 
-  // Calculate total target time (example, adjust based on your data)
-  const totalTargetTime = "150";
+  // Calculate total target time
+  const totalTargetTime = boilerPlaate
+    ? boilerPlaate.reduce((acc: number, item: any) => {
+        if (!item.target_time) return acc;
+        const [hh, mm, ss] = item.target_time.split(":").map(Number);
+        const minutes = hh * 60 + mm + (ss > 0 ? 1 : 0);
+        return acc + minutes;
+      }, 0)
+    : 0;
 
   useEffect(() => {
     console.log(
@@ -210,6 +217,7 @@ const Settings: React.FC = () => {
                   onSubmitEdit={onSubmitEdit}
                   setIsEditing={setIsEditing}
                   setIsEditingId={setEditingId}
+                  initialData={boilerPlaate.find((item: any) => item.id === editingId)}
                 />
               </View>
             ) : (

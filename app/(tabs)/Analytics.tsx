@@ -1,22 +1,22 @@
 import FilterBar from "@/components/Custom/Filter";
 import { useAnalyticsMutation } from "@/redux/apis/appSlice";
 import {
-  AntDesign,
-  Entypo,
-  FontAwesome,
-  MaterialIcons,
+    AntDesign,
+    Entypo,
+    FontAwesome,
+    MaterialIcons,
 } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  ActivityIndicator,
-  Dimensions,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  useWindowDimensions,
-  View,
+    ActivityIndicator,
+    Dimensions,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    useWindowDimensions,
+    View,
 } from "react-native";
 import { BarChart, LineChart } from "react-native-chart-kit";
 import Animated, { FadeInUp } from "react-native-reanimated";
@@ -267,6 +267,19 @@ export default function Analytics() {
     try {
       const d = await getAnaData({ filter_type: filterMap[active] }).unwrap();
       console.log("Raw API response:", d);
+      // Helper to generate last 7 days dynamically
+      const getLast7Days = () => {
+        const days = [];
+        for (let i = 6; i >= 0; i--) {
+          const d = new Date();
+          d.setDate(d.getDate() - i);
+          const month = d.toLocaleString("default", { month: "short" });
+          const day = d.getDate();
+          days.push({ period: `${month} ${day}`, average_time_seconds: 0 });
+        }
+        return days;
+      };
+
       // Transform completion_time_trend to match LineChartPage expected format
       const transformedData = {
         ...d,
@@ -288,16 +301,7 @@ export default function Analytics() {
                       : 0,
                 })
               )
-            : [
-                { period: "Sep 23", average_time_seconds: 0 },
-                { period: "Sep 24", average_time_seconds: 0 },
-                { period: "Sep 25", average_time_seconds: 0 },
-                { period: "Sep 26", average_time_seconds: 0 },
-                { period: "Sep 27", average_time_seconds: 0 },
-                { period: "Sep 28", average_time_seconds: 0 },
-                { period: "Sep 29", average_time_seconds: 0 },
-                { period: "Sep 30", average_time_seconds: 0 },
-              ],
+            : getLast7Days(),
         },
       };
       setData(transformedData);

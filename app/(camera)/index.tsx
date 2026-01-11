@@ -65,9 +65,9 @@ const Index = () => {
                 <TouchableOpacity onPress={() => router.navigate("/(tabs)")}>
                     <Ionicons name="close" size={24} color="#000" />
                 </TouchableOpacity>
-                <View className="items-center justify-center">
+              <View className="items-center justify-center">
                     <Text className="text-gray-900 font-bold text-lg">{steps.stepName}</Text>
-                    <Text className="text-gray-500">Photo Records</Text>
+                    <Text className="text-gray-500">{t("actions.photoRecords")}</Text>
                 </View>
                 <View></View>
             </View>
@@ -107,7 +107,7 @@ const Index = () => {
                         pickImage()
                     }} className="bg-[#baf6ff6e] px-8 py-5 rounded-lg flex-row items-center gap-3">
                         <Ionicons name="images" size={24} color="#00B8D4" />
-                        <Text className="text-[#00B8D4] text-lg font-semibold ">Library</Text>
+                        <Text className="text-[#00B8D4] text-lg font-semibold ">{t("actions.library")}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
